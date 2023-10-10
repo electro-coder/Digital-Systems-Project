@@ -18,7 +18,7 @@ button_color = (0, 255, 0)
 button_text_color = (255, 255, 255)
 font_size = 24
 button_txt = "Start Game"
-#lkl
+#lkllllll
 
 # Initialize
 screen = pygame.display.set_mode((window_width, window_height))
