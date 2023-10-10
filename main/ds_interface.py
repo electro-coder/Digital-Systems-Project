@@ -34,7 +34,7 @@ button_rect = pygame.Rect(
     button_width,
     button_height,
 )
-
+#trial game
 main_menu = True
 game_started = False
 while main_menu:
