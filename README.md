@@ -21,8 +21,8 @@ Project made for the course **EE206L: Digital Systems** under supervisor [**Dr. 
 2) Should not be copied from other sources. All the original source files used to create game/demo should be submitted. 
 3) If the idea is inspired from another source, it should be mentioned clearly and novelty compared to the existing should be justified.
 
-##The Game (CodeDiffuse)
-###Front End
-####Stage 1
+## The Game (CodeDiffuse)
+### Front End
+#### Stage 1
 1) A random output 8 bit binary string will be generated
 2) User will have to select any 2/1 input gate from AND.OR,NOT,XOR,XNOR and then select the inputs to these gates by toggling the switches for respective blocks. 
