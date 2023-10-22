@@ -1,56 +1,44 @@
 import pygame
 import sys
 
-class Gate:
-    def __init__(self, screen, gate_type, position, input1=False, input2=False):
-        self.screen = screen
-        self.gate_type = gate_type
-        self.position = position
-        self.input1 = input1
-        self.input2 = input2
-        self.output = False
-
-        # Define gate colors and dimensions
-        self.color = (255, 255, 255)
-        self.width = 60
-        self.height = 40
-
-    def draw(self):
-        x, y = self.position
-        pygame.draw.rect(self.screen, self.color, (x, y, self.width, self.height))
-        font = pygame.font.Font(None, 36)
-        gate_text = font.render(self.gate_type, True, (0, 0, 0))
-        self.screen.blit(gate_text, (x + 10, y + 5))
-
-    def update(self):
-        if self.gate_type == "AND":
-            self.output = self.input1 and self.input2
-        elif self.gate_type == "OR":
-            self.output = self.input1 or self.input2
-        elif self.gate_type == "NOT":
-            self.output = not self.input1
-
-    def set_inputs(self, input1, input2=None):
-        self.input1 = input1
-        if input2 is not None:
-            self.input2 = input2
-
-    def get_output(self):
-        return self.output
+# Define colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
 
 # Initialize Pygame
 pygame.init()
 
-# Define screen dimensions and create a Pygame screen
-screen_width = 800
-screen_height = 600
-screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Gate Structures in Pygame")
+# Set up the screen
+WIDTH, HEIGHT = 400, 200
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("AND Gate Simulation")
 
-# Create gate objects
-and_gate = Gate(screen, "AND", (50, 50))
-or_gate = Gate(screen, "OR", (200, 50))
-not_gate = Gate(screen, "NOT", (350, 50))
+# Define the AND gate class
+class ANDGate:
+    def __init__(self, x=150, y=80, input1=False, input2=False):
+        self.x = x
+        self.y = y
+        self.width = 50
+        self.height = 40
+        self.input1 = input1
+        self.input2 = input2
+        self.output = input1 and input2
+
+    def draw(self):
+        pygame.draw.rect(screen, WHITE, (self.x, self.y, self.width, self.height))
+        pygame.draw.line(screen, BLACK, (self.x, self.y + self.height // 2), (self.x + self.width, self.y + self.height // 2))
+        pygame.draw.circle(screen, BLACK, (self.x - 20, self.y + self.height // 2), 6)
+        pygame.draw.circle(screen, BLACK, (self.x - 20, self.y + self.height // 2 + 40), 6)
+        pygame.draw.circle(screen, BLACK, (self.x + self.width + 20, self.y + self.height // 2), 6)
+
+    def set_input(self, input1, input2):
+        self.input1 = input1
+        self.input2 = input2
+        self.output = input1 and input2
+
+# Create AND gate instances with overloaded constructors
+and_gate1 = ANDGate()  # Uses default values (x=150, y=80, input1=False, input2=False)
+and_gate2 = ANDGate(50, 30, True, True)  # Custom values (x=50, y=30, input1=True, input2=True)
 
 # Main game loop
 running = True
@@ -58,23 +46,18 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
-    # Update gate outputs
-    and_gate.update()
-    or_gate.update()
-    not_gate.update()
+            pygame.quit()
+            sys.exit()
 
     # Clear the screen
-    screen.fill((0, 0, 0))
+    screen.fill(BLACK)
 
-    # Draw gates
-    and_gate.draw()
-    or_gate.draw()
-    not_gate.draw()
+    # Draw the AND gates
+    and_gate1.draw()
+    and_gate2.draw()
 
-    # Update the screen
-    pygame.display.flip()
+    # Update the display
+    pygame.display.update()
 
 # Quit Pygame
 pygame.quit()
-sys.exit()
