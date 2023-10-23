@@ -20,7 +20,7 @@ pygame.display.set_caption("Image Drag and Drop")
 # Load images
 image1 = pygame.image.load("../Resources/or.png")  # Replace with your image file
 image2 = pygame.image.load("../Resources/and.png")  # Replace with your image file
-image3 = pygame.image.load("../Resources/or.png")  # Replace with your image file
+image3 = pygame.image.load("../Resources/nor.png")  # Replace with your image file
 
 # Initial positions of images
 image1_rect = image1.get_rect(topleft=(70, 70))
