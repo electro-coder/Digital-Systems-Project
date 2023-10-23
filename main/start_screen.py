@@ -14,7 +14,7 @@ DROPZONE_COLOR = (50, 100, 10)
 IMAGE_SIZE = (50, 50)
 
 # Create the display surface
-screen = pygame.display.set_gitmode((SCREEN_WIDTH, SCREEN_HEIGHT))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Image Drag and Drop")
 
 # Load images
@@ -29,8 +29,9 @@ image3_rect = image3.get_rect(topleft=(250, 70))
 
 # Drop zone rect
 dropzone_rect = pygame.Rect(700, 250, 70, 70)
-dropzone_rect1 = pygame.Rect(600, 250, 70, 70)
-dropzone_rect2 = pygame.Rect(700, 250, 70, 70)
+dropzone_rect1 = pygame.Rect(500, 250, 70, 70)
+dropzone_rect2 = pygame.Rect(500, 100, 70, 70)
+dropzone_rect3 = pygame.Rect(500, 400, 70, 70)
 
 # List of images, their original positions, and a flag for indicating if they are in the drop zone
 images = [(image1, image1_rect, False), (image2, image2_rect, False), (image3, image3_rect, False)]
@@ -71,6 +72,14 @@ while running:
                     # The image is dropped inside the drop zone
                     img_rect.topleft = dropzone_rect1.topleft
                     in_dropzone = True
+                if dropzone_rect2.colliderect(img_rect):
+                    # The image is dropped inside the drop zone
+                    img_rect.topleft = dropzone_rect2.topleft
+                    in_dropzone = True
+                if dropzone_rect3.colliderect(img_rect):
+                    # The image is dropped inside the drop zone
+                    img_rect.topleft = dropzone_rect3.topleft
+                    in_dropzone = True
                 else:
                     # The image is dropped outside the drop zone
                     img_rect.topleft = img_rect.x, 70  # Return to original position
@@ -83,6 +92,8 @@ while running:
     # Draw drop zone
     pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect)
     pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect1)
+    pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect2)
+    pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect3)
 
     # Draw the images
     for img, img_rect, in_dropzone in images:
