@@ -38,12 +38,12 @@ image5_original_rect = image5_rect.copy()
 image6_original_rect = image6_rect.copy()
 
 # Create drop zones
-dropzone_rect1 = pygame.Rect(700, 250, 70, 70)
-dropzone_rect2 = pygame.Rect(500, 250, 70, 70)
-dropzone_rect3 = pygame.Rect(500, 400, 70, 70)
-dropzone_rect4 = pygame.Rect(500, 100, 70, 70)
-dropzone_rect5 = pygame.Rect(200, 200, 70, 70)
-dropzone_rect6 = pygame.Rect(200, 300, 70, 70)
+dropzone_rect1 = pygame.Rect(500, 250, 70, 70)
+dropzone_rect2 = pygame.Rect(300, 250, 70, 70)
+dropzone_rect3 = pygame.Rect(300, 400, 70, 70)
+dropzone_rect4 = pygame.Rect(300, 100, 70, 70)
+dropzone_rect5 = pygame.Rect(150, 200, 70, 70)
+dropzone_rect6 = pygame.Rect(150, 300, 70, 70)
 
 # List of images, their original positions, and flags for indicating if they are in a drop zone
 images = [(image1, image1_rect, False),
@@ -100,7 +100,7 @@ while running:
                 dragging = None
 
     # Clear the screen
-    screen.fill(WHITE)
+    screen.fill((22,210,89))
 
     # Draw drop zones
     pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect1)
