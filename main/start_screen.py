@@ -5,39 +5,63 @@ import sys
 pygame.init()
 
 # Constants
-ELEMENTS = ["AND", "OR", "NOR"]
-ELEMENT_FONT = pygame.font.Font(None, 16)
-ELEMENT_TEXT_COLOR = (255, 255, 255)
 SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
 WHITE = (255, 255, 255)
-DROPZONE_COLOR = (50, 100, 10)
+DROPZONE_COLOR = (0, 255, 0)
 IMAGE_SIZE = (50, 50)
 
 # Create the display surface
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Image Drag and Drop")
 
-# Load images
 image1 = pygame.image.load("../Resources/or.png")  # Replace with your image file
 image2 = pygame.image.load("../Resources/and.png")  # Replace with your image file
 image3 = pygame.image.load("../Resources/nor.png")  # Replace with your image file
+image4 = pygame.image.load("../Resources/xor.png")  # Replace with your image file
+image5 = pygame.image.load("../Resources/nor.png")  # Replace with your image file
+image6 = pygame.image.load("../Resources/nor.png")  # Replace with your image file
 
 # Initial positions of images
-image1_rect = image1.get_rect(topleft=(70, 70))
-image2_rect = image2.get_rect(topleft=(160, 70))
-image3_rect = image3.get_rect(topleft=(250, 70))
+image1_rect = image1.get_rect(topleft=(50, 25))
+image2_rect = image2.get_rect(topleft=(140, 25))
+image3_rect = image3.get_rect(topleft=(230, 25))
+image4_rect = image4.get_rect(topleft=(350, 25))
+image5_rect = image5.get_rect(topleft=(460, 25))
+image6_rect = image6.get_rect(topleft=(590, 25))
 
-# Drop zone rect
-dropzone_rect = pygame.Rect(700, 250, 70, 70)
-dropzone_rect1 = pygame.Rect(500, 250, 70, 70)
-dropzone_rect2 = pygame.Rect(500, 100, 70, 70)
+# Original positions of images
+image1_original_rect = image1_rect.copy()
+image2_original_rect = image2_rect.copy()
+image3_original_rect = image3_rect.copy()
+image4_original_rect = image4_rect.copy()
+image5_original_rect = image5_rect.copy()
+image6_original_rect = image6_rect.copy()
+
+# Create drop zones
+dropzone_rect1 = pygame.Rect(700, 250, 70, 70)
+dropzone_rect2 = pygame.Rect(500, 250, 70, 70)
 dropzone_rect3 = pygame.Rect(500, 400, 70, 70)
+dropzone_rect4 = pygame.Rect(500, 100, 70, 70)
+dropzone_rect5 = pygame.Rect(200, 200, 70, 70)
+dropzone_rect6 = pygame.Rect(200, 300, 70, 70)
 
-# List of images, their original positions, and a flag for indicating if they are in the drop zone
-images = [(image1, image1_rect, False), (image2, image2_rect, False), (image3, image3_rect, False)]
+# List of images, their original positions, and flags for indicating if they are in a drop zone
+images = [(image1, image1_rect, False),
+          (image2, image2_rect, False),
+          (image3, image3_rect, False),
+          (image4, image4_rect, False),
+          (image5, image5_rect, False),
+          (image6, image6_rect, False)]
+
+# Dictionary to keep track of which image is in which drop zone
+dropzone_contents = {tuple(dropzone_rect1.topleft): None,
+                    tuple(dropzone_rect2.topleft): None,
+                    tuple(dropzone_rect3.topleft): None,
+                    tuple(dropzone_rect4.topleft): None,
+                    tuple(dropzone_rect5.topleft): None,
+                    tuple(dropzone_rect6.topleft): None}
 
 dragging = None
-currently_dropped = None  # Track the currently dropped image
 
 # Main game loop
 running = True
@@ -49,12 +73,6 @@ while running:
             if event.button == 1:
                 for img, img_rect, in_dropzone in images:
                     if img_rect.collidepoint(event.pos) and not in_dropzone:
-                        if currently_dropped:
-                            # Return the prior image to its original position
-                            prior_img, prior_rect, _ = currently_dropped
-                            prior_rect.topleft = prior_rect.x, 70
-                            images.append((prior_img, prior_rect, False))
-                        currently_dropped = (img, img_rect, in_dropzone)
                         dragging = img, img_rect, in_dropzone
                         images.remove((img, img_rect, in_dropzone))
         if event.type == pygame.MOUSEMOTION:
@@ -64,42 +82,39 @@ while running:
         if event.type == pygame.MOUSEBUTTONUP:
             if dragging is not None:
                 img, img_rect, in_dropzone = dragging
-                if dropzone_rect.colliderect(img_rect):
-                    # The image is dropped inside the drop zone
-                    img_rect.topleft = dropzone_rect.topleft
-                    in_dropzone = True
-                if dropzone_rect1.colliderect(img_rect):
-                    # The image is dropped inside the drop zone
-                    img_rect.topleft = dropzone_rect1.topleft
-                    in_dropzone = True
-                if dropzone_rect2.colliderect(img_rect):
-                    # The image is dropped inside the drop zone
-                    img_rect.topleft = dropzone_rect2.topleft
-                    in_dropzone = True
-                if dropzone_rect3.colliderect(img_rect):
-                    # The image is dropped inside the drop zone
-                    img_rect.topleft = dropzone_rect3.topleft
-                    in_dropzone = True
+                drop_zones = [dropzone_rect1, dropzone_rect2, dropzone_rect3, dropzone_rect4, dropzone_rect5, dropzone_rect6]
+
+                # Check if any of the drop zones is empty, and drop the image if one is
+                for i, dropzone_rect in enumerate(drop_zones):
+                    if dropzone_rect.colliderect(img_rect):
+                        if dropzone_contents[tuple(dropzone_rect.topleft)] is None:
+                            img_rect.topleft = dropzone_rect.topleft
+                            in_dropzone = True
+                            dropzone_contents[tuple(dropzone_rect.topleft)] = img
+                            print(f"{img} was dropped in Zone {i + 1}")
+                            break
                 else:
-                    # The image is dropped outside the drop zone
-                    img_rect.topleft = img_rect.x, 70  # Return to original position
+                    # Return the image to its original position if no drop zone is available
+                    img_rect.topleft = image1_original_rect.topleft
                 images.append((img, img_rect, in_dropzone))
                 dragging = None
 
     # Clear the screen
     screen.fill(WHITE)
 
-    # Draw drop zone
-    pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect)
+    # Draw drop zones
     pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect1)
     pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect2)
     pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect3)
+    pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect4)
+    pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect5)
+    pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect6)
 
     # Draw the images
     for img, img_rect, in_dropzone in images:
         screen.blit(img, img_rect)
         if in_dropzone:
-            pygame.draw.rect(screen, DROPZONE_COLOR, img_rect, 2)  # Add a border to indicate in drop zone
+            pygame.draw.rect(screen, DROPZONE_COLOR, img_rect, 2)  # Add a border to indicate in the drop zone
 
     # Update the display
     pygame.display.flip()
