@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 
 # Initialize Pygame
 pygame.init()
@@ -9,10 +10,15 @@ SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
 WHITE = (255, 255, 255)
 DROPZONE_COLOR = (0, 255, 0)
 IMAGE_SIZE = (50, 50)
+# WHITE = (255, 255, 255)
+CIRCLE_COLOR = (255, 0, 0)
+CIRCLE_RADIUS = 50
+# connections = [((20,20),(60,60)),((270, 300), (300, 300)),((200,320), (270,320)),((270, 450), (270, 160)),((248, 420),
+#                (300, 420)),((270, 450), (270, 160)),((200,320), (270,320)),((270, 300), (300, 300)),((246, 200), (300, 200))]
 
 # Create the display surface
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Image Drag and Drop")
+pygame.display.set_caption("CodeDiffuse")
 
 image1 = pygame.image.load("../Resources/or.png")  # Replace with your image file
 image2 = pygame.image.load("../Resources/and.png")  # Replace with your image file
@@ -61,14 +67,18 @@ dropzone_contents = {tuple(dropzone_rect1.topleft): None,
                     tuple(dropzone_rect5.topleft): None,
                     tuple(dropzone_rect6.topleft): None}
 
+clock = pygame.time.Clock()
+blink_interval = 500  # milliseconds
+blink_timer = 0
+visible = True
 dragging = None
-
 # Main game loop
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
                 for img, img_rect, in_dropzone in images:
@@ -100,7 +110,35 @@ while running:
                 dragging = None
 
     # Clear the screen
-    screen.fill((22,210,89))
+    screen.fill((128, 28, 128))
+
+
+    current_time = pygame.time.get_ticks()
+    if current_time - blink_timer >= blink_interval:
+        visible = not visible
+        blink_timer = current_time
+
+    if visible:
+        # Draw the circle if it's currently visible
+        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 300), 10)
+
+    # for start, end in connections:
+    #     pygame.draw.line(screen, (255, 0, 0), start, end, 5)
+    pygame.draw.line(screen, (254, 20, 50), (200,220), (250,220), 5)
+    pygame.draw.line(screen, (254, 20, 50), (250, 420), (250, 120), 5)
+    pygame.draw.line(screen, (254, 20, 50), (248, 120), (300, 120), 5)
+    pygame.draw.line(screen, (254, 20, 50), (248, 270), (300, 270), 5)
+    pygame.draw.line(screen, (254, 20, 50), (248, 420), (300, 420), 5)
+    pygame.draw.line(screen, (0, 0, 0), (270, 450), (270, 150), 5)
+    pygame.draw.line(screen, (0, 0, 0), (200,320), (270,320), 5)
+    pygame.draw.line(screen, (0, 0, 0), (270, 300), (300, 300), 5)
+    pygame.draw.line(screen, (0, 0, 0), (268, 150), (300, 150), 5)
+    pygame.draw.line(screen, (0, 0, 0), (268, 450), (300, 450), 5)
+    pygame.draw.line(screen, (0, 34, 45), (350, 285), (500, 285), 5)
+    pygame.draw.line(screen, (0, 34, 45), (350, 130), (530, 130), 5)
+    pygame.draw.line(screen, (0, 34, 45), (350, 430), (530, 430), 5)
+    pygame.draw.line(screen, (0, 34, 45), (530, 129), (530, 300), 5)
+    pygame.draw.line(screen, (0, 34, 45), (530, 430), (530, 310), 5)
 
     # Draw drop zones
     pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect1)
@@ -116,6 +154,7 @@ while running:
         if in_dropzone:
             pygame.draw.rect(screen, DROPZONE_COLOR, img_rect, 2)  # Add a border to indicate in the drop zone
 
+    clock.tick(60)
     # Update the display
     pygame.display.flip()
 
