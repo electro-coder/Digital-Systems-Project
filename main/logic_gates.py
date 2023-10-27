@@ -11,7 +11,7 @@ pygame.init()
 # Set up the screen
 WIDTH, HEIGHT = 400, 200
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("AND Gate Simulation")
+pygame.display.set_caption("Logic Gates")
 
 # Define the AND gate class
 class ANDGate:
@@ -168,6 +168,12 @@ class XNORGate:
 # Create AND gate instances with overloaded constructors
 and_gate1 = ANDGate()  # Uses default values (x=150, y=80, input1=False, input2=False)
 and_gate2 = ANDGate(50, 30, True, True)  # Custom values (x=50, y=30, input1=True, input2=True)
+or_gate=ORGate()
+nor_gate=NORGate()
+nand_gate=NANDGate()
+not_gate=NOTGate()
+xor_gate=XORGate()
+xnor_gate=XNORGate()
 
 # Main game loop
 running = True
@@ -182,8 +188,14 @@ while running:
     screen.fill(BLACK)
 
     # Draw the AND gates
-    and_gate1.draw()
-    and_gate2.draw()
+    #and_gate1.draw()
+    #and_gate2.draw()
+    '''or_gate.draw()
+    not_gate.draw()
+    nor_gate.draw()
+    nand_gate.draw()
+    xor_gate.draw()'''
+    xnor_gate.draw()
 
     # Update the display
     pygame.display.update()
