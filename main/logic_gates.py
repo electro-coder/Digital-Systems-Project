@@ -24,6 +24,18 @@ class ANDGate:
         self.input2 = input2
         self.output = input1 and input2
 
+    #constructor overloaded for flexibility in no. of inputs
+    def __init__(self, x=150, y=80, z=90, input1=False, input2=False, input3=False):
+        self.x = x
+        self.y = y
+        self.z=z
+        self.width = 50
+        self.height = 40
+        self.input1 = input1
+        self.input2 = input2
+        self.input3=input3
+        self.output = input1 and input2 and input3
+
     def draw(self):
         pygame.draw.rect(screen, WHITE, (self.x, self.y, self.width, self.height))
         pygame.draw.line(screen, BLACK, (self.x, self.y + self.height // 2), (self.x + self.width, self.y + self.height // 2))
@@ -45,6 +57,18 @@ class NANDGate:
         self.input1 = input1
         self.input2 = input2
         self.output = not (input1 and input2)
+
+    #constructor overloaded for flexibility in no. of inputs
+    def __init__(self, x=150, y=80, z=90, input1=False, input2=False, input3=False):
+        self.x = x
+        self.y = y
+        self.z=z
+        self.width = 50
+        self.height = 40
+        self.input1 = input1
+        self.input2 = input2
+        self.input3=input3
+        self.output = not(input1 and input2 and input3)
 
     def draw(self):
         pygame.draw.rect(screen, WHITE, (self.x, self.y, self.width, self.height))
@@ -68,6 +92,18 @@ class ORGate:
         self.input2 = input2
         self.output = input1 or input2
 
+    #constructor overloaded for flexibility in no. of inputs
+    def __init__(self, x=150, y=80, z=90, input1=False, input2=False, input3=False):
+        self.x = x
+        self.y = y
+        self.z=z
+        self.width = 50
+        self.height = 40
+        self.input1 = input1
+        self.input2 = input2
+        self.input3=input3
+        self.output = input1 or input2 or input3
+
     def draw(self):
         pygame.draw.rect(screen, WHITE, (self.x, self.y, self.width, self.height))
         pygame.draw.line(screen, BLACK, (self.x, self.y + self.height // 2), (self.x + self.width, self.y + self.height // 2))
@@ -89,6 +125,18 @@ class NORGate:
         self.input1 = input1
         self.input2 = input2
         self.output = not(input1 or input2)
+
+    #constructor overloaded for flexibility in no. of inputs
+    def __init__(self, x=150, y=80, z=90, input1=False, input2=False, input3=False):
+        self.x = x
+        self.y = y
+        self.z=z
+        self.width = 50
+        self.height = 40
+        self.input1 = input1
+        self.input2 = input2
+        self.input3=input3
+        self.output = not(input1 or input2 or input3)
 
     def draw(self):
         pygame.draw.rect(screen, WHITE, (self.x, self.y, self.width, self.height))
@@ -131,6 +179,18 @@ class XORGate:
         self.input2 = input2
         self.output = input1 ^ input2
 
+    #constructor overloaded for flexibility in no. of inputs
+    def __init__(self, x=150, y=80, z=90, input1=False, input2=False, input3=False):
+        self.x = x
+        self.y = y
+        self.z=z
+        self.width = 50
+        self.height = 40
+        self.input1 = input1
+        self.input2 = input2
+        self.input3=input3
+        self.output = input1 ^ input2 ^ input3
+
     def draw(self):
         pygame.draw.rect(screen, WHITE, (self.x, self.y, self.width, self.height))
         pygame.draw.line(screen, BLACK, (self.x, self.y + self.height // 2), (self.x + self.width, self.y + self.height // 2))
@@ -152,6 +212,18 @@ class XNORGate:
         self.input1 = input1
         self.input2 = input2
         self.output = not (input1 ^ input2)
+
+    #constructor overloaded for flexibility in no. of inputs
+    def __init__(self, x=150, y=80, z=90, input1=False, input2=False, input3=False):
+        self.x = x
+        self.y = y
+        self.z=z
+        self.width = 50
+        self.height = 40
+        self.input1 = input1
+        self.input2 = input2
+        self.input3=input3
+        self.output = not(input1 ^ input2 ^ input3)
 
     def draw(self):
         pygame.draw.rect(screen, WHITE, (self.x, self.y, self.width, self.height))
