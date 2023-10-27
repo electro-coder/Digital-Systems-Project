@@ -20,12 +20,29 @@ CIRCLE_RADIUS = 50
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("CodeDiffuse")
 
-image1 = pygame.image.load("../Resources/or.png")  # Replace with your image file
-image2 = pygame.image.load("../Resources/and.png")  # Replace with your image file
-image3 = pygame.image.load("../Resources/nor.png")  # Replace with your image file
-image4 = pygame.image.load("../Resources/xor.png")  # Replace with your image file
-image5 = pygame.image.load("../Resources/nor.png")  # Replace with your image file
-image6 = pygame.image.load("../Resources/nor.png")  # Replace with your image file
+#paths for image files
+path1="../Resources/or.png"
+path2="../Resources/and.png"
+path3="../Resources/nor.png"
+path4="../Resources/xor.png"
+path5="../Resources/nor.png"
+path6="../Resources/nor.png"
+
+try:
+    image1 = pygame.image.load(path1)  # Replace with your image file
+    image2 = pygame.image.load(path2)  # Replace with your image file
+    image3 = pygame.image.load(path3)  # Replace with your image file
+    image4 = pygame.image.load(path4)  # Replace with your image file
+    image5 = pygame.image.load(path5)  # Replace with your image file
+    image6 = pygame.image.load(path6)  # Replace with your image file
+except(FileNotFoundError):
+    image1 = pygame.image.load(path1.replace("..","."))  # Replace with your image file
+    image2 = pygame.image.load(path2.replace("..","."))  # Replace with your image file
+    image3 = pygame.image.load(path3.replace("..","."))  # Replace with your image file
+    image4 = pygame.image.load(path4.replace("..","."))  # Replace with your image file
+    image5 = pygame.image.load(path5.replace("..","."))  # Replace with your image file
+    image6 = pygame.image.load(path6.replace("..","."))  # Replace with your image file
+
 
 # Initial positions of images
 image1_rect = image1.get_rect(topleft=(50, 25))
