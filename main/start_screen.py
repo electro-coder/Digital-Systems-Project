@@ -5,14 +5,10 @@ import random
 # Initialize Pygame
 pygame.init()
 
-game_state = "start_menu"
 # Constants
 SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
 WHITE = (255, 255, 255)
 DROPZONE_COLOR = (0, 255, 0)
-DROPZONE_COLOR1 = (0, 0, 200)
-DROPZONE_COLOR2 = (200, 0, 0)
-DROPZONE_COLOR3 = (0, 0, 0)
 IMAGE_SIZE = (50, 50)
 # WHITE = (255, 255, 255)
 CIRCLE_COLOR = (255, 0, 0)
@@ -48,10 +44,10 @@ image5_original_rect = image5_rect.copy()
 image6_original_rect = image6_rect.copy()
 
 # Create drop zones
-dropzone_rect1 = pygame.Rect(500, 260, 70, 50)
-dropzone_rect2 = pygame.Rect(300, 260, 70, 50)
-dropzone_rect3 = pygame.Rect(300, 410, 70, 50)
-dropzone_rect4 = pygame.Rect(300, 110, 70, 50)
+dropzone_rect1 = pygame.Rect(500, 250, 70, 70)
+dropzone_rect2 = pygame.Rect(300, 250, 70, 70)
+dropzone_rect3 = pygame.Rect(300, 400, 70, 70)
+dropzone_rect4 = pygame.Rect(300, 100, 70, 70)
 dropzone_rect5 = pygame.Rect(150, 200, 70, 70)
 dropzone_rect6 = pygame.Rect(150, 300, 70, 70)
 
@@ -71,15 +67,6 @@ dropzone_contents = {tuple(dropzone_rect1.topleft): None,
                     tuple(dropzone_rect5.topleft): None,
                     tuple(dropzone_rect6.topleft): None}
 
-def draw_start_menu():
-    screen.fill((0, 0, 0))
-    font = pygame.font.SysFont('arial', 40)
-    title = font.render('My Game', True, (255, 255, 255))
-    start_button = font.render('Start', True, (255, 255, 255))
-    screen.blit(title, (300,400))
-    screen.blit(start_button, (200, 400))
-    pygame.display.update()
-
 clock = pygame.time.Clock()
 blink_interval = 500  # milliseconds
 blink_timer = 0
@@ -88,16 +75,9 @@ dragging = None
 # Main game loop
 running = True
 while running:
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
-    if game_state == "start_menu":
-        draw_start_menu()
-
-    if game_state == "game":
-        keys = pygame.key.get_pressed()
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
@@ -129,8 +109,8 @@ while running:
                 images.append((img, img_rect, in_dropzone))
                 dragging = None
 
-
-    screen.fill((255, 165, 0))
+    # Clear the screen
+    screen.fill((128, 28, 128))
 
 
     current_time = pygame.time.get_ticks()
@@ -140,11 +120,7 @@ while running:
 
     if visible:
         # Draw the circle if it's currently visible
-        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 300), 20)
-        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 350), 20)
-        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 400), 20)
-        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 250), 20)
-        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 200), 20)
+        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 300), 10)
 
     # for start, end in connections:
     #     pygame.draw.line(screen, (255, 0, 0), start, end, 5)
@@ -166,11 +142,11 @@ while running:
 
     # Draw drop zones
     pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect1)
-    pygame.draw.rect(screen, DROPZONE_COLOR1, dropzone_rect2)
-    pygame.draw.rect(screen, DROPZONE_COLOR1, dropzone_rect3)
-    pygame.draw.rect(screen, DROPZONE_COLOR1, dropzone_rect4)
-    pygame.draw.rect(screen, DROPZONE_COLOR2, dropzone_rect5)
-    pygame.draw.rect(screen, DROPZONE_COLOR3, dropzone_rect6)
+    pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect2)
+    pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect3)
+    pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect4)
+    pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect5)
+    pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect6)
 
     # Draw the images
     for img, img_rect, in_dropzone in images:
