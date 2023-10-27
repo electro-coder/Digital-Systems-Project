@@ -10,15 +10,14 @@ SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
 WHITE = (255, 255, 255)
 DROPZONE_COLOR = (0, 255, 0)
 IMAGE_SIZE = (50, 50)
-# WHITE = (255, 255, 255)
-CIRCLE_COLOR = (255, 0, 0)
-CIRCLE_RADIUS = 50
+CIRCLE_COLOR = (255, 255, 0)
+CIRCLE_RADIUS = 30
 # connections = [((20,20),(60,60)),((270, 300), (300, 300)),((200,320), (270,320)),((270, 450), (270, 160)),((248, 420),
 #                (300, 420)),((270, 450), (270, 160)),((200,320), (270,320)),((270, 300), (300, 300)),((246, 200), (300, 200))]
 
 # Create the display surface
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("CodeDiffuse")
+pygame.display.set_caption("CodeDiffuse Level 1")
 
 #paths for image files
 path1="../Resources/or.png"
@@ -101,7 +100,7 @@ while running:
                 for img, img_rect, in_dropzone in images:
                     if img_rect.collidepoint(event.pos) and not in_dropzone:
                         dragging = img, img_rect, in_dropzone
-                        images.remove((img, img_rect, in_dropzone))
+                        #images.remove((img, img_rect, in_dropzone))
         if event.type == pygame.MOUSEMOTION:
             if dragging is not None:
                 _, img_rect, _ = dragging
@@ -127,7 +126,7 @@ while running:
                 dragging = None
 
     # Clear the screen
-    screen.fill((128, 28, 128))
+    screen.fill((255, 255, 255))
 
 
     current_time = pygame.time.get_ticks()
@@ -137,7 +136,10 @@ while running:
 
     if visible:
         # Draw the circle if it's currently visible
-        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 300), 10)
+        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 350), CIRCLE_RADIUS)
+        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 250), CIRCLE_RADIUS)
+        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 150), CIRCLE_RADIUS)
+        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 450), CIRCLE_RADIUS)
 
     # for start, end in connections:
     #     pygame.draw.line(screen, (255, 0, 0), start, end, 5)
