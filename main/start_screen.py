@@ -81,7 +81,7 @@ def draw_start_menu():
     pygame.display.update()
 
 clock = pygame.time.Clock()
-blink_interval = 500  # milliseconds
+blink_interval = 0  # milliseconds
 blink_timer = 0
 visible = True
 dragging = None
