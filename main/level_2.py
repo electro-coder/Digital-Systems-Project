@@ -22,7 +22,7 @@ class level_2:
         CIRCLE_COLOR_OFF = (255, 255, 255)
         CIRCLE_RADIUS = 30
         num_leds = 4
-
+        total_time = 11;
         # paths for image files
         path1 = "../Resources/or.png"
         path2 = "../Resources/and.png"
@@ -136,16 +136,20 @@ class level_2:
                             img_rect.topleft = image1_original_rect.topleft
                         images.append((img, img_rect, in_dropzone))
                         dragging = None
+            #timer (time remaining)
 
-            elapsed_time = pygame.time.get_ticks() - start_time
+            elapsed_time = (pygame.time.get_ticks())
             seconds = elapsed_time // 1000  # Convert milliseconds to seconds
-
+            seconds_remaining = total_time - (elapsed_time // 1000)
             # Clear the screen
             screen.fill((255, 255, 255))
-
-            timer_text = TIMER_FONT.render(f"Elapsed Time: {seconds} seconds", True, (0,0,0))
-            screen.blit(timer_text, (50, 50))
+            #timer text
+            timer_text = TIMER_FONT.render(f"Remaining Time : {seconds_remaining} seconds", True, (0,0,0))
+            screen.blit(timer_text, (250, 550))
             current_time = pygame.time.get_ticks()
+
+            if seconds_remaining <= 0:
+                break
             '''if current_time - blink_timer >= blink_interval:
                 visible = not visible
                 blink_timer = current_time'''
@@ -210,8 +214,8 @@ class level_2:
             # Update the display
             pygame.display.flip()
 
-            # Remaining thing to be added is a functional output match so that it returns true or false
-            return True
+           # Remaining thing to be added is a functional output match so that it returns true or false
+            # return True
 
         # Quit Pygame
         pygame.quit()
