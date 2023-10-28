@@ -1,7 +1,7 @@
 import pygame
 import sys
 import random
-
+from logic_gates import ANDGate, ORGate, NOTGate, NANDGate, NORGate, XORGate, XNORGate
 class level_1:
     def __init__(self,screen):
 
@@ -215,6 +215,6 @@ class level_1:
 if __name__=="__main__":
     pygame.init()
     screen=pygame.display.set_mode((800,600))
-    level1=level_1(screen)
-    level1.run_level()
+    #level1=level_1(screen)
+    level_1.run_level(screen)
     pygame.quit()
