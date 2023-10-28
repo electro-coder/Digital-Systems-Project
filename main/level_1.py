@@ -203,6 +203,9 @@ class level_1:
             # Update the display
             pygame.display.flip()
 
+            # Remaining thing to be added is a functional output match so that it returns true or false
+            return True
+
         # Quit Pygame
         pygame.quit()
         sys.exit()
