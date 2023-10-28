@@ -158,8 +158,8 @@ while running:
             else:
                 pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
             led_coord[1]+=100
-            
-    pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
+
+    #pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
     # for start, end in connections:
     #     pygame.draw.line(screen, (255, 0, 0), start, end, 5)
     pygame.draw.line(screen, (254, 20, 50), (200,220), (250,220), 5)
