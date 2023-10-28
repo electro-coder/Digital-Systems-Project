@@ -204,7 +204,7 @@ class level_1:
             pygame.display.flip()
 
             # Remaining thing to be added is a functional output match so that it returns true or false
-            return True
+            #return True
 
         # Quit Pygame
         pygame.quit()
@@ -215,6 +215,6 @@ class level_1:
 if __name__=="__main__":
     pygame.init()
     screen=pygame.display.set_mode((800,600))
-    #level1=level_1(screen)
-    level_1.run_level(screen)
+    level1=level_1(screen)
+    level1.run_level()
     pygame.quit()
