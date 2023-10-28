@@ -10,8 +10,10 @@ SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
 WHITE = (255, 255, 255)
 DROPZONE_COLOR = (0, 255, 0)
 IMAGE_SIZE = (50, 50)
-CIRCLE_COLOR = (255, 255, 0)
+CIRCLE_COLOR_ON = (255, 255, 0)
+CIRCLE_COLOR_OFF=(255,255,255)
 CIRCLE_RADIUS = 30
+num_leds=4
 # connections = [((20,20),(60,60)),((270, 300), (300, 300)),((200,320), (270,320)),((270, 450), (270, 160)),((248, 420),
 #                (300, 420)),((270, 450), (270, 160)),((200,320), (270,320)),((270, 300), (300, 300)),((246, 200), (300, 200))]
 
@@ -88,8 +90,14 @@ blink_interval = 0  # milliseconds
 blink_timer = 0
 visible = True
 dragging = None
+led_coord=[750,150]
+led_states=[]
 # Main game loop
 running = True
+last_update_time=pygame.time.get_ticks()
+update_interval=1000
+flag=True
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -130,17 +138,28 @@ while running:
 
 
     current_time = pygame.time.get_ticks()
-    if current_time - blink_timer >= blink_interval:
+    '''if current_time - blink_timer >= blink_interval:
         visible = not visible
-        blink_timer = current_time
+        blink_timer = current_time'''
 
+    '''if current_time-last_update_time>=update_interval:
+        led_states = [random.choice([True, False]) for _ in range(num_leds)]
+        last_update_time=current_time'''
     if visible:
-        # Draw the circle if it's currently visible
-        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 350), CIRCLE_RADIUS)
-        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 250), CIRCLE_RADIUS)
-        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 150), CIRCLE_RADIUS)
-        pygame.draw.circle(screen, CIRCLE_COLOR, (750, 450), CIRCLE_RADIUS)
-
+        led_states = [random.choice([True, False]) for _ in range(num_leds)]
+        for i in led_states:
+            print(int(i),end=' ')
+        print()
+        visible=False
+    for i in led_states:
+            CIRCLE_COLOR=CIRCLE_COLOR_ON if int(i) else CIRCLE_COLOR_OFF
+            if int(i)==1:
+                pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
+            else:
+                pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
+            led_coord[1]+=100
+            
+    pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
     # for start, end in connections:
     #     pygame.draw.line(screen, (255, 0, 0), start, end, 5)
     pygame.draw.line(screen, (254, 20, 50), (200,220), (250,220), 5)
@@ -158,6 +177,7 @@ while running:
     pygame.draw.line(screen, (0, 34, 45), (350, 430), (530, 430), 5)
     pygame.draw.line(screen, (0, 34, 45), (530, 129), (530, 300), 5)
     pygame.draw.line(screen, (0, 34, 45), (530, 430), (530, 310), 5)
+    pygame.draw.line(screen, (0, 34, 45), (560, 285), (620, 285), 5)
 
     # Draw drop zones
     pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect1)
@@ -166,6 +186,11 @@ while running:
     pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect4)
     pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect5)
     pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect6)
+
+    #text of X and Y
+    font=pygame.font.Font('freesansbold.ttf',40)
+    screen.blit(font.render("X",True,(0,0,0)),(170,215))
+    screen.blit(font.render("Y",True,(0,0,0)),(170,310))
 
     # Draw the images
     for img, img_rect, in_dropzone in images:
