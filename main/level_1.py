@@ -17,6 +17,88 @@ class level_1:
         self.screen=screen
         pygame.display.set_caption("CodeDiffuse Level 1")
 
+    def functional_output(self,gates,led_states,dropzone_rect):
+        and_gate=None
+        or_gate=None
+        not_gate=None
+        nand_gate=None
+        nor_gate=None
+        xor_gate=None
+        xnor_gate=None
+
+        for gate in gates:
+            if gate.rect.colliderect(dropzone_rect[0]):
+                if isinstance(gate, ANDGate):
+                    and_gate=gate
+                elif isinstance(gate,ORGate):
+                    or_gate=gate
+                elif isinstance(gate,ORGate):
+                    or_gate=gate
+                elif isinstance(gate,NOTGate):
+                    not_gate=gate
+                elif isinstance(gate,NANDGate):
+                    nand_gate=gate
+                elif isinstance(gate,NORGate):
+                    nor_gate=gate
+                elif isinstance(gate,XORGate):
+                    xor_gate=gate
+                elif isinstance(gate,XNORGate):
+                    xnor_gate=gate
+
+            if gate.rect.colliderect(dropzone_rect[1]):
+                if isinstance(gate, ANDGate):
+                    and_gate=gate
+                elif isinstance(gate,ORGate):
+                    or_gate=gate
+                elif isinstance(gate,ORGate):
+                    or_gate=gate
+                elif isinstance(gate,NOTGate):
+                    not_gate=gate
+                elif isinstance(gate,NANDGate):
+                    nand_gate=gate
+                elif isinstance(gate,NORGate):
+                    nor_gate=gate
+                elif isinstance(gate,XORGate):
+                    xor_gate=gate
+                elif isinstance(gate,XNORGate):
+                    xnor_gate=gate
+
+            if gate.rect.colliderect(dropzone_rect[2]):
+                if isinstance(gate, ANDGate):
+                    and_gate=gate
+                elif isinstance(gate,ORGate):
+                    or_gate=gate
+                elif isinstance(gate,ORGate):
+                    or_gate=gate
+                elif isinstance(gate,NOTGate):
+                    not_gate=gate
+                elif isinstance(gate,NANDGate):
+                    nand_gate=gate
+                elif isinstance(gate,NORGate):
+                    nor_gate=gate
+                elif isinstance(gate,XORGate):
+                    xor_gate=gate
+                elif isinstance(gate,XNORGate):
+                    xnor_gate=gate
+
+        if and_gate:
+            and_gate.set_input(led_states[0],led_states[1])
+        if or_gate:
+            or_gate.set_input(led_states[0],led_states[1])
+        if not_gate:
+            not_gate.set_input(led_states[0],led_states[1])
+        if nand_gate:
+            nand_gate.set_input(led_states[0],led_states[1])
+        if nor_gate:
+            nor_gate.set_input(led_states[0],led_states[1])
+        if xor_gate:
+            xor_gate.set_input(led_states[0],led_states[1])
+        if xnor_gate:
+            xnor_gate.set_input(led_states[0],led_states[1])
+
+
+
+
     def run_level(self):
 
         WHITE = (255, 255, 255)
