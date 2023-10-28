@@ -2,6 +2,9 @@ import pygame
 import sys
 import random
 
+# WINDOW_WIDTH = 800
+# WINDOW_HEIGHT = 600
+# screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 class level_1:
     def __init__(self,screen):
 
