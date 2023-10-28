@@ -207,7 +207,7 @@ class level_1:
             pygame.display.flip()
 
             # Remaining thing to be added is a functional output match so that it returns true or false
-            return True
+            #return True
 
         # Quit Pygame
         pygame.quit()
