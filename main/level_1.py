@@ -1,7 +1,7 @@
 import pygame
 import sys
 import random
-from logic_gates import ANDGate, ORGate, NOTGate, NANDGate, NORGate, XORGate, XNORGate
+
 class level_1:
     def __init__(self,screen):
 
