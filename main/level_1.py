@@ -1,6 +1,8 @@
 import pygame
 import sys
 import random
+from logic_gates import ANDGate, ORGate, NOTGate, NANDGate, NORGate, XORGate, XNORGate
+
 
 # WINDOW_WIDTH = 800
 # WINDOW_HEIGHT = 600
