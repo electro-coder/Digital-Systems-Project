@@ -1,11 +1,8 @@
 import pygame
 import sys
 from level_1 import level_1
-#import level_2
+from level_2 import level_2
 #import level_3
-
-# Initialize Pygame
-pygame.init()
 
 # Constants
 WINDOW_WIDTH = 800
@@ -14,67 +11,73 @@ START_SCREEN_COLOR = (0, 0, 0)
 LEVEL_WIN_COLOR = (0, 255, 0)
 FONT_SIZE = 36
 
-# Initialize the window
-screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-pygame.display.set_caption("CodeDiffuse")
+class Manager:
+    def __init__(self,screen):
+        self.screen=screen
+        self.current_state="start_screen"
+        self.level1=level_1(self.screen)
+        self.level2=level_2(self.screen)
 
-# Create a font
-font = pygame.font.Font(None, FONT_SIZE)
+    def run_game(self):
+        # Main loop
+        running = True
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
 
-# Game states
-START_SCREEN = "start_screen"
-LEVEL_1 = "level_1"
-LEVEL_2 = "level_2"
-LEVEL_3 = "level_3"
-GAME_OVER = "game_over"
-WIN = "win"
+            # Clear the screen
+            if self.current_state == "start_screen":
+                screen.fill(START_SCREEN_COLOR)
+                start_text = font.render("Press Space to Start", True, LEVEL_WIN_COLOR)
+                text_rect = start_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
+                screen.blit(start_text, text_rect)
 
-# Initialize the game state
-current_state = START_SCREEN
+                keys = pygame.key.get_pressed()
+                if keys[pygame.K_SPACE]:
+                    self.current_state = "level_2"
 
-# Instantiation of levels
-level1=level_1(screen)
+            elif self.current_state == "level_1":
+                level_result = self.level1.run_level()
 
-# Main loop
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+                if level_result == True:
+                    self.current_state = "level_2"
+                elif level_result == False:
+                    self.current_state = "game_over"
 
-    # Clear the screen
-    if current_state == START_SCREEN:
-        screen.fill(START_SCREEN_COLOR)
-        start_text = font.render("Press Space to Start", True, LEVEL_WIN_COLOR)
-        text_rect = start_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
-        screen.blit(start_text, text_rect)
+            elif self.current_state == "level_2":
+                level_result = self.level2.run_level()
 
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE]:
-            current_state = LEVEL_1
+                if level_result == True:
+                    self.current_state = True
+                elif level_result == False:
+                    self.current_state = "game_over"
 
-    elif current_state == LEVEL_1:
-        level_result = level1.run_level()
+            elif self.current_state == True:
+                screen.fill(LEVEL_WIN_COLOR)
+                win_text = font.render("You Won!", True, START_SCREEN_COLOR)
+                text_rect = win_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
+                screen.blit(win_text, text_rect)
 
-        if level_result == True:
-            current_state = True
-        elif level_result == False:
-            current_state = GAME_OVER
+            elif self.current_state == "game_over":
+                screen.fill(LEVEL_WIN_COLOR)
+                game_over_text = font.render("Game Over", True, START_SCREEN_COLOR)
+                text_rect = game_over_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
+                screen.blit(game_over_text, text_rect)
 
-    elif current_state == True:
-        screen.fill(LEVEL_WIN_COLOR)
-        win_text = font.render("You Won!", True, START_SCREEN_COLOR)
-        text_rect = win_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
-        screen.blit(win_text, text_rect)
+            pygame.display.flip()
 
-    elif current_state == GAME_OVER:
-        screen.fill(LEVEL_WIN_COLOR)
-        game_over_text = font.render("Game Over", True, START_SCREEN_COLOR)
-        text_rect = game_over_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
-        screen.blit(game_over_text, text_rect)
+        # Quit Pygame
+        pygame.quit()
+        sys.exit()
 
-    pygame.display.flip()
+if __name__=="__main__":
+    pygame.init()
+    # Initialize the window
+    screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+    pygame.display.set_caption("CodeDiffuse")
 
-# Quit Pygame
-pygame.quit()
-sys.exit()
+    # Create a font
+    font = pygame.font.Font(None, FONT_SIZE)
+    game_manager=Manager(screen)
+    game_manager.run_game()
