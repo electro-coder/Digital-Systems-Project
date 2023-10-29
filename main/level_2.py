@@ -136,7 +136,7 @@ class level_2:
                             img_rect.topleft = image1_original_rect.topleft
                         images.append((img, img_rect, in_dropzone))
                         dragging = None
-            #timer (time remaining)
+            #timer (time remaining)/
 
             elapsed_time = (pygame.time.get_ticks())
             seconds = elapsed_time // 1000  # Convert milliseconds to seconds
