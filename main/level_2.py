@@ -63,12 +63,12 @@ class level_2:
         image6_original_rect = image6_rect.copy()
 
         # Create drop zones
-        dropzone_rect1 = pygame.Rect(500, 250, 70, 70)
-        dropzone_rect2 = pygame.Rect(300, 250, 70, 70)
-        dropzone_rect3 = pygame.Rect(300, 400, 70, 70)
-        dropzone_rect4 = pygame.Rect(300, 100, 70, 70)
-        dropzone_rect5 = pygame.Rect(150, 200, 70, 70)
-        dropzone_rect6 = pygame.Rect(150, 300, 70, 70)
+        dropzone_rect1 = pygame.Rect(400, 400, 70, 70)
+        dropzone_rect2 = pygame.Rect(400, 250, 70, 70)
+        dropzone_rect3 = pygame.Rect(400, 100, 70, 70)
+        dropzone_rect4 = pygame.Rect(150, 150, 70, 70)
+        dropzone_rect5 = pygame.Rect(150, 250, 70, 70)
+        dropzone_rect6 = pygame.Rect(150, 350, 70, 70)
 
         # List of images, their original positions, and flags for indicating if they are in a drop zone
         images = [(image1, image1_rect, False),
@@ -174,22 +174,22 @@ class level_2:
             #pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
             # for start, end in connections:
             #     pygame.draw.line(screen, (255, 0, 0), start, end, 5)
-            pygame.draw.line(screen, (254, 20, 50), (200,220), (250,220), 5)
+            # pygame.draw.line(screen, (254, 20, 50), (200,220), (300,220), 5)
             pygame.draw.line(screen, (254, 20, 50), (250, 420), (250, 120), 5)
-            pygame.draw.line(screen, (254, 20, 50), (248, 120), (300, 120), 5)
-            pygame.draw.line(screen, (254, 20, 50), (248, 270), (300, 270), 5)
-            pygame.draw.line(screen, (254, 20, 50), (248, 420), (300, 420), 5)
+            pygame.draw.line(screen, (254, 20, 50), (248, 120), (450, 120), 5)
+            pygame.draw.line(screen, (254, 20, 50), (248, 270), (450, 270), 5)
+            pygame.draw.line(screen, (254, 20, 50), (248, 420), (450, 420), 5)
             pygame.draw.line(screen, (0, 0, 0), (270, 450), (270, 150), 5)
-            pygame.draw.line(screen, (0, 0, 0), (200,320), (270,320), 5)
-            pygame.draw.line(screen, (0, 0, 0), (270, 300), (300, 300), 5)
-            pygame.draw.line(screen, (0, 0, 0), (268, 150), (300, 150), 5)
-            pygame.draw.line(screen, (0, 0, 0), (268, 450), (300, 450), 5)
-            pygame.draw.line(screen, (0, 34, 45), (350, 285), (500, 285), 5)
-            pygame.draw.line(screen, (0, 34, 45), (350, 130), (530, 130), 5)
-            pygame.draw.line(screen, (0, 34, 45), (350, 430), (530, 430), 5)
-            pygame.draw.line(screen, (0, 34, 45), (530, 129), (530, 300), 5)
-            pygame.draw.line(screen, (0, 34, 45), (530, 430), (530, 310), 5)
-            pygame.draw.line(screen, (0, 34, 45), (560, 285), (620, 285), 5)
+            pygame.draw.line(screen, (0, 0, 0), (200,300), (450,300), 5)
+            pygame.draw.line(screen, (0, 0, 0), (270, 300), (450, 300), 5)
+            pygame.draw.line(screen, (0, 0, 0), (268, 150), (450, 150), 5)
+            pygame.draw.line(screen, (0, 0, 0), (268, 450), (450, 450), 5)
+            # pygame.draw.line(screen, (0, 34, 45), (350, 285), (500, 285), 5)
+            # pygame.draw.line(screen, (0, 34, 45), (350, 130), (530, 130), 5)
+            # pygame.draw.line(screen, (0, 34, 45), (350, 430), (530, 430), 5)
+            # pygame.draw.line(screen, (0, 34, 45), (530, 129), (530, 300), 5)
+            # pygame.draw.line(screen, (0, 34, 45), (530, 430), (530, 310), 5)
+            # pygame.draw.line(screen, (0, 34, 45), (560, 285), (620, 285), 5)
 
             # Draw drop zones
             pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect1)
@@ -201,8 +201,9 @@ class level_2:
 
             #text of X and Y
             font=pygame.font.Font('freesansbold.ttf',40)
-            screen.blit(font.render("X",True,(0,0,0)),(170,215))
-            screen.blit(font.render("Y",True,(0,0,0)),(170,310))
+            screen.blit(font.render("X",True,(0,0,0)),(170,168))
+            screen.blit(font.render("Y",True,(0,0,0)),(170,268))
+            screen.blit(font.render("Z", True, (0, 0, 0)), (170, 368))
 
             # Draw the images
             for img, img_rect, in_dropzone in images:
