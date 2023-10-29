@@ -91,7 +91,7 @@ class level_2:
         blink_timer = 0
         visible = True
         dragging = None
-        led_coord = [750, 150]
+        led_coord=[(750,150),(750,250),(750,350),(750,450)]
         led_states = []
         # Main game loop
         running = True
@@ -163,13 +163,9 @@ class level_2:
                     print(int(i),end=' ')
                 print()
                 visible=False
-            for i in led_states:
-                    CIRCLE_COLOR=CIRCLE_COLOR_ON if int(i) else CIRCLE_COLOR_OFF
-                    if int(i)==1:
-                        pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
-                    else:
-                        pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
-                    led_coord[1]+=100
+            for i,state in enumerate(led_states):
+                    CIRCLE_COLOR=CIRCLE_COLOR_ON if state else CIRCLE_COLOR_OFF
+                    pygame.draw.circle(screen, CIRCLE_COLOR, led_coord[i] , CIRCLE_RADIUS,0)
 
             #pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
             # for start, end in connections:
