@@ -22,7 +22,7 @@ class level_2:
         CIRCLE_COLOR_OFF = (255, 255, 255)
         CIRCLE_RADIUS = 30
         num_leds = 4
-        total_time = 11;
+        total_time = 11
         # paths for image files
         path1 = "../Resources/or.png"
         path2 = "../Resources/and.png"
@@ -63,12 +63,12 @@ class level_2:
         image6_original_rect = image6_rect.copy()
 
         # Create drop zones
-        dropzone_rect1 = pygame.Rect(400, 400, 70, 70)
-        dropzone_rect2 = pygame.Rect(400, 250, 70, 70)
-        dropzone_rect3 = pygame.Rect(400, 100, 70, 70)
-        dropzone_rect4 = pygame.Rect(150, 150, 70, 70)
-        dropzone_rect5 = pygame.Rect(150, 250, 70, 70)
-        dropzone_rect6 = pygame.Rect(150, 350, 70, 70)
+        dropzone_rect1 = pygame.Rect(500, 250, 70, 70)
+        dropzone_rect2 = pygame.Rect(300, 250, 70, 70)
+        dropzone_rect3 = pygame.Rect(300, 400, 70, 70)
+        dropzone_rect4 = pygame.Rect(300, 100, 70, 70)
+        dropzone_rect5 = pygame.Rect(150, 200, 70, 70)
+        dropzone_rect6 = pygame.Rect(150, 300, 70, 70)
 
         # List of images, their original positions, and flags for indicating if they are in a drop zone
         images = [(image1, image1_rect, False),
@@ -91,7 +91,7 @@ class level_2:
         blink_timer = 0
         visible = True
         dragging = None
-        led_coord = [750, 150]
+        led_coord=[(750,150),(750,250),(750,350),(750,450)]
         led_states = []
         # Main game loop
         running = True
@@ -142,14 +142,14 @@ class level_2:
             seconds = elapsed_time // 1000  # Convert milliseconds to seconds
             seconds_remaining = total_time - (elapsed_time // 1000)
             # Clear the screen
-            screen.fill((255, 255, 255))
+            self.screen.fill((255, 0, 255))
             #timer text
             timer_text = TIMER_FONT.render(f"Remaining Time : {seconds_remaining} seconds", True, (0,0,0))
-            screen.blit(timer_text, (250, 550))
+            self.screen.blit(timer_text, (250, 550))
             current_time = pygame.time.get_ticks()
 
             if seconds_remaining <= 0:
-                break
+                return False
             '''if current_time - blink_timer >= blink_interval:
                 visible = not visible
                 blink_timer = current_time'''
@@ -163,53 +163,48 @@ class level_2:
                     print(int(i),end=' ')
                 print()
                 visible=False
-            for i in led_states:
-                    CIRCLE_COLOR=CIRCLE_COLOR_ON if int(i) else CIRCLE_COLOR_OFF
-                    if int(i)==1:
-                        pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
-                    else:
-                        pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
-                    led_coord[1]+=100
+            for i,state in enumerate(led_states):
+                    CIRCLE_COLOR=CIRCLE_COLOR_ON if state else CIRCLE_COLOR_OFF
+                    pygame.draw.circle(self.screen, CIRCLE_COLOR, led_coord[i] , CIRCLE_RADIUS,0)
 
             #pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
             # for start, end in connections:
             #     pygame.draw.line(screen, (255, 0, 0), start, end, 5)
-            # pygame.draw.line(screen, (254, 20, 50), (200,220), (300,220), 5)
-            pygame.draw.line(screen, (254, 20, 50), (250, 420), (250, 120), 5)
-            pygame.draw.line(screen, (254, 20, 50), (248, 120), (450, 120), 5)
-            pygame.draw.line(screen, (254, 20, 50), (248, 270), (450, 270), 5)
-            pygame.draw.line(screen, (254, 20, 50), (248, 420), (450, 420), 5)
-            pygame.draw.line(screen, (0, 0, 0), (270, 450), (270, 150), 5)
-            pygame.draw.line(screen, (0, 0, 0), (200,300), (450,300), 5)
-            pygame.draw.line(screen, (0, 0, 0), (270, 300), (450, 300), 5)
-            pygame.draw.line(screen, (0, 0, 0), (268, 150), (450, 150), 5)
-            pygame.draw.line(screen, (0, 0, 0), (268, 450), (450, 450), 5)
-            # pygame.draw.line(screen, (0, 34, 45), (350, 285), (500, 285), 5)
-            # pygame.draw.line(screen, (0, 34, 45), (350, 130), (530, 130), 5)
-            # pygame.draw.line(screen, (0, 34, 45), (350, 430), (530, 430), 5)
-            # pygame.draw.line(screen, (0, 34, 45), (530, 129), (530, 300), 5)
-            # pygame.draw.line(screen, (0, 34, 45), (530, 430), (530, 310), 5)
-            # pygame.draw.line(screen, (0, 34, 45), (560, 285), (620, 285), 5)
+            pygame.draw.line(self.screen, (254, 20, 50), (200,220), (250,220), 5)
+            pygame.draw.line(self.screen, (254, 20, 50), (250, 420), (250, 120), 5)
+            pygame.draw.line(self.screen, (254, 20, 50), (248, 120), (300, 120), 5)
+            pygame.draw.line(self.screen, (254, 20, 50), (248, 270), (300, 270), 5)
+            pygame.draw.line(self.screen, (254, 20, 50), (248, 420), (300, 420), 5)
+            pygame.draw.line(self.screen, (0, 0, 0), (270, 450), (270, 150), 5)
+            pygame.draw.line(self.screen, (0, 0, 0), (200,320), (270,320), 5)
+            pygame.draw.line(self.screen, (0, 0, 0), (270, 300), (300, 300), 5)
+            pygame.draw.line(self.screen, (0, 0, 0), (268, 150), (300, 150), 5)
+            pygame.draw.line(self.screen, (0, 0, 0), (268, 450), (300, 450), 5)
+            pygame.draw.line(self.screen, (0, 34, 45), (350, 285), (500, 285), 5)
+            pygame.draw.line(self.screen, (0, 34, 45), (350, 130), (530, 130), 5)
+            pygame.draw.line(self.screen, (0, 34, 45), (350, 430), (530, 430), 5)
+            pygame.draw.line(self.screen, (0, 34, 45), (530, 129), (530, 300), 5)
+            pygame.draw.line(self.screen, (0, 34, 45), (530, 430), (530, 310), 5)
+            pygame.draw.line(self.screen, (0, 34, 45), (560, 285), (620, 285), 5)
 
             # Draw drop zones
-            pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect1)
-            pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect2)
-            pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect3)
-            pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect4)
-            pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect5)
-            pygame.draw.rect(screen, DROPZONE_COLOR, dropzone_rect6)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect1)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect2)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect3)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect4)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect5)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect6)
 
             #text of X and Y
             font=pygame.font.Font('freesansbold.ttf',40)
-            screen.blit(font.render("X",True,(0,0,0)),(170,168))
-            screen.blit(font.render("Y",True,(0,0,0)),(170,268))
-            screen.blit(font.render("Z", True, (0, 0, 0)), (170, 368))
+            self.screen.blit(font.render("X",True,(0,0,0)),(170,215))
+            self.screen.blit(font.render("Y",True,(0,0,0)),(170,310))
 
             # Draw the images
             for img, img_rect, in_dropzone in images:
-                screen.blit(img, img_rect)
+                self.screen.blit(img, img_rect)
                 if in_dropzone:
-                    pygame.draw.rect(screen, DROPZONE_COLOR, img_rect, 2)  # Add a border to indicate in the drop zone
+                    pygame.draw.rect(self.screen, DROPZONE_COLOR, img_rect, 2)  # Add a border to indicate in the drop zone
 
             clock.tick(60)
             # Update the display
@@ -226,9 +221,9 @@ class level_2:
 
 
 # Testing of Level-2
-if __name__=="__main__":
-    pygame.init()
-    screen=pygame.display.set_mode((800,600))
-    level2=level_2(screen)
-    level2.run_level()
-    pygame.quit()
+# if __name__=="__main__":
+#     pygame.init()
+#     screen=pygame.display.set_mode((800,600))
+#     level2=level_2(screen)
+#     level2.run_level()
+#     pygame.quit()
