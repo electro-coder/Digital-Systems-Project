@@ -22,7 +22,7 @@ class level_2:
         CIRCLE_COLOR_OFF = (255, 255, 255)
         CIRCLE_RADIUS = 30
         num_leds = 4
-        total_time = 11;
+        total_time = 11
         # paths for image files
         path1 = "../Resources/or.png"
         path2 = "../Resources/and.png"
