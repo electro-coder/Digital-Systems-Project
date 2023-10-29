@@ -197,10 +197,11 @@ class level_2:
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect6)
 
             #text of X and Y
-            font=pygame.font.Font('freesansbold.ttf',40)
+            font=pygame.font.Font('freesansbold.ttf',30)
             self.screen.blit(font.render("X",True,(0,0,0)),(170,135))
             self.screen.blit(font.render("Y",True,(0,0,0)),(170,265))
             self.screen.blit(font.render("Z", True, (0, 0, 0)), (170, 395))
+            self.screen.blit(font.render("OUTPUT", True, (0, 0, 0)), (500, 280))
 
             # Draw the images
             for img, img_rect, in_dropzone in images:
@@ -223,9 +224,9 @@ class level_2:
 
 
 # Testing of Level-2
-if __name__=="__main__":
-    pygame.init()
-    screen=pygame.display.set_mode((800,600))
-    level2=level_2(screen)
-    level2.run_level()
-    pygame.quit()
+# if __name__=="__main__":
+#     pygame.init()
+#     screen=pygame.display.set_mode((800,600))
+#     level2=level_2(screen)
+#     level2.run_level()
+#     pygame.quit()
