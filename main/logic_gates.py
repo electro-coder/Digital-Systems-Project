@@ -47,6 +47,13 @@ class ANDGate:
         self.input1 = input1
         self.input2 = input2
         self.output = input1 and input2
+        return self.output
+    
+    def set_input(self,input1,input2,input3):
+        self.input1=input1
+        self.input2=input2
+        self.input3=input3
+        self.output= input1 and input2 and input3
 
 class NANDGate:
     def __init__(self, x=150, y=80, input1=False, input2=False):
@@ -81,6 +88,13 @@ class NANDGate:
         self.input1 = input1
         self.input2 = input2
         self.output = not (input1 and input2)
+        return self.output
+    
+    def set_input(self,input1,input2,input3):
+        self.input1=input1
+        self.input2=input2
+        self.input3=input3
+        self.output= not(input1 and input2 and input3)
 
 class ORGate:
     def __init__(self, x=150, y=80, input1=False, input2=False):
@@ -115,6 +129,13 @@ class ORGate:
         self.input1 = input1
         self.input2 = input2
         self.output = input1 or input2
+        return self.output
+    
+    def set_input(self,input1,input2,input3):
+        self.input1=input1
+        self.input2=input2
+        self.input3=input3
+        self.output= input1 or input2 or input3
 
 class NORGate:
     def __init__(self, x=150, y=80, input1=False, input2=False):
@@ -149,6 +170,13 @@ class NORGate:
         self.input1 = input1
         self.input2 = input2
         self.output = not(input1 or input2)
+        return self.output
+    
+    def set_input(self,input1,input2,input3):
+        self.input1=input1
+        self.input2=input2
+        self.input3=input3
+        self.output= not(input1 or input2 or input3)
 
 class NOTGate:
     def __init__(self, x=150, y=80, input1=False):
@@ -168,6 +196,7 @@ class NOTGate:
     def set_input(self, input1, input2):
         self.input1 = input1
         self.output = not input1
+        return self.output
 
 class XORGate:
     def __init__(self, x=150, y=80, input1=False, input2=False):
@@ -202,6 +231,13 @@ class XORGate:
         self.input1 = input1
         self.input2 = input2
         self.output = input1 ^ input2
+        return self.output
+    
+    def set_input(self,input1,input2,input3):
+        self.input1=input1
+        self.input2=input2
+        self.input3=input3
+        self.output=input1 ^ input2 ^ input3
 
 class XNORGate:
     def __init__(self, x=150, y=80, input1=False, input2=False):
@@ -235,7 +271,14 @@ class XNORGate:
     def set_input(self, input1, input2):
         self.input1 = input1
         self.input2 = input2
-        self.output = not (input1 ^ input2) 
+        self.output = not (input1 ^ input2)
+        return self.output
+    
+    def set_input(self,input1,input2,input3):
+        self.input1=input1
+        self.input2=input2
+        self.input3=input3
+        self.output= not(input1 ^ input2 ^ input3)
 
 # Create AND gate instances with overloaded constructors
 # and_gate1 = ANDGate()  # Uses default values (x=150, y=80, input1=False, input2=False)
