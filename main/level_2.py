@@ -143,7 +143,7 @@ class level_2:
             seconds_remaining = total_time - (elapsed_time // 1000)
             # Clear the screen
             self.screen.fill((255, 0, 255))
-            pygame.draw.rect(screen,(128,128,128) ,((290,90),(200,400)))
+            pygame.draw.rect(self.screen,(128,128,128) ,((290,90),(200,400)))
             #timer text
             timer_text = TIMER_FONT.render(f"Remaining Time : {seconds_remaining} seconds", True, (0,0,0))
             self.screen.blit(timer_text, (250, 550))
