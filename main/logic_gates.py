@@ -44,7 +44,7 @@ class ANDGate:
     #     pygame.draw.circle(screen, BLACK, (self.x + self.width + 20, self.y + self.height // 2), 6)
 
     def set_input(self, *inputs):
-        self.input1,self.input2 = input[0],input[1]
+        self.input1,self.input2 = inputs[0],inputs[1]
         self.output = self.input1 and self.input2
         if (len(inputs)==3 and inputs[2] is not None):
             self.input3=inputs[2]
@@ -87,7 +87,7 @@ class NANDGate:
     #     pygame.draw.circle(screen, BLACK, (self.x + self.width + 20, self.y + self.height // 2), 6)
 
     def set_input(self, *inputs):
-        self.input1,self.input2 = input[0],input[1]
+        self.input1,self.input2 = inputs[0],inputs[1]
         self.output = not(self.input1 and self.input2)
         if (len(inputs)==3 and inputs[2] is not None):
             self.input3=inputs[2] 
@@ -130,7 +130,7 @@ class ORGate:
     #     pygame.draw.circle(screen, BLACK, (self.x + self.width + 20, self.y + self.height // 2), 6)
 
     def set_input(self, *inputs):
-        self.input1,self.input2 = input[0],input[1]
+        self.input1,self.input2 = inputs[0],inputs[1]
         self.output = self.input1 or self.input2
         if (len(inputs)==3 and inputs[2] is not None):
             self.input3=inputs[2]
@@ -173,7 +173,7 @@ class NORGate:
     #     pygame.draw.circle(screen, BLACK, (self.x + self.width + 20, self.y + self.height // 2), 6)
 
     def set_input(self, *inputs):
-        self.input1,self.input2 = input[0],input[1]
+        self.input1,self.input2 = inputs[0],inputs[1]
         self.output = not(self.input1 or self.input2)
         if (len(inputs)==3 and inputs[2] is not None):
             self.input3=inputs[2] 
@@ -236,7 +236,7 @@ class XORGate:
     #     pygame.draw.circle(screen, BLACK, (self.x + self.width + 20, self.y + self.height // 2), 6)
 
     def set_input(self, *inputs):
-        self.input1,self.input2 = input[0],input[1]
+        self.input1,self.input2 = inputs[0],inputs[1]
         self.output = self.input1 ^ self.input2
         if (len(inputs)==3 and inputs[2] is not None):
             self.input3=inputs[2] 
@@ -279,7 +279,7 @@ class XNORGate:
     #     pygame.draw.circle(screen, BLACK, (self.x + self.width + 20, self.y + self.height // 2), 6)
 
     def set_input(self, *inputs):
-        self.input1,self.input2 = input[0],input[1]
+        self.input1,self.input2 = inputs[0],inputs[1]
         self.output = not(self.input1 ^ self.input2)
         if (len(inputs)==3 and inputs[2] is not None):
             self.input3=inputs[2]
