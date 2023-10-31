@@ -123,7 +123,7 @@ class level_1:
         out_nor=nor_gate.set_input(led_states[0],led_states[1])
         out_xor=xor_gate.set_input(led_states[0],led_states[1])
         out_xnor=xnor_gate.set_input(led_states[0],led_states[1])
-
+       
         output=[out_and,out_or,out_not,out_nand,out_nor,out_xor,out_xnor]
         print(output)
 
@@ -329,7 +329,7 @@ if __name__=="__main__":
     pygame.init()
     screen=pygame.display.set_mode((800,600))
     level1=level_1(screen)
-    level1.run_level()
+    # level1.run_level()
     pygame.quit()
     for i in range(5):
         led_states = [random.choice([True, False]) for _ in range(4)]
