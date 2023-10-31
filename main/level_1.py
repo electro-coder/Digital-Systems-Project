@@ -14,7 +14,7 @@ class level_1:
         pygame.init()
 
         # Display Surface
-        self.screen=screen
+        self.screen = screen
         pygame.display.set_caption("CodeDiffuse Level 1")
 
     def functional_output(self,gates,led_states,dropzone_rect):
@@ -213,7 +213,8 @@ class level_1:
                                     img_rect.topleft = dropzone_rect.topleft
                                     in_dropzone = True
                                     dropzone_contents[tuple(dropzone_rect.topleft)] = img
-                                    print(f"{img} was dropped in Zone {i + 1}")
+                                    print(f"{dragging[1]} was dropped in Zone {i + 1}")
+                                    # print(f"{dragging[1]} is the img")
                                     break
                         else:
                             # Return the image to its original position if no drop zone is available
@@ -295,9 +296,9 @@ class level_1:
 
 
 # # Testing of Level-1
-# if __name__=="__main__":
-#     pygame.init()
-#     screen=pygame.display.set_mode((800,600))
-#     level1=level_1(screen)
-#     level1.run_level()
-#     pygame.quit()
+if __name__=="__main__":
+    pygame.init()
+    screen=pygame.display.set_mode((800,600))
+    level1=level_1(screen)
+    level1.run_level()
+    pygame.quit()
