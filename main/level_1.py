@@ -187,12 +187,12 @@ class level_1:
         dropzone_rect6 = pygame.Rect(150, 300, 70, 70)
 
         # List of images, their original positions, and flags for indicating if they are in a drop zone
-        images = [(image1, image1_rect, False),
-                (image2, image2_rect, False),
-                (image3, image3_rect, False),
-                (image4, image4_rect, False),
-                (image5, image5_rect, False),
-                (image6, image6_rect, False)]
+        images = [(image1, image1_rect, False,"or"),
+                (image2, image2_rect, False,"and"),
+                (image3, image3_rect, False,"nor"),
+                (image4, image4_rect, False, "xor"),
+                (image5, image5_rect, False,"nor"),
+                (image6, image6_rect, False,"nor")]
 
         # Dictionary to keep track of which image is in which drop zone
         dropzone_contents = {tuple(dropzone_rect1.topleft): None,
@@ -223,17 +223,17 @@ class level_1:
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        for img, img_rect, in_dropzone in images:
+                        for img, img_rect, in_dropzone, img_id in images:
                             if img_rect.collidepoint(event.pos) and not in_dropzone:
-                                dragging = img, img_rect, in_dropzone
+                                dragging = img, img_rect, in_dropzone, img_id
                                 #images.remove((img, img_rect, in_dropzone))
                 if event.type == pygame.MOUSEMOTION:
                     if dragging is not None:
-                        _, img_rect, _ = dragging
+                        _, img_rect, _, _ = dragging
                         img_rect.topleft = event.pos
                 if event.type == pygame.MOUSEBUTTONUP:
                     if dragging is not None:
-                        img, img_rect, in_dropzone = dragging
+                        img, img_rect, in_dropzone, img_id = dragging
                         drop_zones = [dropzone_rect1, dropzone_rect2, dropzone_rect3, dropzone_rect4, dropzone_rect5, dropzone_rect6]
 
                         # Check if any of the drop zones is empty, and drop the image if one is
@@ -243,16 +243,16 @@ class level_1:
                                     img_rect.topleft = dropzone_rect.topleft
                                     in_dropzone = True
                                     dropzone_contents[tuple(dropzone_rect.topleft)] = img
-                                    print(f"{img} was dropped in Zone {i + 1}")
+                                    print(f"{dragging[3]} was dropped in Zone {i + 1}")
                                     break
                         else:
                             # Return the image to its original position if no drop zone is available
                             img_rect.topleft = image1_original_rect.topleft
-                        images.append((img, img_rect, in_dropzone))
+                        images.append((img, img_rect, in_dropzone, img_id))
                         dragging = None
 
             # Clear the screen
-            self.screen.fill((255, 0, 255))
+            self.screen.fill((155, 25, 255))
 
 
             current_time = pygame.time.get_ticks()
@@ -307,7 +307,7 @@ class level_1:
             self.screen.blit(font.render("Y",True,(0,0,0)),(170,310))
 
             # Draw the images
-            for img, img_rect, in_dropzone in images:
+            for img, img_rect, in_dropzone, img_id in images:
                 self.screen.blit(img, img_rect)
                 if in_dropzone:
                     pygame.draw.rect(self.screen, DROPZONE_COLOR, img_rect, 2)  # Add a border to indicate in the drop zone
@@ -329,10 +329,10 @@ if __name__=="__main__":
     pygame.init()
     screen=pygame.display.set_mode((800,600))
     level1=level_1(screen)
-    # level1.run_level()
+    level1.run_level()
     pygame.quit()
-    for i in range(5):
-        led_states = [random.choice([True, False]) for _ in range(4)]
-        print(led_states)
-        level1.functional_output(led_states)
+    # for i in range(5):
+    #     led_states = [random.choice([True, False]) for _ in range(4)]
+    #     print(led_states)
+    #     level1.functional_output(led_states)
     
