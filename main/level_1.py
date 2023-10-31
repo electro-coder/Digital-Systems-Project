@@ -319,7 +319,7 @@ class level_1:
             # Remaining thing to be added is a functional output match so that it returns true or false
             #return True
 
-        # Quit Pygame
+        # Quit Pygam
         pygame.quit()
         sys.exit()
 
