@@ -14,7 +14,7 @@ class level_1:
         pygame.init()
 
         # Display Surface
-        self.screen = screen
+        self.screen=screen
         pygame.display.set_caption("CodeDiffuse Level 1")
 
     def functional_output(self,gates,led_states,dropzone_rect):
@@ -97,6 +97,35 @@ class level_1:
             xnor_gate.set_input(led_states[0],led_states[1])
 
 
+    #overloaded function for testing purposes of output
+    def functional_output(self,led_states):
+        and_gate=ANDGate()
+        or_gate=ORGate()
+        not_gate=NOTGate()
+        nand_gate=NANDGate()
+        nor_gate=NORGate()
+        xor_gate=XORGate()
+        xnor_gate=XNORGate()
+
+        out_and=None
+        out_or=None
+        out_not=None
+        out_nand=None
+        out_nor=None
+        out_xor=None
+        out_xnor=None
+
+        
+        out_and=and_gate.set_input(led_states[0],led_states[1])
+        out_or=or_gate.set_input(led_states[0],led_states[1])
+        out_not=not_gate.set_input(led_states[0],led_states[1])
+        out_nand=nand_gate.set_input(led_states[0],led_states[1])
+        out_nor=nor_gate.set_input(led_states[0],led_states[1])
+        out_xor=xor_gate.set_input(led_states[0],led_states[1])
+        out_xnor=xnor_gate.set_input(led_states[0],led_states[1])
+       
+        output=[out_and,out_or,out_not,out_nand,out_nor,out_xor,out_xnor]
+        print(output)
 
 
     def run_level(self):
@@ -185,6 +214,7 @@ class level_1:
         last_update_time=pygame.time.get_ticks()
         update_interval=1000
         flag=True
+        dropzone_rect=[False,False,False,False]
 
         while running:
             for event in pygame.event.get():
@@ -213,8 +243,7 @@ class level_1:
                                     img_rect.topleft = dropzone_rect.topleft
                                     in_dropzone = True
                                     dropzone_contents[tuple(dropzone_rect.topleft)] = img
-                                    print(f"{dragging[1]} was dropped in Zone {i + 1}")
-                                    # print(f"{dragging[1]} is the img")
+                                    print(f"{img} was dropped in Zone {i + 1}")
                                     break
                         else:
                             # Return the image to its original position if no drop zone is available
@@ -295,10 +324,15 @@ class level_1:
         sys.exit()
 
 
-# # Testing of Level-1
+# Testing of Level-1
 if __name__=="__main__":
-    # pygame.init()
-    # screen=pygame.display.set_mode((800,600))
-    # level1=level_1(screen)
+    pygame.init()
+    screen=pygame.display.set_mode((800,600))
+    level1=level_1(screen)
     # level1.run_level()
-    # pygame.quit()
+    pygame.quit()
+    for i in range(5):
+        led_states = [random.choice([True, False]) for _ in range(4)]
+        print(led_states)
+        level1.functional_output(led_states)
+    
