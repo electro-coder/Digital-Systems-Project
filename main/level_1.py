@@ -126,6 +126,75 @@ class level_1:
        
         output=[out_and,out_or,out_not,out_nand,out_nor,out_xor,out_xnor]
         print(output)
+    
+    #overloaded function for testing purposes of output
+    def functional_output(self,gates):
+
+        states=[[0,0],
+                [0,1],
+                [1,0],
+                [1,1]]
+        
+        and_gate=ANDGate()
+        or_gate=ORGate()
+        not_gate=NOTGate()
+        nand_gate=NANDGate()
+        nor_gate=NORGate()
+        xor_gate=XORGate()
+        xnor_gate=XNORGate()
+
+        output=[]
+        inputs=[]
+        for x,y in states:
+            out_and=None
+            out_or=None
+            out_not=None
+            out_nand=None
+            out_nor=None
+            out_xor=None
+            out_xnor=None
+            for zone in sorted(gates):
+                if zone in [2,3,4]:
+                    if gates[zone]=='and':
+                        out_and=and_gate.set_input(x,y)
+                        inputs.append(out_and)
+                    elif gates[zone]=='or':
+                        out_or=or_gate.set_input(x,y)
+                        inputs.append(out_or)
+                    elif gates[zone]=='not':
+                        out_not=not_gate.set_input(x)
+                        inputs.append(out_not)
+                    elif gates[zone]=='nand':
+                        out_nand=nand_gate.set_input(x,y)
+                        inputs.append(out_nand)
+                    elif gates[zone]=='nor':
+                        out_nor=nor_gate.set_input(x,y)
+                        inputs.append(out_nor)
+                    elif gates[zone]=='xor':
+                        out_xor=xor_gate.set_input(x,y)
+                        inputs.append(out_xor)
+                    elif gates[zone]=='xnor':
+                        out_xnor=xnor_gate.set_input(x,y)
+                        inputs.append(out_xnor)
+
+                if zone==1:
+                    if gates[zone]=='and':
+                        output.append(and_gate.set_input(inputs))
+                    if gates[zone]=='or':
+                        output.append(or_gate.set_input(inputs))
+                    if gates[zone]=='not':
+                        output.append(not_gate.set_input(inputs))
+                    if gates[zone]=='nand':
+                        output.append(nand_gate.set_input(inputs))
+                    if gates[zone]=='nor':
+                        output.append(nor_gate.set_input(inputs))
+                    if gates[zone]=='xor':
+                        output.append(xor_gate.set_input(inputs))
+                    if gates[zone]=='xnor':
+                        output.append(xnor_gate.set_input(inputs))
+
+        return output
+
 
 
     def run_level(self):
@@ -320,7 +389,7 @@ class level_1:
             # Remaining thing to be added is a functional output match so that it returns true or false
             #return True
 
-        # Quit Pygam
+        # Quit Pygame
         print(zones_op)
         pygame.quit()
         sys.exit()
