@@ -7,6 +7,47 @@ from logic_gates import ANDGate, ORGate, NOTGate, NANDGate, NORGate, XORGate, XN
 # WINDOW_WIDTH = 800
 # WINDOW_HEIGHT = 600
 # screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+
+
+
+
+class Button:
+    def __init__(self, x, y, width, height, text, color, hover_color, text_color, font, action=None):
+        self.rect = pygame.Rect(x, y, width, height)
+        self.color = color
+        self.hover_color = hover_color
+        self.text = text
+        self.text_color = text_color
+        self.font = font
+        self.action = action
+        self.hovered = False
+
+    def draw(self, screen):
+        if self.hovered:
+            pygame.draw.rect(screen, self.hover_color, self.rect)
+        else:
+            pygame.draw.rect(screen, self.color, self.rect)
+
+        text_surface = self.font.render(self.text, True, self.text_color)
+        text_rect = text_surface.get_rect(center=self.rect.center)
+        screen.blit(text_surface, text_rect)
+
+    def update(self, mouse_pos):
+        if self.rect.collidepoint(mouse_pos):
+            self.hovered = True
+        else:
+            self.hovered = False
+
+    def click(self):
+        if self.action:
+            self.action()
+
+# Example of usage:
+
+def button_action():
+    print("Button clicked!")
+
+
 class level_1:
     def __init__(self,screen):
 
@@ -327,6 +368,11 @@ class level_1:
         update_interval=1000
         flag=True
         dropzone_rect=[False,False,False,False]
+        font1 = pygame.font.Font('freesansbold.ttf', 20)
+        button = Button(350, 500, 100, 50, "Submit", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,
+                        button_action)
+
+
 
         while running:
             for event in pygame.event.get():
@@ -334,6 +380,8 @@ class level_1:
                     running = False
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
+                    if button.rect.collidepoint(event.pos):
+                        button.click()
                     if event.button == 1:
                         for img, img_rect, in_dropzone, img_id in images:
                             if img_rect.collidepoint(event.pos) and not in_dropzone:
@@ -424,6 +472,8 @@ class level_1:
                 if in_dropzone:
                     pygame.draw.rect(self.screen, DROPZONE_COLOR, img_rect, 2)  # Add a border to indicate in the drop zone
 
+            button.update(pygame.mouse.get_pos())
+            button.draw(screen)
             clock.tick(60)
             # Update the display
             pygame.display.flip()
@@ -448,8 +498,8 @@ if __name__=="__main__":
     level1.run_level()
     #output=level1.functional_output({4: 'or', 1: 'or', 2: 'and', 3: 'or'})
     pygame.quit()
-    # for i in range(5):
-    #     led_states = [random.choice([True, False]) for _ in range(4)]
-    #     print(led_states)
-    #     level1.functional_output(led_states)
+    for i in range(5):
+        # led_states = [random.choice([True, False]) for _ in range(4)]
+        print(led_states)
+        level1.functional_output(led_states)
     
