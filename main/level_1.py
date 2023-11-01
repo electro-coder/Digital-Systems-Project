@@ -294,7 +294,7 @@ class level_1:
             pygame.draw.line(self.screen, (0, 34, 45), (530, 430), (530, 310), 5)
             pygame.draw.line(self.screen, (0, 34, 45), (560, 285), (620, 285), 5)
 
-            # Draw drop zones
+            # Draw drop zones/
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect1)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect2)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect3)
