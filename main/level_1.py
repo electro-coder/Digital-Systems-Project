@@ -126,6 +126,117 @@ class level_1:
        
         output=[out_and,out_or,out_not,out_nand,out_nor,out_xor,out_xnor]
         print(output)
+    
+    #overloaded function for testing purposes of output
+    def functional_output(self,gates):
+
+        states=[[False,False],
+                [False,True],
+                [True,False],
+                [True,True]]
+        
+        and_gate=None
+        or_gate=None
+        not_gate=None
+        nand_gate=None
+        nor_gate=None
+        xor_gate=None
+        xnor_gate=None
+
+        output=[]
+        
+        for x,y in states:
+            out_and=None
+            out_or=None
+            out_not=None
+            out_nand=None
+            out_nor=None
+            out_xor=None
+            out_xnor=None
+
+            inputs=[]
+
+            for zone in sorted(gates,reverse=True):
+                if zone in [2,3,4]:
+                    if gates[zone]=='and':
+                        and_gate=ANDGate(x,y)
+                        out_and=and_gate.set_input()
+                        inputs.append(out_and)
+                    elif gates[zone]=='or':
+                        or_gate=ORGate(x,y)
+                        out_or=or_gate.set_input()
+                        inputs.append(out_or)
+                    elif gates[zone]=='not':
+                        not_gate=NOTGate(x)
+                        out_not=not_gate.set_input()
+                        inputs.append(out_not)
+                    elif gates[zone]=='nand':
+                        nand_gate=NANDGate(x,y)
+                        out_nand=nand_gate.set_input()
+                        inputs.append(out_nand)
+                    elif gates[zone]=='nor':
+                        nor_gate=NORGate(x,y)
+                        out_nor=nor_gate.set_input()
+                        inputs.append(out_nor)
+                    elif gates[zone]=='xor':
+                        xor_gate=XORGate(x,y)
+                        out_xor=xor_gate.set_input()
+                        inputs.append(out_xor)
+                    elif gates[zone]=='xnor':
+                        xnor_gate=XNORGate(x,y)
+                        out_xnor=xnor_gate.set_input()
+                        inputs.append(out_xnor)
+
+                #print(inputs)
+                if zone==1:
+                    if len(inputs)==3:
+                        if gates[zone]=='and':
+                            and_gate=ANDGate(inputs[0],inputs[1],inputs[2])
+                            output.append(and_gate.set_input())
+                        elif gates[zone]=='or':
+                            or_gate=ORGate(inputs[0],inputs[1],inputs[2])
+                            output.append(or_gate.set_input())
+                        elif gates[zone]=='not':
+                            not_gate=NOTGate(inputs[0],inputs[1],inputs[2])
+                            output.append(not_gate.set_input(inputs))
+                        elif gates[zone]=='nand':
+                            nand_gate=NANDGate(inputs[0],inputs[1],inputs[2])
+                            output.append(nand_gate.set_input())
+                        elif gates[zone]=='nor':
+                            nor_gate=NORGate(inputs[0],inputs[1],inputs[2])
+                            output.append(nor_gate.set_input())
+                        elif gates[zone]=='xor':
+                            xor_gate=XORGate(inputs[0],inputs[1],inputs[2])
+                            output.append(xor_gate.set_input())
+                        elif gates[zone]=='xnor':
+                            xnor_gate=XNORGate(inputs[0],inputs[1],inputs[2])
+                            output.append(xnor_gate.set_input())
+
+                    elif len(inputs)==2:
+                        if gates[zone]=='and':
+                            and_gate=ANDGate(inputs[0],inputs[1])
+                            output.append(and_gate.set_input())
+                        elif gates[zone]=='or':
+                            or_gate=ORGate(inputs[0],inputs[1])
+                            output.append(or_gate.set_input())
+                        elif gates[zone]=='not':
+                            not_gate=NOTGate(inputs[0],inputs[1])
+                            output.append(not_gate.set_input(inputs))
+                        elif gates[zone]=='nand':
+                            nand_gate=NANDGate(inputs[0],inputs[1])
+                            output.append(nand_gate.set_input())
+                        elif gates[zone]=='nor':
+                            nor_gate=NORGate(inputs[0],inputs[1])
+                            output.append(nor_gate.set_input())
+                        elif gates[zone]=='xor':
+                            xor_gate=XORGate(inputs[0],inputs[1])
+                            output.append(xor_gate.set_input())
+                        elif gates[zone]=='xnor':
+                            xnor_gate=XNORGate(inputs[0],inputs[1])
+                            output.append(xnor_gate.set_input())
+
+        return output
+
 
 
     def run_level(self):
@@ -288,7 +399,7 @@ class level_1:
             pygame.draw.line(self.screen, (0, 0, 0), (268, 150), (300, 150), 5)
             pygame.draw.line(self.screen, (0, 0, 0), (268, 450), (300, 450), 5)
             pygame.draw.line(self.screen, (0, 34, 45), (350, 285), (500, 285), 5)
-            pygame.draw.line(self.screen, (0, 34, 45), (350, 130), (530, 130), 5)
+            pygame.draw.line(self.screen, (0, 34, 45), (350, 130), (530, 130), 5) 
             pygame.draw.line(self.screen, (0, 34, 45), (350, 430), (530, 430), 5)
             pygame.draw.line(self.screen, (0, 34, 45), (530, 129), (530, 300), 5)
             pygame.draw.line(self.screen, (0, 34, 45), (530, 430), (530, 310), 5)
@@ -320,8 +431,11 @@ class level_1:
             # Remaining thing to be added is a functional output match so that it returns true or false
             #return True
 
-        # Quit Pygam
+        # Quit Pygame
         print(zones_op)
+        output=self.functional_output(zones_op)
+        for i in output:
+            print(int(i),end=' ')
         pygame.quit()
         sys.exit()
 
@@ -332,6 +446,7 @@ if __name__=="__main__":
     screen=pygame.display.set_mode((800,600))
     level1=level_1(screen)
     level1.run_level()
+    #output=level1.functional_output({4: 'or', 1: 'or', 2: 'and', 3: 'or'})
     pygame.quit()
     # for i in range(5):
     #     led_states = [random.choice([True, False]) for _ in range(4)]
