@@ -35,7 +35,7 @@ class Manager:
 
                 keys = pygame.key.get_pressed()
                 if keys[pygame.K_SPACE]:
-                    self.current_state = "level_2"
+                    self.current_state = "level_1"
 
             elif self.current_state == "level_1":
                 level_result = self.level1.run_level()

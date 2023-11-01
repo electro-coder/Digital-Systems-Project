@@ -399,7 +399,7 @@ class level_1:
             pygame.draw.line(self.screen, (0, 0, 0), (268, 150), (300, 150), 5)
             pygame.draw.line(self.screen, (0, 0, 0), (268, 450), (300, 450), 5)
             pygame.draw.line(self.screen, (0, 34, 45), (350, 285), (500, 285), 5)
-            pygame.draw.line(self.screen, (0, 34, 45), (350, 130), (530, 130), 5)
+            pygame.draw.line(self.screen, (0, 34, 45), (350, 130), (530, 130), 5) 
             pygame.draw.line(self.screen, (0, 34, 45), (350, 430), (530, 430), 5)
             pygame.draw.line(self.screen, (0, 34, 45), (530, 129), (530, 300), 5)
             pygame.draw.line(self.screen, (0, 34, 45), (530, 430), (530, 310), 5)
