@@ -400,7 +400,8 @@ if __name__=="__main__":
     pygame.init()
     screen=pygame.display.set_mode((800,600))
     level1=level_1(screen)
-    level1.run_level()
+    #level1.run_level()
+    
     pygame.quit()
     # for i in range(5):
     #     led_states = [random.choice([True, False]) for _ in range(4)]
