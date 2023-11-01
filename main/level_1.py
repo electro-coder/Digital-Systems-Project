@@ -209,6 +209,7 @@ class level_1:
         dragging = None
         led_coord=[(750,150),(750,250),(750,350),(750,450)]
         led_states=[]
+        zones_op = {}
         # Main game loop
         running = True
         last_update_time=pygame.time.get_ticks()
@@ -243,6 +244,7 @@ class level_1:
                                     img_rect.topleft = dropzone_rect.topleft
                                     in_dropzone = True
                                     dropzone_contents[tuple(dropzone_rect.topleft)] = img
+                                    zones_op[i+1] = dragging[3]
                                     print(f"{dragging[3]} was dropped in Zone {i + 1}")
                                     break
                         else:
@@ -253,7 +255,6 @@ class level_1:
 
             # Clear the screen
             self.screen.fill((155, 25, 255))
-
 
             current_time = pygame.time.get_ticks()
             '''if current_time - blink_timer >= blink_interval:
@@ -320,6 +321,7 @@ class level_1:
             #return True
 
         # Quit Pygam
+        print(zones_op)
         pygame.quit()
         sys.exit()
 
