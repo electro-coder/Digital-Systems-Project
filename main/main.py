@@ -18,7 +18,34 @@ class Manager:
         self.level1=level_1(self.screen)
         self.level2=level_2(self.screen)
 
+    def display_rules(self):
+        screen.fill((255,255,0))
+        y=100
+        rules=[
+            'CODEDIFFUSE',
+            'RULES',
+            'Press anywhere to start the game'
+        ]
+        for rule in rules:
+            text=font.render(rule, True, (0,0,0))
+            text_rect=text.get_rect(center=(WINDOW_WIDTH//2,y))
+            screen.blit(text,text_rect)
+            y+=40
+        pygame.display.flip()
+
     def run_game(self):
+
+        # Rules Page
+        self.display_rules()
+        waiting=True
+        while waiting:
+            for event in pygame.event.get():
+                if event.type==pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type==pygame.KEYDOWN:
+                    waiting=False
+
         # Main loop
         running = True
         while running:

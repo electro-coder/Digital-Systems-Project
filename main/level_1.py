@@ -12,13 +12,14 @@ from logic_gates import ANDGate, ORGate, NOTGate, NANDGate, NORGate, XORGate, XN
 
 
 class Button:
-    def __init__(self, x, y, width, height, text, color, hover_color, text_color, font, action=None):
+    def __init__(self, x, y, width, height, text, color, hover_color, text_color, font,level_1_inst, action=None):
         self.rect = pygame.Rect(x, y, width, height)
         self.color = color
         self.hover_color = hover_color
         self.text = text
         self.text_color = text_color
         self.font = font
+        self.level_1_inst=level_1_inst
         self.action = action
         self.hovered = False
 
@@ -38,14 +39,14 @@ class Button:
         else:
             self.hovered = False
 
-    def click(self):
+    def click(self,gates):
         if self.action:
             self.action()
 
-# Example of usage:
+        if self.level_1_inst:
+            return self.level_1_inst.functional_output(gates)
 
-def button_action():
-    print("Button clicked!")
+
 
 
 class level_1:
@@ -57,6 +58,7 @@ class level_1:
         # Display Surface
         self.screen=screen
         pygame.display.set_caption("CodeDiffuse Level 1")
+        
 
     def functional_output(self,gates,led_states,dropzone_rect):
         and_gate=None
@@ -369,19 +371,33 @@ class level_1:
         flag=True
         dropzone_rect=[False,False,False,False]
         font1 = pygame.font.Font('freesansbold.ttf', 20)
-        button = Button(350, 500, 100, 50, "Submit", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,
-                        button_action)
-
-
-
+        button = Button(350, 500, 100, 50, "Submit", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
+        counter=0 #Level_1 will have a limit of 5 submits
         while running:
+            # Randomized LED states
+            if visible:
+                led_states = [random.choice([True, False]) for _ in range(num_leds)]
+                for i in led_states:
+                    print(int(i),end=' ')
+                print()
+                visible=False
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button.rect.collidepoint(event.pos):
-                        button.click()
+                        final_output=[int(i) for i in button.click(zones_op)]
+                        print(final_output)
+                        if(final_output==led_states):
+                            return True
+                        else:
+                            counter+=1
+
+                        if counter==5:
+                            return False
+                        
                     if event.button == 1:
                         for img, img_rect, in_dropzone, img_id in images:
                             if img_rect.collidepoint(event.pos) and not in_dropzone:
@@ -423,12 +439,12 @@ class level_1:
             '''if current_time-last_update_time>=update_interval:
                 led_states = [random.choice([True, False]) for _ in range(num_leds)]
                 last_update_time=current_time'''
-            if visible:
-                led_states = [random.choice([True, False]) for _ in range(num_leds)]
-                for i in led_states:
-                    print(int(i),end=' ')
-                print()
-                visible=False
+            # if visible:
+            #     led_states = [random.choice([True, False]) for _ in range(num_leds)]
+            #     for i in led_states:
+            #         print(int(i),end=' ')
+            #     print()
+            #     visible=False
             for i,state in enumerate(led_states):
                     CIRCLE_COLOR=CIRCLE_COLOR_ON if state else CIRCLE_COLOR_OFF
                     pygame.draw.circle(self.screen, CIRCLE_COLOR, led_coord[i] , CIRCLE_RADIUS,0)
@@ -491,15 +507,15 @@ class level_1:
 
 
 # Testing of Level-1
-# if __name__=="__main__":
-#     pygame.init()
-#     screen=pygame.display.set_mode((800,600))
-#     level1=level_1(screen)
-#     level1.run_level()
-#     #output=level1.functional_output({4: 'or', 1: 'or', 2: 'and', 3: 'or'})
-#     pygame.quit()
-#     for i in range(5):
-#         # led_states = [random.choice([True, False]) for _ in range(4)]
-#         print(led_states)
-#         level1.functional_output(led_states)
-#
+if __name__=="__main__":
+    pygame.init()
+    screen=pygame.display.set_mode((800,600))
+    level1=level_1(screen)
+    level1.run_level()
+    #output=level1.functional_output({4: 'or', 1: 'or', 2: 'and', 3: 'or'})
+    pygame.quit()
+    # for i in range(5):
+    #     led_states = [random.choice([True, False]) for _ in range(4)]
+    #     print(led_states)
+    #     level1.functional_output(led_states)
+    
