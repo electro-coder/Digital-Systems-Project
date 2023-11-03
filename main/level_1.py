@@ -473,7 +473,7 @@ class level_1:
                     pygame.draw.rect(self.screen, DROPZONE_COLOR, img_rect, 2)  # Add a border to indicate in the drop zone
 
             button.update(pygame.mouse.get_pos())
-            button.draw(screen)
+            button.draw(self.screen)
             clock.tick(60)
             # Update the display
             pygame.display.flip()
@@ -491,15 +491,15 @@ class level_1:
 
 
 # Testing of Level-1
-if __name__=="__main__":
-    pygame.init()
-    screen=pygame.display.set_mode((800,600))
-    level1=level_1(screen)
-    level1.run_level()
-    #output=level1.functional_output({4: 'or', 1: 'or', 2: 'and', 3: 'or'})
-    pygame.quit()
-    for i in range(5):
-        # led_states = [random.choice([True, False]) for _ in range(4)]
-        print(led_states)
-        level1.functional_output(led_states)
-    
+# if __name__=="__main__":
+#     pygame.init()
+#     screen=pygame.display.set_mode((800,600))
+#     level1=level_1(screen)
+#     level1.run_level()
+#     #output=level1.functional_output({4: 'or', 1: 'or', 2: 'and', 3: 'or'})
+#     pygame.quit()
+#     for i in range(5):
+#         # led_states = [random.choice([True, False]) for _ in range(4)]
+#         print(led_states)
+#         level1.functional_output(led_states)
+#
