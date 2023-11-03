@@ -320,13 +320,13 @@ class level_1_up:
         image7_original_rect = image7_rect.copy()
 
         # Create drop zones
-        dropzone_rect5 = pygame.Rect(350, 370, 70, 70)
-        dropzone_rect6 = pygame.Rect(350, 180, 70, 70)
-        dropzone_rect7 = pygame.Rect(450, 250, 70, 70)
-        dropzone_rect1 = pygame.Rect(150, 100, 70, 70)
-        dropzone_rect2 = pygame.Rect(150, 200, 70, 70)
-        dropzone_rect3 = pygame.Rect(150, 300, 70, 70)
-        dropzone_rect4 = pygame.Rect(150, 400, 70, 70)
+        dropzone_rect1 = pygame.Rect(300, 150, 70, 70)
+        dropzone_rect2 = pygame.Rect(300, 350, 70, 70)
+        dropzone_rect3 = pygame.Rect(450, 250, 70, 70)
+        dropzone_rect4 = pygame.Rect(150, 100, 70, 70)
+        dropzone_rect5 = pygame.Rect(150, 200, 70, 70)
+        dropzone_rect6 = pygame.Rect(150, 300, 70, 70)
+        dropzone_rect7 = pygame.Rect(150, 400, 70, 70)
 
         # List of images, their original positions, and flags for indicating if they are in a drop zone
         images = [(image1, image1_rect, False,"or"),
@@ -404,8 +404,7 @@ class level_1_up:
                 if event.type == pygame.MOUSEBUTTONUP:
                     if dragging is not None:
                         img, img_rect, in_dropzone, img_id = dragging
-                        drop_zones = [dropzone_rect1, dropzone_rect2, dropzone_rect3, dropzone_rect4, 
-                                      dropzone_rect5, dropzone_rect6, dropzone_rect7]
+                        drop_zones = [dropzone_rect1, dropzone_rect2, dropzone_rect3]
 
                         # Check if any of the drop zones is empty, and drop the image if one is
                         for i, dropzone_rect in enumerate(drop_zones):
@@ -442,10 +441,10 @@ class level_1_up:
 
             #text of X and Y
             font=pygame.font.Font('freesansbold.ttf',40)
-            self.screen.blit(font.render("X",True,(0,0,0)),(170,215))
-            self.screen.blit(font.render("Y",True,(0,0,0)),(170,310))
-            self.screen.blit(font.render("X'",True,(0,0,0)),(170,310))
-            self.screen.blit(font.render("Y'",True,(0,0,0)),(170,310))
+            self.screen.blit(font.render("X",True,(0,0,0)),(170,120))
+            self.screen.blit(font.render("Y",True,(0,0,0)),(170,320))
+            self.screen.blit(font.render("X'",True,(0,0,0)),(170,220))
+            self.screen.blit(font.render("Y'",True,(0,0,0)),(170,420))
 
             for img, img_rect, in_dropzone, img_id in images:
                 self.screen.blit(img, img_rect)
