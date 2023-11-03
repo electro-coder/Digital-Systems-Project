@@ -280,8 +280,8 @@ class level_1_up:
         path_and="../Resources/and.png"
         path_nor="../Resources/nor.png"
         path_xor="../Resources/xor.png"
-        path_nand="../Resources/nand.png"
-        path_xnor="../Resources/xnor.png"
+        path_nand="../Resources/and.png"
+        path_xnor="../Resources/nor.png"
         path_not="../Resources/not.png"
     
         try:
