@@ -429,6 +429,12 @@ class level_1_up:
                     CIRCLE_COLOR=CIRCLE_COLOR_ON if state else CIRCLE_COLOR_OFF
                     pygame.draw.circle(self.screen, CIRCLE_COLOR, led_coord[i] , CIRCLE_RADIUS,0)
 
+            pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,120), (335,120), (335,185)), 5)
+            pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,450), (335,450), (335,380)), 5)
+            pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,250), (335,250), (335,185)), 5)
+            pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,320), (335,320), (335,380)), 5)
+            pygame.draw.lines(self.screen, (254, 20, 50), False, (dropzone_rect1.center, (485,185), dropzone_rect3.center), 5)
+            pygame.draw.lines(self.screen, (254, 20, 50), False, (dropzone_rect2.center, (485,385), dropzone_rect3.center), 5)
 
 
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect1)
