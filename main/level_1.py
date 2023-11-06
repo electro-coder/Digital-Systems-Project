@@ -290,6 +290,9 @@ class level_1:
         CIRCLE_COLOR_ON = (255, 255, 0)
         CIRCLE_COLOR_OFF=(255,255,255)
         CIRCLE_RADIUS=30
+        USER_CIRCLE_COLOR_ON = (255, 0, 0)
+        USER_CIRCLE_COLOR_OFF=(255,255,255)
+        USER_CIRCLE_RADIUS=20
         num_leds=4
 
         #paths for image files
@@ -362,8 +365,12 @@ class level_1:
         visible = True
         dragging = None
         led_coord=[(750,150),(750,250),(750,350),(750,450)]
+        user_led_coord=[(650,215),(650,265),(650,315),(650,365)]
         led_states=[]
+        user_led_states=[0,0,0,0]
         zones_op = {}
+
+
         # Main game loop
         running = True
         last_update_time=pygame.time.get_ticks()
@@ -430,6 +437,9 @@ class level_1:
 
             # Clear the screen
             self.screen.fill((155, 25, 255))
+            for i,state in enumerate(user_led_states):
+                    CIRCLE_COLOR=USER_CIRCLE_COLOR_ON if state else USER_CIRCLE_COLOR_OFF
+                    pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[i] , USER_CIRCLE_RADIUS,0)
 
             current_time = pygame.time.get_ticks()
             '''if current_time - blink_timer >= blink_interval:
@@ -445,6 +455,10 @@ class level_1:
             #         print(int(i),end=' ')
             #     print()
             #     visible=False
+            # for i,state in enumerate(user_led_states):
+            #         CIRCLE_COLOR=CIRCLE_COLOR_ON if state else CIRCLE_COLOR_OFF
+            #         pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[i] , CIRCLE_RADIUS,0)
+
             for i,state in enumerate(led_states):
                     CIRCLE_COLOR=CIRCLE_COLOR_ON if state else CIRCLE_COLOR_OFF
                     pygame.draw.circle(self.screen, CIRCLE_COLOR, led_coord[i] , CIRCLE_RADIUS,0)
