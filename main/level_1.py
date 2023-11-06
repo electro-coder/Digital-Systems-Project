@@ -328,12 +328,14 @@ class level_1:
         image6_rect = image6.get_rect(topleft=(590, 25))
 
         # Original positions of images
-        image1_original_rect = image1_rect.copy()
-        image2_original_rect = image2_rect.copy()
-        image3_original_rect = image3_rect.copy()
-        image4_original_rect = image4_rect.copy()
-        image5_original_rect = image5_rect.copy()
-        image6_original_rect = image6_rect.copy()
+        # image1_original_rect = image1_rect.copy()
+        # image2_original_rect = image2_rect.copy()
+        # image3_original_rect = image3_rect.copy()
+        # image4_original_rect = image4_rect.copy()
+        # image5_original_rect = image5_rect.copy()
+        # image6_original_rect = image6_rect.copy()
+
+        image_original_rect = [image1_rect.copy(),image2_rect.copy(),image3_rect.copy(),image4_rect.copy(),image5_rect.copy(),image6_rect.copy()]
 
         # Create drop zones
         dropzone_rect1 = pygame.Rect(500, 250, 70, 70)
@@ -369,7 +371,7 @@ class level_1:
         led_states=[]
         user_led_states=[0,0,0,0]
         zones_op = {}
-
+        org_image_count = 0;
 
         # Main game loop
         running = True
@@ -431,7 +433,9 @@ class level_1:
                                     break
                         else:
                             # Return the image to its original position if no drop zone is available
-                            img_rect.topleft = image1_original_rect.topleft
+                            img_rect.topleft = image_original_rect[org_image_count].topleft
+                            org_image_count = (org_image_count+1)%7;
+
                         images.append((img, img_rect, in_dropzone, img_id))
                         dragging = None
 
