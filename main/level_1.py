@@ -8,6 +8,9 @@ from logic_gates import ANDGate, ORGate, NOTGate, NANDGate, NORGate, XORGate, XN
 # WINDOW_HEIGHT = 600
 # screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
+
+
+
 class Button:
     def __init__(self, x, y, width, height, text, color, hover_color, text_color, font,level_1_inst, action=None):
         self.rect = pygame.Rect(x, y, width, height)
@@ -325,6 +328,13 @@ class level_1:
         image6_rect = image6.get_rect(topleft=(590, 25))
 
         # Original positions of images
+        # image1_original_rect = image1_rect.copy()
+        # image2_original_rect = image2_rect.copy()
+        # image3_original_rect = image3_rect.copy()
+        # image4_original_rect = image4_rect.copy()
+        # image5_original_rect = image5_rect.copy()
+        # image6_original_rect = image6_rect.copy()
+
         image_original_rect = [image1_rect.copy(),image2_rect.copy(),image3_rect.copy(),image4_rect.copy(),image5_rect.copy(),image6_rect.copy()]
 
         # Create drop zones
@@ -332,8 +342,8 @@ class level_1:
         dropzone_rect2 = pygame.Rect(300, 250, 70, 70)
         dropzone_rect3 = pygame.Rect(300, 400, 70, 70)
         dropzone_rect4 = pygame.Rect(300, 100, 70, 70)
-        zone_rect5 = pygame.Rect(150, 200, 70, 70)
-        zone_rect6 = pygame.Rect(150, 300, 70, 70)
+        dropzone_rect5 = pygame.Rect(150, 200, 70, 70)
+        dropzone_rect6 = pygame.Rect(150, 300, 70, 70)
 
         # List of images, their original positions, and flags for indicating if they are in a drop zone
         images = [(image1, image1_rect, False,"or"),
@@ -348,9 +358,8 @@ class level_1:
                             tuple(dropzone_rect2.topleft): None,
                             tuple(dropzone_rect3.topleft): None,
                             tuple(dropzone_rect4.topleft): None,
-                            # tuple(dropzone_rect5.topleft): None,
-                            # tuple(dropzone_rect6.topleft): None
-                             }
+                            tuple(dropzone_rect5.topleft): None,
+                            tuple(dropzone_rect6.topleft): None}
 
         clock = pygame.time.Clock()
         blink_interval = 0  # milliseconds
@@ -362,7 +371,7 @@ class level_1:
         led_states=[]
         user_led_states=[0,0,0,0]
         zones_op = {}
-        org_image_count = 0;
+        org_image_count = 0
 
         # Main game loop
         running = True
@@ -371,7 +380,8 @@ class level_1:
         flag=True
         dropzone_rect=[False,False,False,False]
         font1 = pygame.font.Font('freesansbold.ttf', 20)
-        button = Button(350, 500, 100, 50, "Submit", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
+        submit_button = Button(350, 500, 100, 50, "SUBMIT", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
+        check_button = Button(250, 500, 100, 50, "CHECK", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
         counter=0 #Level_1 will have a limit of 5 submits
         while running:
             # Randomized LED states
@@ -387,8 +397,8 @@ class level_1:
                     running = False
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if button.rect.collidepoint(event.pos):
-                        final_output=[int(i) for i in button.click(zones_op)]
+                    if submit_button.rect.collidepoint(event.pos):
+                        final_output=[int(i) for i in submit_button.click(zones_op)]
                         print(final_output)
                         if(final_output==led_states):
                             return True
@@ -397,6 +407,10 @@ class level_1:
 
                         if counter==5:
                             return False
+                        
+                    # if check_button.rect.collidepoint(event.pos):
+                    #     user_led_states=[int(i) for i in check_button.click(zones_op)]
+                    #     print(user_led_states)
                         
                     if event.button == 1:
                         for img, img_rect, in_dropzone, img_id in images:
@@ -410,7 +424,7 @@ class level_1:
                 if event.type == pygame.MOUSEBUTTONUP:
                     if dragging is not None:
                         img, img_rect, in_dropzone, img_id = dragging
-                        drop_zones = [dropzone_rect1, dropzone_rect2, dropzone_rect3, dropzone_rect4]
+                        drop_zones = [dropzone_rect1, dropzone_rect2, dropzone_rect3, dropzone_rect4, dropzone_rect5, dropzone_rect6]
 
                         # Check if any of the drop zones is empty, and drop the image if one is
                         for i, dropzone_rect in enumerate(drop_zones):
@@ -425,16 +439,26 @@ class level_1:
                         else:
                             # Return the image to its original position if no drop zone is available
                             img_rect.topleft = image_original_rect[org_image_count].topleft
-                            org_image_count = (org_image_count+1)%6;
+                            org_image_count = (org_image_count+1)%7
 
                         images.append((img, img_rect, in_dropzone, img_id))
                         dragging = None
 
             # Clear the screen
             self.screen.fill((155, 25, 255))
-            for i,state in enumerate(user_led_states):
-                    CIRCLE_COLOR=USER_CIRCLE_COLOR_ON if state else USER_CIRCLE_COLOR_OFF
-                    pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[i] , USER_CIRCLE_RADIUS,0)
+            dynamic_output=self.functional_output(zones_op)
+            j=0
+            for i in dynamic_output:
+                if i:
+                    CIRCLE_COLOR=USER_CIRCLE_COLOR_ON
+                else:
+                    CIRCLE_COLOR=USER_CIRCLE_COLOR_OFF
+                pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[j] , USER_CIRCLE_RADIUS,0)
+                j+=1
+            # for i,state in enumerate(zones_op):
+            #         CIRCLE_COLOR=USER_CIRCLE_COLOR_ON if state else USER_CIRCLE_COLOR_OFF
+            #         pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[i] , USER_CIRCLE_RADIUS,0)
+
 
             current_time = pygame.time.get_ticks()
             '''if current_time - blink_timer >= blink_interval:
@@ -483,8 +507,8 @@ class level_1:
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect2)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect3)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect4)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, zone_rect5)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, zone_rect6)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect5)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect6)
 
             #text of X and Y
             font=pygame.font.Font('freesansbold.ttf',40)
@@ -497,8 +521,8 @@ class level_1:
                 if in_dropzone:
                     pygame.draw.rect(self.screen, DROPZONE_COLOR, img_rect, 2)  # Add a border to indicate in the drop zone
 
-            button.update(pygame.mouse.get_pos())
-            button.draw(self.screen)
+            submit_button.update(pygame.mouse.get_pos())
+            submit_button.draw(self.screen)
             clock.tick(60)
             # Update the display
             pygame.display.flip()
