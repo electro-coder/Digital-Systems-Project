@@ -323,9 +323,9 @@ class level_1_up:
         image7_original_rect = image7_rect.copy()
 
         # Create drop zones
-        dropzone_rect1 = pygame.Rect(300, 150, 70, 70)
-        dropzone_rect2 = pygame.Rect(300, 350, 70, 70)
-        dropzone_rect3 = pygame.Rect(450, 250, 70, 70)
+        dropzone_rect2 = pygame.Rect(300, 150, 70, 70)
+        dropzone_rect3 = pygame.Rect(300, 350, 70, 70)
+        dropzone_rect1 = pygame.Rect(450, 250, 70, 70)
         dropzone_rect4 = pygame.Rect(150, 100, 70, 70)
         dropzone_rect5 = pygame.Rect(150, 200, 70, 70)
         dropzone_rect6 = pygame.Rect(150, 300, 70, 70)
@@ -453,6 +453,7 @@ class level_1_up:
                     CIRCLE_COLOR=CIRCLE_COLOR_ON if state else CIRCLE_COLOR_OFF
                     pygame.draw.circle(self.screen, CIRCLE_COLOR, led_coord[i] , CIRCLE_RADIUS,0)
 
+            #drawing the wires connecting the gates
             pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,120), (335,120), (335,185)), 5)
             pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,450), (335,450), (335,380)), 5)
             pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,250), (335,250), (335,185)), 5)
@@ -460,7 +461,7 @@ class level_1_up:
             pygame.draw.lines(self.screen, (254, 20, 50), False, (dropzone_rect1.center, (485,185), dropzone_rect3.center), 5)
             pygame.draw.lines(self.screen, (254, 20, 50), False, (dropzone_rect2.center, (485,385), dropzone_rect3.center), 5)
 
-
+            #drawing the rectangles
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect1)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect2)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect3)
@@ -469,7 +470,7 @@ class level_1_up:
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect6)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect7)
 
-            #text of X and Y
+            #text of X, X' and Y, Y'
             font=pygame.font.Font('freesansbold.ttf',40)
             self.screen.blit(font.render("X",True,(0,0,0)),(170,120))
             self.screen.blit(font.render("Y",True,(0,0,0)),(170,320))
