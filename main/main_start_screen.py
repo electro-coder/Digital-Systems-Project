@@ -2,7 +2,7 @@ import pygame
 import sys
 
 class StartScreen:
-    def __init__(self, width, height, title, font_size=40):
+    def __init__(self, width, height, title="CodeDiffuse", font_size=40):
         self.width = width
         self.height = height
         self.title = title
@@ -13,6 +13,7 @@ class StartScreen:
 
         self.font = pygame.font.Font(None, font_size)
 
+        #Background Image
         path_background="../Resources/nand.png"
 
         try:
@@ -24,7 +25,7 @@ class StartScreen:
     
 
     def draw_text(self, text, x, y):
-        text_surface = self.font.render(text, True, (255, 255, 255))
+        text_surface = self.font.render(text, True, (0, 255, 0))
         text_rect = text_surface.get_rect()
         text_rect.center = (x, y)
         self.screen.blit(text_surface, text_rect)
@@ -39,14 +40,10 @@ class StartScreen:
                     if event.key == pygame.K_SPACE:
                         running = False
 
-            self.screen.fill((0, 0, 0))
-
             self.screen.blit(self.background, (0, 0))
 
             self.draw_text(self.title, self.width // 2, self.height // 4)
             self.draw_text("Press SPACE to Start", self.width // 2, self.height // 2)
-
-            
 
             pygame.display.flip()
 
@@ -56,5 +53,5 @@ class StartScreen:
 # Example usage
 if __name__ == "__main__":
     pygame.init()
-    start_screen = StartScreen(800, 600, "Game Start Screen")
+    start_screen = StartScreen(800, 600,)
     start_screen.run()
