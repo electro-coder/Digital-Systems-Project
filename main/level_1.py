@@ -342,8 +342,8 @@ class level_1:
         dropzone_rect2 = pygame.Rect(300, 250, 70, 70)
         dropzone_rect3 = pygame.Rect(300, 400, 70, 70)
         dropzone_rect4 = pygame.Rect(300, 100, 70, 70)
-        dropzone_rect5 = pygame.Rect(150, 200, 70, 70)
-        dropzone_rect6 = pygame.Rect(150, 300, 70, 70)
+        zone_rect5 = pygame.Rect(150, 200, 70, 70)
+        zone_rect6 = pygame.Rect(150, 300, 70, 70)
 
         # List of images, their original positions, and flags for indicating if they are in a drop zone
         images = [(image1, image1_rect, False,"or"),
@@ -357,9 +357,7 @@ class level_1:
         dropzone_contents = {tuple(dropzone_rect1.topleft): None,
                             tuple(dropzone_rect2.topleft): None,
                             tuple(dropzone_rect3.topleft): None,
-                            tuple(dropzone_rect4.topleft): None,
-                            tuple(dropzone_rect5.topleft): None,
-                            tuple(dropzone_rect6.topleft): None}
+                            tuple(dropzone_rect4.topleft): None}
 
         clock = pygame.time.Clock()
         blink_interval = 0  # milliseconds
@@ -424,7 +422,7 @@ class level_1:
                 if event.type == pygame.MOUSEBUTTONUP:
                     if dragging is not None:
                         img, img_rect, in_dropzone, img_id = dragging
-                        drop_zones = [dropzone_rect1, dropzone_rect2, dropzone_rect3, dropzone_rect4, dropzone_rect5, dropzone_rect6]
+                        drop_zones = [dropzone_rect1, dropzone_rect2, dropzone_rect3, dropzone_rect4]
 
                         # Check if any of the drop zones is empty, and drop the image if one is
                         for i, dropzone_rect in enumerate(drop_zones):
@@ -507,8 +505,8 @@ class level_1:
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect2)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect3)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect4)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect5)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect6)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, zone_rect5)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, zone_rect6)
 
             #text of X and Y
             font=pygame.font.Font('freesansbold.ttf',40)
