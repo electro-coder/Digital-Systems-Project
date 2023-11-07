@@ -374,11 +374,11 @@ class level_1_up:
         while running:
             # Randomized LED states
             if visible:
-                led_states = random.choices([[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]])
+                random_number=random.randint(0,3)
+                led_states = [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]][random_number]
                 # for i in led_states:
                 #     print(int(i),end=' ')
                 print(led_states)
-                print()
                 visible=False
 
             for event in pygame.event.get():
