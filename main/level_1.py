@@ -446,12 +446,15 @@ class level_1:
 
             # Clear the screen
             self.screen.fill((155, 25, 255))
-            for i in range(4):
-                if i in zones_op.keys():
+            dynamic_output=self.functional_output(zones_op)
+            j=0
+            for i in dynamic_output:
+                if i:
                     CIRCLE_COLOR=USER_CIRCLE_COLOR_ON
                 else:
                     CIRCLE_COLOR=USER_CIRCLE_COLOR_OFF
-                pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[i] , USER_CIRCLE_RADIUS,0)
+                pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[j] , USER_CIRCLE_RADIUS,0)
+                j+=1
             # for i,state in enumerate(zones_op):
             #         CIRCLE_COLOR=USER_CIRCLE_COLOR_ON if state else USER_CIRCLE_COLOR_OFF
             #         pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[i] , USER_CIRCLE_RADIUS,0)
