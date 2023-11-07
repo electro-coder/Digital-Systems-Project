@@ -8,9 +8,6 @@ from logic_gates import ANDGate, ORGate, NOTGate, NANDGate, NORGate, XORGate, XN
 # WINDOW_HEIGHT = 600
 # screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
-
-
-
 class Button:
     def __init__(self, x, y, width, height, text, color, hover_color, text_color, font,level_1_inst, action=None):
         self.rect = pygame.Rect(x, y, width, height)
@@ -328,13 +325,6 @@ class level_1:
         image6_rect = image6.get_rect(topleft=(590, 25))
 
         # Original positions of images
-        # image1_original_rect = image1_rect.copy()
-        # image2_original_rect = image2_rect.copy()
-        # image3_original_rect = image3_rect.copy()
-        # image4_original_rect = image4_rect.copy()
-        # image5_original_rect = image5_rect.copy()
-        # image6_original_rect = image6_rect.copy()
-
         image_original_rect = [image1_rect.copy(),image2_rect.copy(),image3_rect.copy(),image4_rect.copy(),image5_rect.copy(),image6_rect.copy()]
 
         # Create drop zones
@@ -342,8 +332,8 @@ class level_1:
         dropzone_rect2 = pygame.Rect(300, 250, 70, 70)
         dropzone_rect3 = pygame.Rect(300, 400, 70, 70)
         dropzone_rect4 = pygame.Rect(300, 100, 70, 70)
-        dropzone_rect5 = pygame.Rect(150, 200, 70, 70)
-        dropzone_rect6 = pygame.Rect(150, 300, 70, 70)
+        zone_rect5 = pygame.Rect(150, 200, 70, 70)
+        zone_rect6 = pygame.Rect(150, 300, 70, 70)
 
         # List of images, their original positions, and flags for indicating if they are in a drop zone
         images = [(image1, image1_rect, False,"or"),
@@ -358,8 +348,9 @@ class level_1:
                             tuple(dropzone_rect2.topleft): None,
                             tuple(dropzone_rect3.topleft): None,
                             tuple(dropzone_rect4.topleft): None,
-                            tuple(dropzone_rect5.topleft): None,
-                            tuple(dropzone_rect6.topleft): None}
+                            # tuple(dropzone_rect5.topleft): None,
+                            # tuple(dropzone_rect6.topleft): None
+                             }
 
         clock = pygame.time.Clock()
         blink_interval = 0  # milliseconds
@@ -419,7 +410,7 @@ class level_1:
                 if event.type == pygame.MOUSEBUTTONUP:
                     if dragging is not None:
                         img, img_rect, in_dropzone, img_id = dragging
-                        drop_zones = [dropzone_rect1, dropzone_rect2, dropzone_rect3, dropzone_rect4, dropzone_rect5, dropzone_rect6]
+                        drop_zones = [dropzone_rect1, dropzone_rect2, dropzone_rect3, dropzone_rect4]
 
                         # Check if any of the drop zones is empty, and drop the image if one is
                         for i, dropzone_rect in enumerate(drop_zones):
@@ -434,7 +425,7 @@ class level_1:
                         else:
                             # Return the image to its original position if no drop zone is available
                             img_rect.topleft = image_original_rect[org_image_count].topleft
-                            org_image_count = (org_image_count+1)%7;
+                            org_image_count = (org_image_count+1)%6;
 
                         images.append((img, img_rect, in_dropzone, img_id))
                         dragging = None
@@ -492,8 +483,8 @@ class level_1:
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect2)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect3)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect4)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect5)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect6)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, zone_rect5)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, zone_rect6)
 
             #text of X and Y
             font=pygame.font.Font('freesansbold.ttf',40)
