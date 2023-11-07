@@ -380,7 +380,7 @@ class level_1:
         flag=True
         dropzone_rect=[False,False,False,False]
         font1 = pygame.font.Font('freesansbold.ttf', 20)
-        submit_button = Button(400, 500, 100, 50, "SUBMIT", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
+        submit_button = Button(350, 500, 100, 50, "SUBMIT", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
         check_button = Button(250, 500, 100, 50, "CHECK", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
         counter=0 #Level_1 will have a limit of 5 submits
         while running:
@@ -408,9 +408,9 @@ class level_1:
                         if counter==5:
                             return False
                         
-                    if check_button.rect.collidepoint(event.pos):
-                        user_led_states=[int(i) for i in check_button.click(zones_op)]
-                        print(user_led_states)
+                    # if check_button.rect.collidepoint(event.pos):
+                    #     user_led_states=[int(i) for i in check_button.click(zones_op)]
+                    #     print(user_led_states)
                         
                     if event.button == 1:
                         for img, img_rect, in_dropzone, img_id in images:
@@ -523,8 +523,6 @@ class level_1:
 
             submit_button.update(pygame.mouse.get_pos())
             submit_button.draw(self.screen)
-            check_button.update(pygame.mouse.get_pos())
-            check_button.draw((self.screen))
             clock.tick(60)
             # Update the display
             pygame.display.flip()

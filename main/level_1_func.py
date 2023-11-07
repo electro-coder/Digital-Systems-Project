@@ -374,9 +374,10 @@ class level_1_up:
         while running:
             # Randomized LED states
             if visible:
-                led_states = [random.choice([True, False]) for _ in range(num_leds)]
-                for i in led_states:
-                    print(int(i),end=' ')
+                led_states = random.choices([[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]])
+                # for i in led_states:
+                #     print(int(i),end=' ')
+                print(led_states)
                 print()
                 visible=False
 
