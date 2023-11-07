@@ -371,7 +371,7 @@ class level_1:
         led_states=[]
         user_led_states=[0,0,0,0]
         zones_op = {}
-        org_image_count = 0;
+        org_image_count = 0
 
         # Main game loop
         running = True

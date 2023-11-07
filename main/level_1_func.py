@@ -274,6 +274,9 @@ class level_1_up:
         CIRCLE_COLOR_ON = (255, 255, 0)
         CIRCLE_COLOR_OFF=(255,255,255)
         CIRCLE_RADIUS=30
+        USER_CIRCLE_COLOR_ON = (255, 0, 0)
+        USER_CIRCLE_COLOR_OFF=(255,255,255)
+        USER_CIRCLE_RADIUS=20
         num_leds=4
     
         path_or="../Resources/or.png"
@@ -352,7 +355,9 @@ class level_1_up:
         visible = True
         dragging = None
         led_coord=[(750,150),(750,250),(750,350),(750,450)]
+        user_led_coord=[(600,215),(600,265),(600,315),(600,365)]
         led_states=[]
+        user_led_states=[0,0,0,0]
         zones_op = {}
 
         #Main game loop
@@ -424,6 +429,10 @@ class level_1_up:
 
             # Clear the screen
             self.screen.fill((155, 25, 255))
+
+            for i,state in enumerate(user_led_states):
+                    CIRCLE_COLOR=USER_CIRCLE_COLOR_ON if state else USER_CIRCLE_COLOR_OFF
+                    pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[i] , USER_CIRCLE_RADIUS,0)
 
             for i,state in enumerate(led_states):
                     CIRCLE_COLOR=CIRCLE_COLOR_ON if state else CIRCLE_COLOR_OFF
