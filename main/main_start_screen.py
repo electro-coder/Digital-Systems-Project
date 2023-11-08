@@ -2,7 +2,7 @@ import pygame
 import sys
 
 class StartScreen:
-    def __init__(self, width, height, title="CodeDiffuse", font_size=40):
+    def __init__(self, width, height, title="CodeDiffuse", font_size=60):
         self.width = width
         self.height = height
         self.title = title
@@ -11,10 +11,15 @@ class StartScreen:
         self.screen = pygame.display.set_mode((width, height))
         pygame.display.set_caption(title)
 
-        self.font = pygame.font.Font(None, font_size)
+        font_path = "../Resources/text/Black_Ops_One/BlackOpsOne-Regular.ttf"
+
+        try:
+            self.font = pygame.font.Font(font_path, font_size)
+        except(FileNotFoundError):
+            self.font = pygame.font.Font(font_path.replace("..","."), font_size)
 
         #Background Image
-        path_background="../Resources/nand.png"
+        path_background="../Resources/background2.gif"
 
         try:
             self.background=pygame.image.load(path_background)
@@ -25,7 +30,7 @@ class StartScreen:
     
 
     def draw_text(self, text, x, y):
-        text_surface = self.font.render(text, True, (0, 255, 0))
+        text_surface = self.font.render(text, True, (200,192,192))
         text_rect = text_surface.get_rect()
         text_rect.center = (x, y)
         self.screen.blit(text_surface, text_rect)
@@ -43,7 +48,7 @@ class StartScreen:
             self.screen.blit(self.background, (0, 0))
 
             self.draw_text(self.title, self.width // 2, self.height // 4)
-            self.draw_text("Press SPACE to Start", self.width // 2, self.height // 2)
+            self.draw_text("Press SPACE to Start", self.width // 2, (3*(self.height)) // 4)
 
             pygame.display.flip()
 
@@ -53,5 +58,5 @@ class StartScreen:
 # Example usage
 if __name__ == "__main__":
     pygame.init()
-    start_screen = StartScreen(800, 600,)
+    start_screen = StartScreen(800, 600)
     start_screen.run()

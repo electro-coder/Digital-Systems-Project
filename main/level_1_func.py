@@ -187,7 +187,7 @@ class level_1_up:
             inputs=[]
 
             for zone in sorted(gates,reverse=True):
-                if zone in [2,3,4]:
+                if zone in [2,3]:
                     if gates[zone]=='and':
                         and_gate=ANDGate(x,y)
                         out_and=and_gate.set_input()
@@ -197,8 +197,12 @@ class level_1_up:
                         out_or=or_gate.set_input()
                         inputs.append(out_or)
                     elif gates[zone]=='not':
-                        not_gate=NOTGate(x)
-                        out_not=not_gate.set_input()
+                        if zone==2:
+                            not_gate=NOTGate(x)
+                            out_not=not_gate.set_input()
+                        else:
+                            not_gate=NOTGate(y)
+                            out_not=not_gate.set_input()
                         inputs.append(out_not)
                     elif gates[zone]=='nand':
                         nand_gate=NANDGate(x,y)
@@ -226,9 +230,6 @@ class level_1_up:
                         elif gates[zone]=='or':
                             or_gate=ORGate(inputs[0],inputs[1],inputs[2])
                             output.append(or_gate.set_input())
-                        elif gates[zone]=='not':
-                            not_gate=NOTGate(inputs[0],inputs[1],inputs[2])
-                            output.append(not_gate.set_input(inputs))
                         elif gates[zone]=='nand':
                             nand_gate=NANDGate(inputs[0],inputs[1],inputs[2])
                             output.append(nand_gate.set_input())
@@ -249,9 +250,6 @@ class level_1_up:
                         elif gates[zone]=='or':
                             or_gate=ORGate(inputs[0],inputs[1])
                             output.append(or_gate.set_input())
-                        elif gates[zone]=='not':
-                            not_gate=NOTGate(inputs[0],inputs[1])
-                            output.append(not_gate.set_input(inputs))
                         elif gates[zone]=='nand':
                             nand_gate=NANDGate(inputs[0],inputs[1])
                             output.append(nand_gate.set_input())
@@ -283,8 +281,8 @@ class level_1_up:
         path_and="../Resources/and.png"
         path_nor="../Resources/nor.png"
         path_xor="../Resources/xor.png"
-        path_nand="../Resources/and.png"
-        path_xnor="../Resources/nor.png"
+        path_nand="../Resources/nand.png"
+        path_xnor="../Resources/xnor.png"
         path_not="../Resources/not.png"
     
         try:
@@ -437,7 +435,7 @@ class level_1_up:
                         dragging = None
 
             # Clear the screen
-            self.screen.fill((155, 25, 255))
+            self.screen.fill((155, 0, 255))
 
             dynamic_output=self.functional_output(zones_op)
             j=0

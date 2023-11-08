@@ -298,9 +298,9 @@ class level_1:
         #paths for image files
         path1="../Resources/or.png"
         path2="../Resources/and.png"
-        path3="../Resources/nor.png"
-        path4="../Resources/xor.png"
-        path5="../Resources/nor.png"
+        path3="../Resources/not.png"
+        path4="../Resources/nand.png"
+        path5="../Resources/xor.png"
         path6="../Resources/nor.png"
 
         try:
@@ -331,11 +331,29 @@ class level_1:
 
         except(FileNotFoundError):
             image1 = pygame.image.load(path1.replace("..","."))  # Replace with your image file
+            image1_1 = pygame.image.load(path1.replace("..","."))  # Replace with your image file
+            image1_2 = pygame.image.load(path1.replace("..","."))  # Replace with your image file
+            image1_3 = pygame.image.load(path1.replace("..","."))  # Replace with your image file
             image2 = pygame.image.load(path2.replace("..","."))  # Replace with your image file
+            image2_1 = pygame.image.load(path2.replace("..","."))  # Replace with your image file
+            image2_2 = pygame.image.load(path2.replace("..","."))  # Replace with your image file
+            image2_3 = pygame.image.load(path2.replace("..","."))  # Replace with your image file
             image3 = pygame.image.load(path3.replace("..","."))  # Replace with your image file
+            image3_1 = pygame.image.load(path3.replace("..","."))  # Replace with your image file
+            image3_2 = pygame.image.load(path3.replace("..","."))  # Replace with your image file
+            image3_3 = pygame.image.load(path3.replace("..","."))  # Replace with your image file
             image4 = pygame.image.load(path4.replace("..","."))  # Replace with your image file
+            image4_1 = pygame.image.load(path4.replace("..","."))  # Replace with your image file
+            image4_2 = pygame.image.load(path4.replace("..","."))  # Replace with your image file
+            image4_3 = pygame.image.load(path4.replace("..","."))  # Replace with your image file
             image5 = pygame.image.load(path5.replace("..","."))  # Replace with your image file
+            image5_1 = pygame.image.load(path5.replace("..","."))  # Replace with your image file
+            image5_2 = pygame.image.load(path5.replace("..","."))  # Replace with your image file
+            image5_3 = pygame.image.load(path5.replace("..","."))  # Replace with your image file
             image6 = pygame.image.load(path6.replace("..","."))  # Replace with your image file
+            image6_1 = pygame.image.load(path6.replace("..","."))  # Replace with your image file
+            image6_2 = pygame.image.load(path6.replace("..","."))  # Replace with your image file
+            image6_3 = pygame.image.load(path6.replace("..","."))  # Replace with your image file
 
 
         # Initial positions of images

@@ -171,12 +171,10 @@ class NORGate:
     #     self.output= not(input1 or input2 or input3)
 
 class NOTGate:
-    def __init__(self, x=150, y=80, input1=False):
-        self.x = x
-        self.y = y
+    def __init__(self,input1):
         self.width = 50
         self.height = 40
-        self.input1 = not input1
+        self.input1 = input1
 
     # def draw(self):
     #     pygame.draw.rect(screen, WHITE, (self.x, self.y, self.width, self.height))
@@ -185,9 +183,8 @@ class NOTGate:
     #     pygame.draw.circle(screen, BLACK, (self.x - 20, self.y + self.height // 2 + 40), 6)
     #     pygame.draw.circle(screen, BLACK, (self.x + self.width + 20, self.y + self.height // 2), 6)
 
-    def set_input(self, input1, input2):
-        self.input1 = input1
-        self.output = not input1
+    def set_input(self):
+        self.output = not self.input1
         return self.output
 
 class XORGate:
