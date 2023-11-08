@@ -298,9 +298,9 @@ class level_1:
         #paths for image files
         path1="../Resources/or.png"
         path2="../Resources/and.png"
-        path3="../Resources/nor.png"
-        path4="../Resources/xor.png"
-        path5="../Resources/nor.png"
+        path3="../Resources/not.png"
+        path4="../Resources/nand.png"
+        path5="../Resources/xor.png"
         path6="../Resources/nor.png"
 
         try:
