@@ -24,7 +24,7 @@ class Manager:
         rules=[
             'CODEDIFFUSE',
             'RULES',
-            'Press anywhere to start the game'
+            'Press W to start the game'
         ]
         for rule in rules:
             text=font.render(rule, True, (0,0,0))
