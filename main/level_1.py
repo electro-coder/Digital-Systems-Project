@@ -389,6 +389,8 @@ class level_1:
         zone_rect5 = pygame.Rect(150, 200, 70, 70)
         zone_rect6 = pygame.Rect(150, 300, 70, 70)
 
+        dropzone = [pygame.Rect(500, 250, 70, 70), pygame.Rect(300, 250, 70, 70), pygame.Rect(300, 400, 70, 70), pygame.Rect(300, 100, 70, 70)]
+
         # List of images, their original positions, and flags for indicating if they are in a drop zone
         images = [(image1, image1_rect, False,"or","1"),(image1_1, image1_1_rect, False,"or",'1'),
                   (image1_2, image1_2_rect, False,"or",'1'),(image1_3, image1_3_rect, False,"or",'1'),
@@ -485,7 +487,7 @@ class level_1:
                                 if dropzone_contents[tuple(dropzone_rect.topleft)] :
                                     img_rect.topleft = dropzone_rect.topleft
                                     in_dropzone = True
-                                    dropzone_contents[tuple(dropzone_rect.topleft)] = None
+                                    pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone[i])
                                     dropzone_contents[tuple(dropzone_rect.topleft)] = img
                                     zones_op[i + 1] = dragging[3]
                                     print(f"{dragging[3]} was dropped in Zone {i + 1}")
