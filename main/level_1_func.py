@@ -296,7 +296,7 @@ class level_1_up:
             image6 = pygame.image.load(path_xnor)  # Replace with your image file
             image7 = pygame.image.load(path_not)  # Replace with your image file
         except(FileNotFoundError):
-            image1 = pygame.image.load(path_or.replace("..","."))  # Replace with your image file
+            image1 = pygame.image.load(path_or.replace("..","."))  # R eplace with your image file
             image2 = pygame.image.load(path_nor.replace("..","."))  # Replace with your image file
             image3 = pygame.image.load(path_and.replace("..","."))  # Replace with your image file
             image4 = pygame.image.load(path_nand.replace("..","."))  # Replace with your image file
