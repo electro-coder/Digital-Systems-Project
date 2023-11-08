@@ -19,7 +19,7 @@ class StartScreen:
             self.font = pygame.font.Font(font_path.replace("..","."), font_size)
 
         #Background Image
-        path_background="../Resources/background1.png"
+        path_background="../Resources/background2.gif"
 
         try:
             self.background=pygame.image.load(path_background)
