@@ -223,10 +223,10 @@ class level_2:
 
 
 
-# Testing of Level-2
-# if __name__=="__main__":
-#     pygame.init()
-#     screen=pygame.display.set_mode((800,600))
-#     level2=level_2(screen)
-#     level2.run_level()
-#     pygame.quit()
+#Testing of Level-2
+if __name__=="__main__":
+    pygame.init()
+    screen=pygame.display.set_mode((800,600))
+    level2=level_2(screen)
+    level2.run_level()
+    pygame.quit()

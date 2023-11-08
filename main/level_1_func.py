@@ -281,8 +281,8 @@ class level_1_up:
         path_and="../Resources/and.png"
         path_nor="../Resources/nor.png"
         path_xor="../Resources/xor.png"
-        path_nand="../Resources/and.png"
-        path_xnor="../Resources/nor.png"
+        path_nand="../Resources/nand.png"
+        path_xnor="../Resources/xnor.png"
         path_not="../Resources/not.png"
     
         try:
@@ -435,7 +435,7 @@ class level_1_up:
                         dragging = None
 
             # Clear the screen
-            self.screen.fill((155, 25, 255))
+            self.screen.fill((155, 0, 255))
 
             dynamic_output=self.functional_output(zones_op)
             j=0
