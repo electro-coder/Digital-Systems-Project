@@ -276,6 +276,14 @@ class level_1_up:
         USER_CIRCLE_COLOR_OFF=(255,255,255)
         USER_CIRCLE_RADIUS=20
         num_leds=4
+        DOT_RADIUS=10
+        DOT_COLOR=(255,0,0)
+        SELECTED_DOT_COLOR=(0,255,0)
+        LINE_COLOR=(0,0,255)
+        LINE_WIDTH=2
+        lines=[]
+        selected_dot=None
+        dots_coord=[]
     
         path_or="../Resources/or.png"
         path_and="../Resources/and.png"
@@ -488,6 +496,28 @@ class level_1_up:
                                 dragging = img, img_rect, in_dropzone, img_id, img_code
                                 #images.remove((img, img_rect, in_dropzone))
 
+                    if event.button == 1:
+                        x,y=event.pos
+                        for dot in dots_coord:
+                            distance = ((dot[0] - x) ** 2 + (dot[1] - y) ** 2) ** 0.5
+                            if distance<DOT_RADIUS:
+                                if selected_dot is None:
+                                    selected_dot=dot
+                                else:
+                                    if selected_dot!=dot:
+                                        x1,y1=selected_dot
+                                        x2,y2=dot
+                                        path_choice=random.choice([True,False])
+                                        if path_choice:
+                                            path1=(selected_dot,(x2,y1))
+                                            path2=((x2,y1),dot)
+                                        else:
+                                            path1=(selected_dot,(x1,y2))
+                                            path2=((x1,y2),dot)
+                                        lines.extend(path1)
+                                        lines.extend(path2)
+                                    selected_dot=None
+
                 if event.type == pygame.MOUSEMOTION:
                     if dragging is not None:
                         _, img_rect, _, _, _ = dragging
@@ -539,13 +569,20 @@ class level_1_up:
                     CIRCLE_COLOR=CIRCLE_COLOR_ON if state else CIRCLE_COLOR_OFF
                     pygame.draw.circle(self.screen, CIRCLE_COLOR, led_coord[i] , CIRCLE_RADIUS,0)
 
+            for i in range(0,len(lines),2):
+                pygame.draw.line(self.screen,LINE_COLOR,lines[i],lines[i+1],LINE_WIDTH)
+            for dot in dots_coord:
+                if dot==selected_dot:
+                    pygame.draw.circle(self.screen,SELECTED_DOT_COLOR,dot,DOT_RADIUS)
+                else:
+                    pygame.draw.circle(self.screen,DOT_COLOR,dot,DOT_RADIUS)
             #drawing the wires connecting the gates
-            pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,120), (335,120), (335,185)), 5)
-            pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,450), (335,450), (335,380)), 5)
-            pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,250), (335,250), (335,185)), 5)
-            pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,320), (335,320), (335,380)), 5)
-            pygame.draw.lines(self.screen, (254, 20, 50), False, (dropzone_rect2.center, (485,185), dropzone_rect1.center), 5)
-            pygame.draw.lines(self.screen, (254, 20, 50), False, (dropzone_rect3.center, (485,385), dropzone_rect1.center), 5)
+            # pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,120), (335,120), (335,185)), 5)
+            # pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,450), (335,450), (335,380)), 5)
+            # pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,250), (335,250), (335,185)), 5)
+            # pygame.draw.lines(self.screen, (254, 20, 50), False, ((200,320), (335,320), (335,380)), 5)
+            # pygame.draw.lines(self.screen, (254, 20, 50), False, (dropzone_rect2.center, (485,185), dropzone_rect1.center), 5)
+            # pygame.draw.lines(self.screen, (254, 20, 50), False, (dropzone_rect3.center, (485,385), dropzone_rect1.center), 5)
 
             #drawing the rectangles
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect1)
