@@ -311,6 +311,9 @@ class level_1_up:
             image6_2 = pygame.image.load(path_xnor)  # Replace with your image file
             image6_3 = pygame.image.load(path_xnor)  # Replace with your image file
             image7 = pygame.image.load(path_not)
+            image7_1 = pygame.image.load(path_not)
+            image7_2 = pygame.image.load(path_not)
+            image7_3 = pygame.image.load(path_not)
 
         except(FileNotFoundError):
             image1 = pygame.image.load(path_or.replace("..", "."))  # Replace with your image file
@@ -338,38 +341,45 @@ class level_1_up:
             image6_2 = pygame.image.load(path_xnor.replace("..", "."))  # Replace with your image file
             image6_3 = pygame.image.load(path_xnor.replace("..", "."))  # Replace with your image file
             image7 = pygame.image.load(path_not.replace("..", "."))
+            image7_1 = pygame.image.load(path_not.replace("..", "."))
+            image7_2 = pygame.image.load(path_not.replace("..", "."))
+            image7_3 = pygame.image.load(path_not.replace("..", "."))
 
         # Initial positions of images
-        image1_rect = image1.get_rect(topleft=(50, 25))
-        image1_1_rect = image1.get_rect(topleft=(50, 25))
-        image1_2_rect = image1.get_rect(topleft=(50, 25))
-        image1_3_rect = image1.get_rect(topleft=(50, 25))
+        image1_rect = image1.get_rect(topleft=(20, 20))
+        image1_1_rect = image1.get_rect(topleft=(20, 20))
+        image1_2_rect = image1.get_rect(topleft=(20, 20))
+        image1_3_rect = image1.get_rect(topleft=(20, 20))
 
-        image2_rect = image2.get_rect(topleft=(140, 25))
-        image2_1_rect = image2.get_rect(topleft=(140, 25))
-        image2_2_rect = image2.get_rect(topleft=(140, 25))
-        image2_3_rect = image2.get_rect(topleft=(140, 25))
+        image2_rect = image2.get_rect(topleft=(125, 20))
+        image2_1_rect = image2.get_rect(topleft=(125, 20))
+        image2_2_rect = image2.get_rect(topleft=(125, 20))
+        image2_3_rect = image2.get_rect(topleft=(125, 20))
 
-        image3_rect = image3.get_rect(topleft=(230, 25))
-        image3_1_rect = image3.get_rect(topleft=(230, 25))
-        image3_2_rect = image3.get_rect(topleft=(230, 25))
-        image3_3_rect = image3.get_rect(topleft=(230, 25))
+        image3_rect = image3.get_rect(topleft=(220, 20))
+        image3_1_rect = image3.get_rect(topleft=(220, 20))
+        image3_2_rect = image3.get_rect(topleft=(220, 20))
+        image3_3_rect = image3.get_rect(topleft=(220, 20))
 
-        image4_rect = image4.get_rect(topleft=(350, 25))
-        image4_1_rect = image4.get_rect(topleft=(350, 25))
-        image4_2_rect = image4.get_rect(topleft=(350, 25))
-        image4_3_rect = image4.get_rect(topleft=(350, 25))
+        image4_rect = image4.get_rect(topleft=(330, 20))
+        image4_1_rect = image4.get_rect(topleft=(330, 20))
+        image4_2_rect = image4.get_rect(topleft=(330, 20))
+        image4_3_rect = image4.get_rect(topleft=(330, 20))
 
-        image5_rect = image5.get_rect(topleft=(460, 25))
-        image5_1_rect = image5.get_rect(topleft=(460, 25))
-        image5_2_rect = image5.get_rect(topleft=(460, 25))
-        image5_3_rect = image5.get_rect(topleft=(460, 25))
+        image5_rect = image5.get_rect(topleft=(450, 20))
+        image5_1_rect = image5.get_rect(topleft=(450, 20))
+        image5_2_rect = image5.get_rect(topleft=(450, 20))
+        image5_3_rect = image5.get_rect(topleft=(450, 20))
 
-        image6_rect = image6.get_rect(topleft=(590, 25))
-        image6_1_rect = image6.get_rect(topleft=(590, 25))
-        image6_2_rect = image6.get_rect(topleft=(590, 25))
-        image6_3_rect = image6.get_rect(topleft=(590, 25))
-        image7_rect = image7.get_rect(topleft=(590, 25))
+        image6_rect = image6.get_rect(topleft=(570, 20))
+        image6_1_rect = image6.get_rect(topleft=(570, 20))
+        image6_2_rect = image6.get_rect(topleft=(570, 20))
+        image6_3_rect = image6.get_rect(topleft=(570, 20))
+
+        image7_rect = image7.get_rect(topleft=(680, 20))
+        image7_1_rect = image7.get_rect(topleft=(680, 20))
+        image7_2_rect = image7.get_rect(topleft=(680, 20))
+        image7_3_rect = image7.get_rect(topleft=(680, 20))
 
         # Original positions of images
         # image1_original_rect = image1_rect.copy()
@@ -403,8 +413,10 @@ class level_1_up:
                   (image3_2, image3_2_rect, False, "nor",'3'),(image3_3, image3_3_rect, False,"nor",'3'),
                 (image4, image4_rect, False, "xor",'4'),(image4_1, image4_1_rect, False, "xor",'4'),
                   (image4_2, image4_2_rect, False, "xor",'4'),(image4_3, image4_3_rect, False, "xor",'4'),
-                (image5, image5_rect, False,"nor",'5'),
-                (image6, image6_rect, False,"nor",'6'),
+                (image5, image5_rect, False,"nor",'5'),(image5_1, image5_rect, False,"nor",'5'),
+                  (image5_2, image5_rect, False, "nor", '5'),(image5_3, image5_rect, False,"nor",'5'),
+                (image6, image6_rect, False,"nor",'6'),(image6_1, image6_rect, False,"nor",'6'),
+                  (image6_2, image6_rect, False, "nor", '6'),(image6_3, image6_rect, False,"nor",'6'),
                 (image7, image7_rect, False,"not",'7')]
         
         # Dictionary to keep track of which image is in which drop zone
