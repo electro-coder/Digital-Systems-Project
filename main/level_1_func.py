@@ -413,11 +413,12 @@ class level_1_up:
                   (image3_2, image3_2_rect, False, "nor",'3'),(image3_3, image3_3_rect, False,"nor",'3'),
                 (image4, image4_rect, False, "xor",'4'),(image4_1, image4_1_rect, False, "xor",'4'),
                   (image4_2, image4_2_rect, False, "xor",'4'),(image4_3, image4_3_rect, False, "xor",'4'),
-                (image5, image5_rect, False,"nor",'5'),(image5_1, image5_rect, False,"nor",'5'),
-                  (image5_2, image5_rect, False, "nor", '5'),(image5_3, image5_rect, False,"nor",'5'),
-                (image6, image6_rect, False,"nor",'6'),(image6_1, image6_rect, False,"nor",'6'),
-                  (image6_2, image6_rect, False, "nor", '6'),(image6_3, image6_rect, False,"nor",'6'),
-                (image7, image7_rect, False,"not",'7')]
+                (image5, image5_rect, False,"nor",'5'),(image5_1, image5_1_rect, False,"nor",'5'),
+                  (image5_2, image5_2_rect, False, "nor", '5'),(image5_3, image5_3_rect, False,"nor",'5'),
+                (image6, image6_rect, False,"nor",'6'),(image6_1, image6_1_rect, False,"nor",'6'),
+                  (image6_2, image6_2_rect, False, "nor", '6'),(image6_3, image6_3_rect, False,"nor",'6'),
+                (image7, image7_rect, False,"not",'7'),(image7_1, image7_1_rect, False,"not",'7'),
+                  (image7_2, image7_2_rect, False,"not",'7'),(image7_3, image7_3_rect, False,"not",'7')]
         
         # Dictionary to keep track of which image is in which drop zone
         dropzone_contents = {tuple(dropzone_rect1.topleft): None,
