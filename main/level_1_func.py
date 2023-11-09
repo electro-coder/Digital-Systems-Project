@@ -278,12 +278,12 @@ class level_1_up:
         num_leds=4
         DOT_RADIUS=10
         DOT_COLOR=(255,0,0)
-        SELECTED_DOT_COLOR=(0,255,0)
+        SELECTED_DOT_COLOR=(255,255,0)
         LINE_COLOR=(0,0,255)
         LINE_WIDTH=2
         lines=[]
         selected_dot=None
-        dots_coord=[]
+        dots_coord=[(220,135),(220,235),(220,335),(220,435),(300,185),(300,385),(450,285),(370,185),(370,385)]
     
         path_or="../Resources/or.png"
         path_and="../Resources/and.png"
