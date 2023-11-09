@@ -287,64 +287,131 @@ class level_1_up:
     
         try:
             image1 = pygame.image.load(path_or)  # Replace with your image file
-            image2 = pygame.image.load(path_nor)  # Replace with your image file
-            image3 = pygame.image.load(path_and)  # Replace with your image file
-            image4 = pygame.image.load(path_nand)  # Replace with your image file
-            image5 = pygame.image.load(path_xor)  # Replace with your image file
+            image1_1 = pygame.image.load(path_or)  # Replace with your image file
+            image1_2 = pygame.image.load(path_or)  # Replace with your image file
+            image1_3 = pygame.image.load(path_or)  # Replace with your image file
+            image2 = pygame.image.load(path_and)  # Replace with your image file
+            image2_1 = pygame.image.load(path_and)  # Replace with your image file
+            image2_2 = pygame.image.load(path_and)  # Replace with your image file
+            image2_3 = pygame.image.load(path_and)  # Replace with your image file
+            image3 = pygame.image.load(path_nor)  # Replace with your image file
+            image3_1 = pygame.image.load(path_nor)  # Replace with your image file
+            image3_2 = pygame.image.load(path_nor)  # Replace with your image file
+            image3_3 = pygame.image.load(path_nor)  # Replace with your image file
+            image4 = pygame.image.load(path_xor)  # Replace with your image file
+            image4_1 = pygame.image.load(path_xor)  # Replace with your image file
+            image4_2 = pygame.image.load(path_xor)  # Replace with your image file
+            image4_3 = pygame.image.load(path_xor)  # Replace with your image file
+            image5 = pygame.image.load(path_nand)  # Replace with your image file
+            image5_1 = pygame.image.load(path_nand)  # Replace with your image file
+            image5_2 = pygame.image.load(path_nand)  # Replace with your image file
+            image5_3 = pygame.image.load(path_nand)  # Replace with your image file
             image6 = pygame.image.load(path_xnor)  # Replace with your image file
-            image7 = pygame.image.load(path_not)  # Replace with your image file
+            image6_1 = pygame.image.load(path_xnor)  # Replace with your image file
+            image6_2 = pygame.image.load(path_xnor)  # Replace with your image file
+            image6_3 = pygame.image.load(path_xnor)  # Replace with your image file
+            image7 = pygame.image.load(path_not)
+
         except(FileNotFoundError):
-            image1 = pygame.image.load(path_or.replace("..","."))  # R eplace with your image file
-            image2 = pygame.image.load(path_nor.replace("..","."))  # Replace with your image file
-            image3 = pygame.image.load(path_and.replace("..","."))  # Replace with your image file
-            image4 = pygame.image.load(path_nand.replace("..","."))  # Replace with your image file
-            image5 = pygame.image.load(path_xor.replace("..","."))  # Replace with your image file
-            image6 = pygame.image.load(path_xnor.replace("..","."))  # Replace with your image file
-            image7 = pygame.image.load(path_not.replace("..","."))  # Replace with your image file
+            image1 = pygame.image.load(path_or.replace("..", "."))  # Replace with your image file
+            image1_1 = pygame.image.load(path_or.replace("..", "."))  # Replace with your image file
+            image1_2 = pygame.image.load(path_or.replace("..", "."))  # Replace with your image file
+            image1_3 = pygame.image.load(path_or.replace("..", "."))  # Replace with your image file
+            image2 = pygame.image.load(path_and.replace("..", "."))  # Replace with your image file
+            image2_1 = pygame.image.load(path_and.replace("..", "."))  # Replace with your image file
+            image2_2 = pygame.image.load(path_and.replace("..", "."))  # Replace with your image file
+            image2_3 = pygame.image.load(path_and.replace("..", "."))  # Replace with your image file
+            image3 = pygame.image.load(path_nor.replace("..", "."))  # Replace with your image file
+            image3_1 = pygame.image.load(path_nor.replace("..", "."))  # Replace with your image file
+            image3_2 = pygame.image.load(path_nor.replace("..", "."))  # Replace with your image file
+            image3_3 = pygame.image.load(path_nor.replace("..", "."))  # Replace with your image file
+            image4 = pygame.image.load(path_xor.replace("..", "."))  # Replace with your image file
+            image4_1 = pygame.image.load(path_xor.replace("..", "."))  # Replace with your image file
+            image4_2 = pygame.image.load(path_xor.replace("..", "."))  # Replace with your image file
+            image4_3 = pygame.image.load(path_xor.replace("..", "."))  # Replace with your image file
+            image5 = pygame.image.load(path_nand.replace("..", "."))  # Replace with your image file
+            image5_1 = pygame.image.load(path_nand.replace("..", "."))  # Replace with your image file
+            image5_2 = pygame.image.load(path_nand.replace("..", "."))  # Replace with your image file
+            image5_3 = pygame.image.load(path_nand.replace("..", "."))  # Replace with your image file
+            image6 = pygame.image.load(path_xnor.replace("..", "."))  # Replace with your image file
+            image6_1 = pygame.image.load(path_xnor.replace("..", "."))  # Replace with your image file
+            image6_2 = pygame.image.load(path_xnor.replace("..", "."))  # Replace with your image file
+            image6_3 = pygame.image.load(path_xnor.replace("..", "."))  # Replace with your image file
+            image7 = pygame.image.load(path_not.replace("..", "."))
 
         # Initial positions of images
         image1_rect = image1.get_rect(topleft=(50, 25))
+        image1_1_rect = image1.get_rect(topleft=(50, 25))
+        image1_2_rect = image1.get_rect(topleft=(50, 25))
+        image1_3_rect = image1.get_rect(topleft=(50, 25))
+
         image2_rect = image2.get_rect(topleft=(140, 25))
+        image2_1_rect = image2.get_rect(topleft=(140, 25))
+        image2_2_rect = image2.get_rect(topleft=(140, 25))
+        image2_3_rect = image2.get_rect(topleft=(140, 25))
+
         image3_rect = image3.get_rect(topleft=(230, 25))
-        image4_rect = image4.get_rect(topleft=(320, 25))
-        image5_rect = image5.get_rect(topleft=(410, 25))
-        image6_rect = image6.get_rect(topleft=(500, 25))
+        image3_1_rect = image3.get_rect(topleft=(230, 25))
+        image3_2_rect = image3.get_rect(topleft=(230, 25))
+        image3_3_rect = image3.get_rect(topleft=(230, 25))
+
+        image4_rect = image4.get_rect(topleft=(350, 25))
+        image4_1_rect = image4.get_rect(topleft=(350, 25))
+        image4_2_rect = image4.get_rect(topleft=(350, 25))
+        image4_3_rect = image4.get_rect(topleft=(350, 25))
+
+        image5_rect = image5.get_rect(topleft=(460, 25))
+        image5_1_rect = image5.get_rect(topleft=(460, 25))
+        image5_2_rect = image5.get_rect(topleft=(460, 25))
+        image5_3_rect = image5.get_rect(topleft=(460, 25))
+
+        image6_rect = image6.get_rect(topleft=(590, 25))
+        image6_1_rect = image6.get_rect(topleft=(590, 25))
+        image6_2_rect = image6.get_rect(topleft=(590, 25))
+        image6_3_rect = image6.get_rect(topleft=(590, 25))
         image7_rect = image7.get_rect(topleft=(590, 25))
 
         # Original positions of images
-        image1_original_rect = image1_rect.copy()
-        image2_original_rect = image2_rect.copy()
-        image3_original_rect = image3_rect.copy()
-        image4_original_rect = image4_rect.copy()
-        image5_original_rect = image5_rect.copy()
-        image6_original_rect = image6_rect.copy()
-        image7_original_rect = image7_rect.copy()
+        # image1_original_rect = image1_rect.copy()
+        # image2_original_rect = image2_rect.copy()
+        # image3_original_rect = image3_rect.copy()
+        # image4_original_rect = image4_rect.copy()
+        # image5_original_rect = image5_rect.copy()
+        # image6_original_rect = image6_rect.copy()
+        # image7_original_rect = image7_rect.copy()
 
+        image_original_rect = [image1_rect.copy(), image2_rect.copy(), image3_rect.copy(), image4_rect.copy(),
+                               image5_rect.copy(), image6_rect.copy()]
         # Create drop zones
         dropzone_rect2 = pygame.Rect(300, 150, 70, 70)
         dropzone_rect3 = pygame.Rect(300, 350, 70, 70)
         dropzone_rect1 = pygame.Rect(450, 250, 70, 70)
         dropzone_rect4 = pygame.Rect(150, 100, 70, 70)
-        dropzone_rect5 = pygame.Rect(150, 200, 70, 70)
-        dropzone_rect6 = pygame.Rect(150, 300, 70, 70)
+        zone_rect5 = pygame.Rect(150, 200, 70, 70)
+        zone_rect6 = pygame.Rect(150, 300, 70, 70)
         dropzone_rect7 = pygame.Rect(150, 400, 70, 70)
 
+        dropzone = [pygame.Rect(500, 250, 70, 70), pygame.Rect(300, 250, 70, 70), pygame.Rect(300, 400, 70, 70),
+                    pygame.Rect(300, 100, 70, 70)]
+
         # List of images, their original positions, and flags for indicating if they are in a drop zone
-        images = [(image1, image1_rect, False,"or"),
-                (image2, image2_rect, False,"nor"),
-                (image3, image3_rect, False,"and"),
-                (image4, image4_rect, False, "nand"),
-                (image5, image5_rect, False,"xor"),
-                (image6, image6_rect, False,"xnor"),
-                (image7, image7_rect, False,"not")]
+        images = [(image1, image1_rect, False,"or","1"),(image1_1, image1_1_rect, False,"or",'1'),
+                  (image1_2, image1_2_rect, False,"or",'1'),(image1_3, image1_3_rect, False,"or",'1'),
+                (image2, image2_rect, False,"and",'2'),(image2_1, image2_1_rect, False,"and",'2'),
+                  (image2_2, image2_2_rect, False, "and",'2'),(image2_3, image2_3_rect, False,"and",'2'),
+                (image3, image3_rect, False,"nor",'3'),(image3_1, image3_1_rect, False,"nor",'3'),
+                  (image3_2, image3_2_rect, False, "nor",'3'),(image3_3, image3_3_rect, False,"nor",'3'),
+                (image4, image4_rect, False, "xor",'4'),(image4_1, image4_1_rect, False, "xor",'4'),
+                  (image4_2, image4_2_rect, False, "xor",'4'),(image4_3, image4_3_rect, False, "xor",'4'),
+                (image5, image5_rect, False,"nor",'5'),
+                (image6, image6_rect, False,"nor",'6'),
+                (image7, image7_rect, False,"not",'7')]
         
         # Dictionary to keep track of which image is in which drop zone
         dropzone_contents = {tuple(dropzone_rect1.topleft): None,
                             tuple(dropzone_rect2.topleft): None,
                             tuple(dropzone_rect3.topleft): None,
                             tuple(dropzone_rect4.topleft): None,
-                            tuple(dropzone_rect5.topleft): None,
-                            tuple(dropzone_rect6.topleft): None,
                             tuple(dropzone_rect7.topleft): None}
         
         clock = pygame.time.Clock()
@@ -403,19 +470,19 @@ class level_1_up:
                             pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[i] , USER_CIRCLE_RADIUS,0)
                             
                     if event.button == 1:
-                        for img, img_rect, in_dropzone, img_id in images:
+                        for img, img_rect, in_dropzone, img_id, img_code in images:
                             if img_rect.collidepoint(event.pos) and not in_dropzone:
-                                dragging = img, img_rect, in_dropzone, img_id
+                                dragging = img, img_rect, in_dropzone, img_id, img_code
                                 #images.remove((img, img_rect, in_dropzone))
 
                 if event.type == pygame.MOUSEMOTION:
                     if dragging is not None:
-                        _, img_rect, _, _ = dragging
+                        _, img_rect, _, _, _ = dragging
                         img_rect.topleft = event.pos
 
                 if event.type == pygame.MOUSEBUTTONUP:
                     if dragging is not None:
-                        img, img_rect, in_dropzone, img_id = dragging
+                        img, img_rect, in_dropzone, img_id, img_code = dragging
                         drop_zones = [dropzone_rect1, dropzone_rect2, dropzone_rect3]
 
                         # Check if any of the drop zones is empty, and drop the image if one is
@@ -428,10 +495,18 @@ class level_1_up:
                                     zones_op[i+1] = dragging[3]
                                     print(f"{dragging[3]} was dropped in Zone {i + 1}")
                                     break
+                                if dropzone_contents[tuple(dropzone_rect.topleft)] :
+                                    img_rect.topleft = dropzone_rect.topleft
+                                    in_dropzone = True
+                                    pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone[i])
+                                    dropzone_contents[tuple(dropzone_rect.topleft)] = img
+                                    zones_op[i + 1] = dragging[3]
+                                    print(f"{dragging[3]} was dropped in Zone {i + 1}")
+                                    break
                         else:
                             # Return the image to its original position if no drop zone is available
-                            img_rect.topleft = image1_original_rect.topleft
-                        images.append((img, img_rect, in_dropzone, img_id))
+                            img_rect.topleft = image_original_rect[int(img_code)-1].topleft
+                        images.append((img, img_rect, in_dropzone, img_id, img_code))
                         dragging = None
 
             # Clear the screen
@@ -464,8 +539,8 @@ class level_1_up:
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect2)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect3)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect4)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect5)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect6)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, zone_rect5)
+            pygame.draw.rect(self.screen, DROPZONE_COLOR, zone_rect6)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect7)
 
             #text of X, X' and Y, Y'
@@ -475,7 +550,7 @@ class level_1_up:
             self.screen.blit(font.render("X'",True,(0,0,0)),(170,220))
             self.screen.blit(font.render("Y'",True,(0,0,0)),(170,420))
 
-            for img, img_rect, in_dropzone, img_id in images:
+            for img, img_rect, in_dropzone, img_id, img_code in images:
                 self.screen.blit(img, img_rect)
                 if in_dropzone:
                     pygame.draw.rect(self.screen, DROPZONE_COLOR, img_rect, 2)  # Add a border to indicate in the drop zone

@@ -46,9 +46,6 @@ class Button:
         if self.level_1_inst:
             return self.level_1_inst.functional_output(gates)
 
-
-
-
 class level_1:
     def __init__(self,screen):
 
