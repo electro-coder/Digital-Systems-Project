@@ -294,6 +294,9 @@ class level_3:
         dots_coord=[(220,135),(220,235),(220,335),(220,435),
                     (300,173),(300,197),(300,273),(300,297),(300,373),(300,397),(300,173),(370,185),(370,285),(370,385),
                     (500,267),(500,285),(500,303)]
+        dynamic_connections=[]
+        dynamic_verification={41:(300,173),42:(300,197),21:(300,273),22:(300,297),31:(300,373),32:(300,397),43:(370,185),23:(370,285),33:(370,385)}
+        variables={'x':(220,135),'x\'':(220,235),'y':(220,335),'y\'':(220,435),'11':(500,267),'12':(500,285),'13':(500,303)}
 
         #paths for image files
         path1="../Resources/or.png"
@@ -507,6 +510,20 @@ class level_3:
                                             path2=((x1,y2),dot)
                                         lines.extend(path1)
                                         lines.extend(path2)
+                                        if selected_dot in dynamic_verification.values():
+                                            z=selected_dot
+                                            zb=dot
+                                        else:
+                                            z=dot
+                                            zb=selected_dot
+
+                                        for var in variables:
+                                            if zb==variables[var]:
+                                                variable=var
+
+                                        for gate_input in dynamic_verification:
+                                            if(z==dynamic_verification[gate_input]):
+                                                dynamic_connections.extend((gate_input,variable))
                                     selected_dot=None
 
                 if event.type == pygame.MOUSEMOTION:
@@ -546,6 +563,7 @@ class level_3:
 
             # Clear the screen
             self.screen.fill((155, 25, 255))
+            print(dynamic_connections)
             dynamic_output=self.functional_output(zones_op)
             j=0
             for i in dynamic_output:
