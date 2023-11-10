@@ -161,7 +161,7 @@ class level_3:
         print(output)
     
     #overloaded function for testing purposes of output
-    def functional_output(self,gates):
+    def functional_output(self,gates,function=None):
 
         states=[[False,False],
                 [False,True],
@@ -297,6 +297,7 @@ class level_3:
         dynamic_connections=[]
         dynamic_verification={41:(300,173),42:(300,197),21:(300,273),22:(300,297),31:(300,373),32:(300,397),43:(370,185),23:(370,285),33:(370,385)}
         variables={'x':(220,135),'x\'':(220,235),'y':(220,335),'y\'':(220,435),'11':(500,267),'12':(500,285),'13':(500,303)}
+        func=0
 
         #paths for image files
         path1="../Resources/or.png"
@@ -443,6 +444,7 @@ class level_3:
         user_led_states=[0,0,0,0]
         zones_op = {}
         org_image_count = 0
+        seq=[]
 
         # Main game loop
         running = True
@@ -564,6 +566,20 @@ class level_3:
             # Clear the screen
             self.screen.fill((155, 25, 255))
             print(dynamic_connections)
+            present_gates=[i for i in zones_op.keys()]
+            i=j=k=0
+            for i in present_gates:
+                for j in dynamic_connections:
+                    if(j==(i*10+1)):
+                        flag_check=False
+                        for k in dynamic_connections:
+                            if(k==(i*10+2)):
+                                flag_check=True
+                                break
+                        #if flag_check: Existing logic to be written
+                            
+
+
             dynamic_output=self.functional_output(zones_op)
             j=0
             for i in dynamic_output:
