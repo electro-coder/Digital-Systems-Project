@@ -270,8 +270,127 @@ class level_3:
 
         return output
 
+    def canonical_function_generation(self,dict_gates,gates):
+        func1=''
+        func2=''
+        func3=''
+        function=''
+        flag1=False
+        flag2=False
+        flag3=False
+        flag=False
+        for zone,variables in dict_gates.items():
+            if zone == 2:
+                flag1=True
+                if gates[zone]=='and':
+                    func1+=variables[0]+'.'+variables[1]
+                elif gates[zone]=='or':
+                    func1+=variables[0]+'+'+variables[1]
+                elif gates[zone]=='nand':
+                    func1+='('+variables[0]+'.'+variables[1]+')\''
+                elif gates[zone]=='nor':
+                    func1+='('+variables[0]+'+'+variables[1]+')\''
+                elif gates[zone]=='xor':
+                    func1+=variables[0]+'⊕'+variables[1]
+                elif gates[zone]=='xnor':
+                    func1+='('+variables[0]+'⊕'+variables[1]+')\''
+            elif zone == 3:
+                flag2=True
+                if gates[zone]=='and':
+                    func2+=variables[0]+'.'+variables[1]
+                elif gates[zone]=='or':
+                    func2+=variables[0]+'+'+variables[1]
+                elif gates[zone]=='nand':
+                    func2+='('+variables[0]+'.'+variables[1]+')\''
+                elif gates[zone]=='nor':
+                    func2+='('+variables[0]+'+'+variables[1]+')\''
+                elif gates[zone]=='xor':
+                    func2+=variables[0]+'⊕'+variables[1]
+                elif gates[zone]=='xnor':
+                    func2+='('+variables[0]+'⊕'+variables[1]+')\''
+            elif zone == 4:
+                flag=True
+                if gates[zone]=='and':
+                    func3+=variables[0]+'.'+variables[1]
+                elif gates[zone]=='or':
+                    func3+=variables[0]+'+'+variables[1]
+                elif gates[zone]=='nand':
+                    func3+='('+variables[0]+'.'+variables[1]+')\''
+                elif gates[zone]=='nor':
+                    func3+='('+variables[0]+'+'+variables[1]+')\''
+                elif gates[zone]=='xor':
+                    func3+=variables[0]+'⊕'+variables[1]
+                elif gates[zone]=='xnor':
+                    func3+='('+variables[0]+'⊕'+variables[1]+')\''
 
+        for zone,variables in dict_gates.items():
+            if zone==1:
+                if func1!='' and func2!='' and func3!='':
+                    flag=True
+                    if gates[zone]=='and':
+                        function+='('+func1+').('+func2+').('+func3+')'
+                    if gates[zone]=='or':
+                        function+='('+func1+')+('+func2+')+('+func3+')'
+                    if gates[zone]=='nand':
+                        function+='(('+func1+').('+func2+').('+func3+'))\''
+                    if gates[zone]=='nor':
+                        function+='(('+func1+')+('+func2+')+('+func3+'))\''
+                    if gates[zone]=='xor':
+                        function+='('+func1+')⊕('+func2+')⊕('+func3+')'
+                    if gates[zone]=='xnor':
+                        function+='(('+func1+')⊕('+func2+')⊕('+func3+'))\''
 
+                elif (func1!='' and func2!=''):
+                    flag=True
+                    if gates[zone]=='and':
+                        function+='('+func1+').('+func2+')'
+                    if gates[zone]=='or':
+                        function+='('+func1+')+('+func2+')'
+                    if gates[zone]=='nand':
+                        function+='(('+func1+').('+func2+'))\''
+                    if gates[zone]=='nor':
+                        function+='(('+func1+')+('+func2+'))\''
+                    if gates[zone]=='xor':
+                        function+='('+func1+')⊕('+func2+')'
+                    if gates[zone]=='xnor':
+                        function+='(('+func1+')⊕('+func2+'))\''
+
+                elif (func1!='' and func3!=''):
+                    flag=True
+                    if gates[zone]=='and':
+                        function+='('+func1+').('+func3+')'
+                    if gates[zone]=='or':
+                        function+='('+func1+')+('+func3+')'
+                    if gates[zone]=='nand':
+                        function+='(('+func1+').('+func3+'))\''
+                    if gates[zone]=='nor':
+                        function+='(('+func1+')+('+func3+'))\''
+                    if gates[zone]=='xor':
+                        function+='('+func1+')⊕('+func3+')'
+                    if gates[zone]=='xnor':
+                        function+='(('+func1+')⊕('+func3+'))\''
+
+                elif (func2!='' and func3!=''):
+                    flag=True
+                    if gates[zone]=='and':
+                        function+='('+func3+').('+func2+')'
+                    if gates[zone]=='or':
+                        function+='('+func3+')+('+func2+')'
+                    if gates[zone]=='nand':
+                        function+='(('+func3+').('+func2+'))\''
+                    if gates[zone]=='nor':
+                        function+='(('+func3+')+('+func2+'))\''
+                    if gates[zone]=='xor':
+                        function+='('+func3+')⊕('+func2+')'
+                    if gates[zone]=='xnor':
+                        function+='(('+func3+')⊕('+func2+'))\''
+                
+        if (not flag):
+            return func1+' '+func2+' '+func3
+        else:
+            return function
+
+                
     def run_level(self):
 
         WHITE = (255, 255, 255)
@@ -444,7 +563,7 @@ class level_3:
         user_led_states=[0,0,0,0]
         zones_op = {}
         org_image_count = 0
-        seq=[]
+        seq={}
 
         # Main game loop
         running = True
@@ -565,8 +684,9 @@ class level_3:
 
             # Clear the screen
             self.screen.fill((155, 25, 255))
-            print(dynamic_connections)
+            #print(dynamic_connections)
             present_gates=[i for i in zones_op.keys()]
+            #print(present_gates)
             i=j=k=0
             for i in present_gates:
                 for j in dynamic_connections:
@@ -576,10 +696,11 @@ class level_3:
                             if(k==(i*10+2)):
                                 flag_check=True
                                 break
-                        #if flag_check: Existing logic to be written
-                            
+                        if flag_check:
+                            seq[i]=(dynamic_connections[dynamic_connections.index(i*10+1)+1],dynamic_connections[dynamic_connections.index(i*10+2)+1])    
 
-
+            print(seq)
+            print(self.canonical_function_generation(seq,zones_op))
             dynamic_output=self.functional_output(zones_op)
             j=0
             for i in dynamic_output:
