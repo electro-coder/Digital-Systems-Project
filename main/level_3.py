@@ -325,7 +325,7 @@ class level_3:
 
         for zone,variables in dict_gates.items():
             if zone==1:
-                if  (len(variables[0])==6):
+                if (len(variables[0])==6):
                     if func1!='' and func2!='' and func3!='':
                         flag=True
                         if gates[zone]=='and':
@@ -341,7 +341,7 @@ class level_3:
                         if gates[zone]=='xnor':
                             function+='(('+func1+')⊕('+func2+')⊕('+func3+'))\''
 
-                elif  (len(variables[0])==4):
+                elif (len(variables[0])==4):
                     if (func1!='' and func2!=''):
                         flag=True
                         if gates[zone]=='and':
