@@ -2,7 +2,8 @@ import pygame
 import sys
 from level_1 import level_1
 from level_2 import level_2
-#import level_3
+from level_3 import level_3
+from main_start_screen import StartScreen
 
 # Constants
 WINDOW_WIDTH = 800
@@ -15,8 +16,7 @@ class Manager:
     def __init__(self,screen):
         self.screen=screen
         self.current_state="start_screen"
-        self.level1=level_1(self.screen)
-        self.level2=level_2(self.screen)
+        self.start_screen=StartScreen(800,600)
 
     def display_rules(self):
         screen.fill((255,255,0))
@@ -47,52 +47,94 @@ class Manager:
                     waiting=False
 
         # Main loop
-        running = True
-        while running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
+        try:
+            running = True
+            while running:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        running = False
 
-            # Clear the screen
-            if self.current_state == "start_screen":
-                screen.fill(START_SCREEN_COLOR)
-                start_text = font.render("Press Space to Start", True, LEVEL_WIN_COLOR)
-                text_rect = start_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
-                screen.blit(start_text, text_rect)
+                # Clear the screen
+                if self.current_state == "start_screen":
+                    # screen.fill(START_SCREEN_COLOR)
+                    # start_text = font.render("Press Space to Start", True, LEVEL_WIN_COLOR)
+                    # text_rect = start_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
+                    # screen.blit(start_text, text_rect)
+                    result=self.start_screen.run()
 
-                keys = pygame.key.get_pressed()
-                if keys[pygame.K_SPACE]:
-                    self.current_state = "level_1"
+                    #keys = pygame.key.get_pressed()
+                    #if keys[pygame.K_SPACE]:
+                    if result:
+                        self.current_state = "level_1"
 
-            elif self.current_state == "level_1":
-                level_result = self.level1.run_level()
+                elif self.current_state == "level_1":
+                    self.level1=level_1(self.screen)
+                    level_result = self.level1.run_level()
 
-                if level_result == True:
-                    self.current_state = "level_2"
-                elif level_result == False:
-                    self.current_state = "game_over"
+                    if level_result == True:
+                        self.current_state = "level_2"
+                    elif level_result == False:
+                        self.current_state = "game_over"
 
-            elif self.current_state == "level_2":
-                level_result = self.level2.run_level()
+                elif self.current_state == "level_2":
+                    self.level2=level_2(self.screen)
+                    level_result = self.level2.run_level()
+                    if level_result == True:
+                        self.
+                    elif level_result == False:
+                        self.current_state = "level_3"
+                        
+                elif self.current_state=="level_3":
+                    self.level3=level_3(self.screen)
+                    level_result=self.level3.run_level(self.screen)
+                    if level_result:
+                        self.current_state=True
+                    else:
+                        self.current_state="game_over"
 
-                if level_result == True:
-                    self.current_state = True
-                elif level_result == False:
-                    self.current_state = "game_over"
+                elif self.current_state == True:
+                    screen.fill(LEVEL_WIN_COLOR)
+                    win_text = font.render("You Won!", True, START_SCREEN_COLOR)
+                    text_rect = win_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
+                    screen.blit(win_text, text_rect)
 
-            elif self.current_state == True:
-                screen.fill(LEVEL_WIN_COLOR)
-                win_text = font.render("You Won!", True, START_SCREEN_COLOR)
-                text_rect = win_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
-                screen.blit(win_text, text_rect)
+                elif self.current_state == "game_over":
+                    screen.fill(LEVEL_WIN_COLOR)
+                    game_over_text = font.render("Game Over", True, START_SCREEN_COLOR)
+                    text_rect = game_over_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
+                    screen.blit(game_over_text, text_rect)
 
-            elif self.current_state == "game_over":
-                screen.fill(LEVEL_WIN_COLOR)
-                game_over_text = font.render("Game Over", True, START_SCREEN_COLOR)
-                text_rect = game_over_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
-                screen.blit(game_over_text, text_rect)
+                pygame.display.flip()
 
+        except FileNotFoundError:
+            font = pygame.font.Font(None, 36)
+            error_text = font.render(f"Sorry, we couldn't locate the path of a file !", True, (255, 0, 0))
+            error_rect = error_text.get_rect(center=(400,300))
+            self.screen.blit(error_text, error_rect)
             pygame.display.flip()
+            waiting = True
+            while waiting:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
+                        pygame.quit()
+                        sys.exit()
+                    elif event.type == pygame.KEYDOWN or event.type == pygame.MOUSEBUTTONDOWN:
+                        waiting = False
+
+        except Exception as e:
+            font = pygame.font.Font(None, 36)
+            error_text = font.render(f"An Unexpected error: {e} has occured. Please restart the game!", True, (255, 0, 0))
+            error_rect = error_text.get_rect(center=(400,300))
+            self.screen.blit(error_text, error_rect)
+            pygame.display.flip()
+            waiting = True
+            while waiting:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
+                        pygame.quit()
+                        sys.exit()
+                    elif event.type == pygame.KEYDOWN or event.type == pygame.MOUSEBUTTONDOWN:
+                        waiting = False
 
         # Quit Pygame
         pygame.quit()

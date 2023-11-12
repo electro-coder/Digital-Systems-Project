@@ -44,6 +44,7 @@ class StartScreen:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         running = False
+                        return True
 
             self.screen.blit(self.background, (0, 0))
 
