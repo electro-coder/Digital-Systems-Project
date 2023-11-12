@@ -38,7 +38,7 @@ class Button:
         if self.level_1_inst:
             return self.level_1_inst.functional_output(gates)
 
-class level_1_up:
+class level_1:
     def __init__(self,screen):
 
         #initialize Pygame
@@ -648,7 +648,7 @@ class level_1_up:
 if __name__=="__main__":
     pygame.init()
     screen=pygame.display.set_mode((800,600))
-    level1=level_1_up(screen)
+    level1=level_1(screen)
     level1.run_level()
 
 

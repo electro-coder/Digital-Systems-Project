@@ -1,6 +1,6 @@
 import pygame
 import sys
-from level_1 import level_1
+from level_1_func import level_1
 from level_2 import level_2
 from level_3 import level_3
 from main_start_screen import StartScreen
@@ -45,7 +45,7 @@ class Manager:
                     sys.exit()
                 if event.type==pygame.KEYDOWN:
                     waiting=False
-
+        font = pygame.font.Font("freesansbold.ttf", 36)
         # Main loop
         try:
             running = True
@@ -80,10 +80,10 @@ class Manager:
                     self.level2=level_2(self.screen)
                     level_result = self.level2.run_level()
                     if level_result == True:
-                        self.
-                    elif level_result == False:
                         self.current_state = "level_3"
-                        
+                    elif level_result == False:
+                        self.current_state = "game_over"
+
                 elif self.current_state=="level_3":
                     self.level3=level_3(self.screen)
                     level_result=self.level3.run_level(self.screen)
@@ -107,7 +107,7 @@ class Manager:
                 pygame.display.flip()
 
         except FileNotFoundError:
-            font = pygame.font.Font(None, 36)
+            font = pygame.font.Font("freesansbold.ttf", 20)
             error_text = font.render(f"Sorry, we couldn't locate the path of a file !", True, (255, 0, 0))
             error_rect = error_text.get_rect(center=(400,300))
             self.screen.blit(error_text, error_rect)
@@ -122,7 +122,7 @@ class Manager:
                         waiting = False
 
         except Exception as e:
-            font = pygame.font.Font(None, 36)
+            font = pygame.font.Font('freesansbold.ttf', 20)
             error_text = font.render(f"An Unexpected error: {e} has occured. Please restart the game!", True, (255, 0, 0))
             error_rect = error_text.get_rect(center=(400,300))
             self.screen.blit(error_text, error_rect)
