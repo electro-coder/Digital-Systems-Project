@@ -48,6 +48,15 @@ class level_1_up:
         self.screen=screen
         pygame.display.set_caption("CodeDiffuse Level 1")
 
+        path_background="../Resources/background1.png"
+
+        try:
+            self.background=pygame.image.load(path_background)
+        except(FileNotFoundError):
+            self.background=pygame.image.load(path_background.replace("..","."))
+
+        self.background = pygame.transform.scale(self.background, (800, 600))
+
     def functional_output(self,gates,led_states,dropzone_rect):
         and_gate=None
         or_gate=None
@@ -266,8 +275,10 @@ class level_1_up:
         return output
 
     def run_level(self):
+
         WHITE = (255, 255, 255)
         DROPZONE_COLOR = (0, 255, 0)
+        ZONE_COLOR = (200,200,100)
         IMAGE_SIZE = (50, 50)
         CIRCLE_COLOR_ON = (255, 255, 0)
         CIRCLE_COLOR_OFF=(255,255,255)
@@ -283,7 +294,7 @@ class level_1_up:
         LINE_WIDTH=2
         lines=[]
         selected_dot=None
-        dots_coord=[(220,135),(220,235),(220,335),(220,435),(300,185),(300,385),(450,285),(370,185),(370,385)]
+        dots_coord=[(220,135),(220,235),(220,335),(220,435),(450,295)]
     
         path_or="../Resources/or.png"
         path_and="../Resources/and.png"
@@ -401,9 +412,9 @@ class level_1_up:
         image_original_rect = [image1_rect.copy(), image2_rect.copy(), image3_rect.copy(), image4_rect.copy(),
                                image5_rect.copy(), image6_rect.copy()]
         # Create drop zones
-        dropzone_rect2 = pygame.Rect(300, 150, 70, 70)
-        dropzone_rect3 = pygame.Rect(300, 350, 70, 70)
-        dropzone_rect1 = pygame.Rect(450, 250, 70, 70)
+        #dropzone_rect2 = pygame.Rect(300, 150, 70, 70)
+        #dropzone_rect3 = pygame.Rect(300, 350, 70, 70)
+        dropzone_rect1 = pygame.Rect(450, 250, 100, 90)
         dropzone_rect4 = pygame.Rect(150, 100, 70, 70)
         zone_rect5 = pygame.Rect(150, 200, 70, 70)
         zone_rect6 = pygame.Rect(150, 300, 70, 70)
@@ -430,8 +441,6 @@ class level_1_up:
         
         # Dictionary to keep track of which image is in which drop zone
         dropzone_contents = {tuple(dropzone_rect1.topleft): None,
-                            tuple(dropzone_rect2.topleft): None,
-                            tuple(dropzone_rect3.topleft): None,
                             tuple(dropzone_rect4.topleft): None,
                             tuple(dropzone_rect7.topleft): None}
         
@@ -458,6 +467,7 @@ class level_1_up:
         counter=0 #Level_1 will have a limit of 5 submits
 
         while running:
+            
             # Randomized LED states
             if visible:
                 random_number=random.randint(0,3)
@@ -526,7 +536,7 @@ class level_1_up:
                 if event.type == pygame.MOUSEBUTTONUP:
                     if dragging is not None:
                         img, img_rect, in_dropzone, img_id, img_code = dragging
-                        drop_zones = [dropzone_rect1, dropzone_rect2, dropzone_rect3]
+                        drop_zones = [dropzone_rect1]
 
                         # Check if any of the drop zones is empty, and drop the image if one is
                         for i, dropzone_rect in enumerate(drop_zones):
@@ -553,7 +563,8 @@ class level_1_up:
                         dragging = None
 
             # Clear the screen
-            self.screen.fill((155, 0, 255))
+            #self.screen.fill((155, 0, 255))
+            self.screen.blit(self.background, (0, 0))
 
             dynamic_output=self.functional_output(zones_op)
             j=0
@@ -586,24 +597,32 @@ class level_1_up:
 
             #drawing the rectangles
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect1)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect2)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect3)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect4)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, zone_rect5)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, zone_rect6)
-            pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect7)
+            #pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect2)
+            #pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect3)
+            pygame.draw.rect(self.screen, ZONE_COLOR, dropzone_rect4)
+            pygame.draw.rect(self.screen, ZONE_COLOR, zone_rect5)
+            pygame.draw.rect(self.screen, ZONE_COLOR, zone_rect6)
+            pygame.draw.rect(self.screen, ZONE_COLOR, dropzone_rect7)
 
+
+            font_="../Resources/text/Chakra_Petch/ChakraPetch-Medium.ttf"
+
+            try:
             #text of X, X' and Y, Y'
-            font=pygame.font.Font('freesansbold.ttf',40)
-            self.screen.blit(font.render("X",True,(0,0,0)),(170,120))
-            self.screen.blit(font.render("Y",True,(0,0,0)),(170,320))
-            self.screen.blit(font.render("X'",True,(0,0,0)),(170,220))
-            self.screen.blit(font.render("Y'",True,(0,0,0)),(170,420))
+                font=pygame.font.Font(font_,40)
+            except(FileNotFoundError):
+                font=pygame.font.Font(font_.replace("..","."),40)
+
+            self.screen.blit(font.render("X",True,(0,0,0)),(170,110))
+            self.screen.blit(font.render("Y",True,(0,0,0)),(170,310))
+            self.screen.blit(font.render("X'",True,(0,0,0)),(170,210))
+            self.screen.blit(font.render("Y'",True,(0,0,0)),(170,410))
+
 
             for img, img_rect, in_dropzone, img_id, img_code in images:
                 self.screen.blit(img, img_rect)
                 if in_dropzone:
-                    pygame.draw.rect(self.screen, DROPZONE_COLOR, img_rect, 2)  # Add a border to indicate in the drop zone
+                   pygame.draw.rect(self.screen, DROPZONE_COLOR, img_rect, 2)  # Add a border to indicate in the drop zone
 
             submit_button.update(pygame.mouse.get_pos())
             submit_button.draw(self.screen)
