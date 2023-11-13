@@ -280,7 +280,8 @@ class level_2_up:
         LINE_WIDTH=2
         lines=[]
         selected_dot=None
-        dots_coord=[(220,135),(220,235),(220,335),(220,435),(450,280),(450,310)]
+        dots_coord=[(220,135),(220,235),(220,335),(220,435),(450,280),(450,310),(300,170),(300,220),(300,370),(300,420),(400,195),
+                    (400,395),(370,185),(370,385)]
         dynamic_connections=[]
         # dynamic_verification={41:(300,173),42:(300,197),21:(300,273),22:(300,297),31:(300,373),32:(300,397),43:(370,185),23:(370,285),33:(370,385),11:(500,267),12:(500,285),13:(500,303)}
         dynamic_verification={11:(450,280),12:(450,310)}
@@ -403,8 +404,8 @@ class level_2_up:
         image_original_rect = [image1_rect.copy(), image2_rect.copy(), image3_rect.copy(), image4_rect.copy(),
                                image5_rect.copy(), image6_rect.copy()]
         # Create drop zones
-        dropzone_rect2 = pygame.Rect(300, 150, 70, 70)
-        dropzone_rect3 = pygame.Rect(300, 350, 70, 70)
+        dropzone_rect2 = pygame.Rect(300, 150, 100, 90)
+        dropzone_rect3 = pygame.Rect(300, 350, 100, 90)
         dropzone_rect1 = pygame.Rect(450, 250, 100, 90)
         dropzone_rect4 = pygame.Rect(150, 100, 70, 70)
         zone_rect5 = pygame.Rect(150, 200, 70, 70)
@@ -432,8 +433,8 @@ class level_2_up:
         
         # Dictionary to keep track of which image is in which drop zone
         dropzone_contents = {tuple(dropzone_rect1.topleft): None,
-                            tuple(dropzone_rect4.topleft): None,
-                            tuple(dropzone_rect7.topleft): None}
+                            tuple(dropzone_rect2.topleft): None,
+                            tuple(dropzone_rect3.topleft): None}
         
         clock = pygame.time.Clock()
         blink_interval = 0  # milliseconds
@@ -583,7 +584,7 @@ class level_2_up:
             elapsed_time = (pygame.time.get_ticks())
             seconds = elapsed_time // 1000  # Convert milliseconds to seconds
             seconds_remaining = total_time - (elapsed_time // 1000)
-            pygame.draw.rect(self.screen,(128,128,128) ,((290,90),(200,400)))
+            
             #timer text
             timer_text = TIMER_FONT.render(f"Remaining Time : {seconds_remaining} seconds", True, (0,0,0))
             self.screen.blit(timer_text, (250, 550))
