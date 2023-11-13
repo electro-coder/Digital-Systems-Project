@@ -488,35 +488,35 @@ class level_3:
 
 
         # Initial positions of images
-        image1_rect = image1.get_rect(topleft=(50, 25))
-        image1_1_rect = image1.get_rect(topleft=(50, 25))
-        image1_2_rect = image1.get_rect(topleft=(50, 25))
-        image1_3_rect = image1.get_rect(topleft=(50, 25))
+        image1_rect = image1.get_rect(topleft=(30, 10))
+        image1_1_rect = image1.get_rect(topleft=(30, 10))
+        image1_2_rect = image1.get_rect(topleft=(30, 10))
+        image1_3_rect = image1.get_rect(topleft=(30, 10))
 
-        image2_rect = image2.get_rect(topleft=(140, 25))
-        image2_1_rect = image2.get_rect(topleft=(140, 25))
-        image2_2_rect = image2.get_rect(topleft=(140, 25))
-        image2_3_rect = image2.get_rect(topleft=(140, 25))
+        image2_rect = image2.get_rect(topleft=(145, 10))
+        image2_1_rect = image2.get_rect(topleft=(145, 10))
+        image2_2_rect = image2.get_rect(topleft=(145, 10))
+        image2_3_rect = image2.get_rect(topleft=(145, 10))
 
-        image3_rect = image3.get_rect(topleft=(230, 25))
-        image3_1_rect = image3.get_rect(topleft=(230, 25))
-        image3_2_rect = image3.get_rect(topleft=(230, 25))
-        image3_3_rect = image3.get_rect(topleft=(230, 25))
+        image3_rect = image3.get_rect(topleft=(260, 10))
+        image3_1_rect = image3.get_rect(topleft=(260, 10))
+        image3_2_rect = image3.get_rect(topleft=(260, 10))
+        image3_3_rect = image3.get_rect(topleft=(260, 10))
 
-        image4_rect = image4.get_rect(topleft=(350, 25))
-        image4_1_rect = image4.get_rect(topleft=(350, 25))
-        image4_2_rect = image4.get_rect(topleft=(350, 25))
-        image4_3_rect = image4.get_rect(topleft=(350, 25))
+        image4_rect = image4.get_rect(topleft=(380, 10))
+        image4_1_rect = image4.get_rect(topleft=(380, 10))
+        image4_2_rect = image4.get_rect(topleft=(380, 10))
+        image4_3_rect = image4.get_rect(topleft=(380, 10))
 
-        image5_rect = image5.get_rect(topleft=(460, 25))
-        image5_1_rect = image5.get_rect(topleft=(460, 25))
-        image5_2_rect = image5.get_rect(topleft=(460, 25))
-        image5_3_rect = image5.get_rect(topleft=(460, 25))
+        image5_rect = image5.get_rect(topleft=(500, 10))
+        image5_1_rect = image5.get_rect(topleft=(500, 10))
+        image5_2_rect = image5.get_rect(topleft=(500, 10))
+        image5_3_rect = image5.get_rect(topleft=(500, 10))
 
-        image6_rect = image6.get_rect(topleft=(590, 25))
-        image6_1_rect = image6.get_rect(topleft=(590, 25))
-        image6_2_rect = image6.get_rect(topleft=(590, 25))
-        image6_3_rect = image6.get_rect(topleft=(590, 25))
+        image6_rect = image6.get_rect(topleft=(620, 10))
+        image6_1_rect = image6.get_rect(topleft=(620, 10))
+        image6_2_rect = image6.get_rect(topleft=(620, 10))
+        image6_3_rect = image6.get_rect(topleft=(620, 10))
 
 
 
