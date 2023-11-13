@@ -199,36 +199,37 @@ class level_1:
             out_xnor=None
 
             for zone in sorted(gates,reverse=True):
-                    x,y=self.var(a,b,seq[zone])
-                    if zone==1:
-                        if gates[zone]=='and':
-                            and_gate=ANDGate(x,y)
-                            out_and=and_gate.set_input()
-                            inputs.append(out_and)
-                        elif gates[zone]=='or':
-                            or_gate=ORGate(x,y)
-                            out_or=or_gate.set_input()
-                            inputs.append(out_or)
-                        elif gates[zone]=='not':
-                            not_gate=NOTGate(x)
-                            out_not=not_gate.set_input()
-                            inputs.append(out_not)
-                        elif gates[zone]=='nand':
-                            nand_gate=NANDGate(x,y)
-                            out_nand=nand_gate.set_input()
-                            inputs.append(out_nand)
-                        elif gates[zone]=='nor':
-                            nor_gate=NORGate(x,y)
-                            out_nor=nor_gate.set_input()
-                            inputs.append(out_nor)
-                        elif gates[zone]=='xor':
-                            xor_gate=XORGate(x,y)
-                            out_xor=xor_gate.set_input()
-                            inputs.append(out_xor)
-                        elif gates[zone]=='xnor':
-                            xnor_gate=XNORGate(x,y)
-                            out_xnor=xnor_gate.set_input()
-                            inputs.append(out_xnor)
+                    if zone in seq:
+                        x,y=self.var(a,b,seq[zone])
+                        if zone==1:
+                            if gates[zone]=='and':
+                                and_gate=ANDGate(x,y)
+                                out_and=and_gate.set_input()
+                                inputs.append(out_and)
+                            elif gates[zone]=='or':
+                                or_gate=ORGate(x,y)
+                                out_or=or_gate.set_input()
+                                inputs.append(out_or)
+                            elif gates[zone]=='not':
+                                not_gate=NOTGate(x)
+                                out_not=not_gate.set_input()
+                                inputs.append(out_not)
+                            elif gates[zone]=='nand':
+                                nand_gate=NANDGate(x,y)
+                                out_nand=nand_gate.set_input()
+                                inputs.append(out_nand)
+                            elif gates[zone]=='nor':
+                                nor_gate=NORGate(x,y)
+                                out_nor=nor_gate.set_input()
+                                inputs.append(out_nor)
+                            elif gates[zone]=='xor':
+                                xor_gate=XORGate(x,y)
+                                out_xor=xor_gate.set_input()
+                                inputs.append(out_xor)
+                            elif gates[zone]=='xnor':
+                                xnor_gate=XNORGate(x,y)
+                                out_xnor=xnor_gate.set_input()
+                                inputs.append(out_xnor)
 
         return inputs
     
