@@ -31,12 +31,12 @@ class Button:
         else:
             self.hovered = False
 
-    def click(self,gates):
+    def click(self,gates,seq):
         if self.action:
             self.action()
 
         if self.level_1_inst:
-            return self.level_1_inst.functional_output(gates)
+            return self.level_1_inst.functional_output(gates,seq)
 
 class level_1:
     def __init__(self,screen):
@@ -293,7 +293,7 @@ class level_1:
         flag3=False
         flag=False
         for zone,variables in dict_gates.items():
-            if zone == 2:
+            if zone == 1:
                 flag1=True
                 if gates[zone]=='and':
                     func1+=variables[0]+'.'+variables[1]
@@ -307,103 +307,8 @@ class level_1:
                     func1+=variables[0]+'⊕'+variables[1]
                 elif gates[zone]=='xnor':
                     func1+='('+variables[0]+'⊕'+variables[1]+')\''
-            elif zone == 3:
-                flag2=True
-                if gates[zone]=='and':
-                    func2+=variables[0]+'.'+variables[1]
-                elif gates[zone]=='or':
-                    func2+=variables[0]+'+'+variables[1]
-                elif gates[zone]=='nand':
-                    func2+='('+variables[0]+'.'+variables[1]+')\''
-                elif gates[zone]=='nor':
-                    func2+='('+variables[0]+'+'+variables[1]+')\''
-                elif gates[zone]=='xor':
-                    func2+=variables[0]+'⊕'+variables[1]
-                elif gates[zone]=='xnor':
-                    func2+='('+variables[0]+'⊕'+variables[1]+')\''
-            elif zone == 4:
-                flag=True
-                if gates[zone]=='and':
-                    func3+=variables[0]+'.'+variables[1]
-                elif gates[zone]=='or':
-                    func3+=variables[0]+'+'+variables[1]
-                elif gates[zone]=='nand':
-                    func3+='('+variables[0]+'.'+variables[1]+')\''
-                elif gates[zone]=='nor':
-                    func3+='('+variables[0]+'+'+variables[1]+')\''
-                elif gates[zone]=='xor':
-                    func3+=variables[0]+'⊕'+variables[1]
-                elif gates[zone]=='xnor':
-                    func3+='('+variables[0]+'⊕'+variables[1]+')\''
-
-        for zone,variables in dict_gates.items():
-            if zone==1:
-                if (len(variables[0])==6):
-                    if func1!='' and func2!='' and func3!='':
-                        flag=True
-                        if gates[zone]=='and':
-                            function+='('+func1+').('+func2+').('+func3+')'
-                        if gates[zone]=='or':
-                            function+='('+func1+')+('+func2+')+('+func3+')'
-                        if gates[zone]=='nand':
-                            function+='(('+func1+').('+func2+').('+func3+'))\''
-                        if gates[zone]=='nor':
-                            function+='(('+func1+')+('+func2+')+('+func3+'))\''
-                        if gates[zone]=='xor':
-                            function+='('+func1+')⊕('+func2+')⊕('+func3+')'
-                        if gates[zone]=='xnor':
-                            function+='(('+func1+')⊕('+func2+')⊕('+func3+'))\''
-
-                elif (len(variables[0])==4):
-                    if (func1!='' and func2!=''):
-                        flag=True
-                        if gates[zone]=='and':
-                            function+='('+func1+').('+func2+')'
-                        if gates[zone]=='or':
-                            function+='('+func1+')+('+func2+')'
-                        if gates[zone]=='nand':
-                            function+='(('+func1+').('+func2+'))\''
-                        if gates[zone]=='nor':
-                            function+='(('+func1+')+('+func2+'))\''
-                        if gates[zone]=='xor':
-                            function+='('+func1+')⊕('+func2+')'
-                        if gates[zone]=='xnor':
-                            function+='(('+func1+')⊕('+func2+'))\''
-
-                    elif (func1!='' and func3!=''):
-                        flag=True
-                        if gates[zone]=='and':
-                            function+='('+func1+').('+func3+')'
-                        if gates[zone]=='or':
-                            function+='('+func1+')+('+func3+')'
-                        if gates[zone]=='nand':
-                            function+='(('+func1+').('+func3+'))\''
-                        if gates[zone]=='nor':
-                            function+='(('+func1+')+('+func3+'))\''
-                        if gates[zone]=='xor':
-                            function+='('+func1+')⊕('+func3+')'
-                        if gates[zone]=='xnor':
-                            function+='(('+func1+')⊕('+func3+'))\''
-
-                    elif (func2!='' and func3!=''):
-                        flag=True
-                        if gates[zone]=='and':
-                            function+='('+func3+').('+func2+')'
-                        if gates[zone]=='or':
-                            function+='('+func3+')+('+func2+')'
-                        if gates[zone]=='nand':
-                            function+='(('+func3+').('+func2+'))\''
-                        if gates[zone]=='nor':
-                            function+='(('+func3+')+('+func2+'))\''
-                        if gates[zone]=='xor':
-                            function+='('+func3+')⊕('+func2+')'
-                        if gates[zone]=='xnor':
-                            function+='(('+func3+')⊕('+func2+'))\''
                 
-        if (not flag):
-            return func1+'      '+func2+'       '+func3
-        else:
-            return function
+        return func1
 
     def run_level(self):
 
@@ -427,7 +332,9 @@ class level_1:
         selected_dot=None
         dots_coord=[(220,135),(220,235),(220,335),(220,435),(450,280),(450,310)]
         dynamic_connections=[]
-        dynamic_verification={41:(300,173),42:(300,197),21:(300,273),22:(300,297),31:(300,373),32:(300,397),43:(370,185),23:(370,285),33:(370,385),11:(500,267),12:(500,285),13:(500,303)}
+        # dynamic_verification={41:(300,173),42:(300,197),21:(300,273),22:(300,297),31:(300,373),32:(300,397),43:(370,185),23:(370,285),33:(370,385),11:(500,267),12:(500,285),13:(500,303)}
+        dynamic_verification={11:(450,280),12:(450,310)}
+
         variables={'x':(220,135),'x\'':(220,235),'y':(220,335),'y\'':(220,435),'11':(450,280),'12':(450,310)}
     
         path_or="../Resources/or.png"
@@ -619,7 +526,7 @@ class level_1:
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if submit_button.rect.collidepoint(event.pos):
-                        final_output=[int(i) for i in submit_button.click(zones_op)]
+                        final_output=[int(i) for i in submit_button.click(zones_op,seq)]
                         print(final_output)
                         if(final_output==led_states):
                             return True
@@ -817,7 +724,7 @@ class level_1:
 
         # Quit Pygame
         print(zones_op)
-        output=self.functional_output(zones_op)
+        output=self.functional_output(zones_op,seq)
         for i in output:
             print(int(i),end=' ')
         pygame.quit()
