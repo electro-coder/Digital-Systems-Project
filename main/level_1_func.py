@@ -304,7 +304,7 @@ class level_1:
                 elif gates[zone]=='nor':
                     func1+='('+variables[0]+'+'+variables[1]+')\''
                 elif gates[zone]=='xor':
-                    func1+=variables[0]+'⊕'+variables[1]
+                    func1+=variables[0]+' ⊕ '+variables[1]
                 elif gates[zone]=='xnor':
                     func1+='('+variables[0]+'⊕'+variables[1]+')\''
                 
@@ -634,12 +634,12 @@ class level_1:
             for i in present_gates:
                 i_out=''
                 for j in dynamic_connections:
-                    if i==1:
-                        if(j==23 or j==33 or j==43):
-                            i_out+=dynamic_connections[dynamic_connections.index(j)+1]
-                        seq[i]=(i_out,0)
+                    # if i==1:
+                    #     if(j==11 or j==12):
+                    #         i_out+=dynamic_connections[dynamic_connections.index(j)+1]
+                    #     seq[i]=(i_out,0)
                     
-                    else:
+                    #else:
                         if(j==(i*10+1)):
                             flag_check=False
                             for k in dynamic_connections:
@@ -649,6 +649,7 @@ class level_1:
                             if flag_check:
                                 seq[i]=(dynamic_connections[dynamic_connections.index(i*10+1)+1],dynamic_connections[dynamic_connections.index(i*10+2)+1])
 
+            print(seq)
             generated_function=self.canonical_function_generation(seq,zones_op)
             dynamic_output=self.functional_output(zones_op,seq)
             j=0
