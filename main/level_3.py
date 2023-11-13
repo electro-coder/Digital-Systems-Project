@@ -427,96 +427,96 @@ class level_3:
         variables={'x':(220,135),'x\'':(220,235),'y':(220,335),'y\'':(220,435),'11':(500,267),'12':(500,285),'13':(500,303)}
 
         #paths for image files
-        path1="../Resources/or.png"
-        path2="../Resources/and.png"
-        path3="../Resources/not.png"
-        path4="../Resources/nand.png"
-        path5="../Resources/xor.png"
-        path6="../Resources/nor.png"
+        path_or="../Resources/or.png"
+        path_and="../Resources/and.png"
+        path_not="../Resources/not.png"
+        path_nand="../Resources/nand.png"
+        path_xor="../Resources/xor.png"
+        path_nor="../Resources/nor.png"
 
         try:
-            image1 = pygame.image.load(path1)  # Replace with your image file
-            image1_1 = pygame.image.load(path1)  # Replace with your image file
-            image1_2 = pygame.image.load(path1)  # Replace with your image file
-            image1_3 = pygame.image.load(path1)  # Replace with your image file
-            image2 = pygame.image.load(path2)  # Replace with your image file
-            image2_1 = pygame.image.load(path2)  # Replace with your image file
-            image2_2 = pygame.image.load(path2)  # Replace with your image file
-            image2_3 = pygame.image.load(path2)  # Replace with your image file
-            image3 = pygame.image.load(path3)  # Replace with your image file
-            image3_1 = pygame.image.load(path3)  # Replace with your image file
-            image3_2 = pygame.image.load(path3)  # Replace with your image file
-            image3_3 = pygame.image.load(path3)  # Replace with your image file
-            image4 = pygame.image.load(path4)  # Replace with your image file
-            image4_1 = pygame.image.load(path4)  # Replace with your image file
-            image4_2 = pygame.image.load(path4)  # Replace with your image file
-            image4_3 = pygame.image.load(path4)  # Replace with your image file
-            image5 = pygame.image.load(path5)  # Replace with your image file
-            image5_1 = pygame.image.load(path5)  # Replace with your image file
-            image5_2 = pygame.image.load(path5)  # Replace with your image file
-            image5_3 = pygame.image.load(path5)  # Replace with your image file
-            image6 = pygame.image.load(path6)  # Replace with your image file
-            image6_1 = pygame.image.load(path6)  # Replace with your image file
-            image6_2 = pygame.image.load(path6)  # Replace with your image file
-            image6_3 = pygame.image.load(path6)  # Replace with your image file
+            image1 = pygame.image.load(path_or)  # Replace with your image file
+            image1_1 = pygame.image.load(path_or)  # Replace with your image file
+            image1_2 = pygame.image.load(path_or)  # Replace with your image file
+            image1_3 = pygame.image.load(path_or)  # Replace with your image file
+            image2 = pygame.image.load(path_and)  # Replace with your image file
+            image2_1 = pygame.image.load(path_and)  # Replace with your image file
+            image2_2 = pygame.image.load(path_and)  # Replace with your image file
+            image2_3 = pygame.image.load(path_and)  # Replace with your image file
+            image3 = pygame.image.load(path_not)  # Replace with your image file
+            image3_1 = pygame.image.load(path_not)  # Replace with your image file
+            image3_2 = pygame.image.load(path_not)  # Replace with your image file
+            image3_3 = pygame.image.load(path_not)  # Replace with your image file
+            image4 = pygame.image.load(path_nand)  # Replace with your image file
+            image4_1 = pygame.image.load(path_nand)  # Replace with your image file
+            image4_2 = pygame.image.load(path_nand)  # Replace with your image file
+            image4_3 = pygame.image.load(path_nand)  # Replace with your image file
+            image5 = pygame.image.load(path_xor)  # Replace with your image file
+            image5_1 = pygame.image.load(path_xor)  # Replace with your image file
+            image5_2 = pygame.image.load(path_xor)  # Replace with your image file
+            image5_3 = pygame.image.load(path_xor)  # Replace with your image file
+            image6 = pygame.image.load(path_nor)  # Replace with your image file
+            image6_1 = pygame.image.load(path_nor)  # Replace with your image file
+            image6_2 = pygame.image.load(path_nor)  # Replace with your image file
+            image6_3 = pygame.image.load(path_nor)  # Replace with your image file
 
         except(FileNotFoundError):
-            image1 = pygame.image.load(path1.replace("..","."))  # Replace with your image file
-            image1_1 = pygame.image.load(path1.replace("..","."))  # Replace with your image file
-            image1_2 = pygame.image.load(path1.replace("..","."))  # Replace with your image file
-            image1_3 = pygame.image.load(path1.replace("..","."))  # Replace with your image file
-            image2 = pygame.image.load(path2.replace("..","."))  # Replace with your image file
-            image2_1 = pygame.image.load(path2.replace("..","."))  # Replace with your image file
-            image2_2 = pygame.image.load(path2.replace("..","."))  # Replace with your image file
-            image2_3 = pygame.image.load(path2.replace("..","."))  # Replace with your image file
-            image3 = pygame.image.load(path3.replace("..","."))  # Replace with your image file
-            image3_1 = pygame.image.load(path3.replace("..","."))  # Replace with your image file
-            image3_2 = pygame.image.load(path3.replace("..","."))  # Replace with your image file
-            image3_3 = pygame.image.load(path3.replace("..","."))  # Replace with your image file
-            image4 = pygame.image.load(path4.replace("..","."))  # Replace with your image file
-            image4_1 = pygame.image.load(path4.replace("..","."))  # Replace with your image file
-            image4_2 = pygame.image.load(path4.replace("..","."))  # Replace with your image file
-            image4_3 = pygame.image.load(path4.replace("..","."))  # Replace with your image file
-            image5 = pygame.image.load(path5.replace("..","."))  # Replace with your image file
-            image5_1 = pygame.image.load(path5.replace("..","."))  # Replace with your image file
-            image5_2 = pygame.image.load(path5.replace("..","."))  # Replace with your image file
-            image5_3 = pygame.image.load(path5.replace("..","."))  # Replace with your image file
-            image6 = pygame.image.load(path6.replace("..","."))  # Replace with your image file
-            image6_1 = pygame.image.load(path6.replace("..","."))  # Replace with your image file
-            image6_2 = pygame.image.load(path6.replace("..","."))  # Replace with your image file
-            image6_3 = pygame.image.load(path6.replace("..","."))  # Replace with your image file
+            image1 = pygame.image.load(path_or.replace("..","."))  # Replace with your image file
+            image1_1 = pygame.image.load(path_or.replace("..","."))  # Replace with your image file
+            image1_2 = pygame.image.load(path_or.replace("..","."))  # Replace with your image file
+            image1_3 = pygame.image.load(path_or.replace("..","."))  # Replace with your image file
+            image2 = pygame.image.load(path_and.replace("..","."))  # Replace with your image file
+            image2_1 = pygame.image.load(path_and.replace("..","."))  # Replace with your image file
+            image2_2 = pygame.image.load(path_and.replace("..","."))  # Replace with your image file
+            image2_3 = pygame.image.load(path_and.replace("..","."))  # Replace with your image file
+            image3 = pygame.image.load(path_not.replace("..","."))  # Replace with your image file
+            image3_1 = pygame.image.load(path_not.replace("..","."))  # Replace with your image file
+            image3_2 = pygame.image.load(path_not.replace("..","."))  # Replace with your image file
+            image3_3 = pygame.image.load(path_not.replace("..","."))  # Replace with your image file
+            image4 = pygame.image.load(path_nand.replace("..","."))  # Replace with your image file
+            image4_1 = pygame.image.load(path_nand.replace("..","."))  # Replace with your image file
+            image4_2 = pygame.image.load(path_nand.replace("..","."))  # Replace with your image file
+            image4_3 = pygame.image.load(path_nand.replace("..","."))  # Replace with your image file
+            image5 = pygame.image.load(path_xor.replace("..","."))  # Replace with your image file
+            image5_1 = pygame.image.load(path_xor.replace("..","."))  # Replace with your image file
+            image5_2 = pygame.image.load(path_xor.replace("..","."))  # Replace with your image file
+            image5_3 = pygame.image.load(path_xor.replace("..","."))  # Replace with your image file
+            image6 = pygame.image.load(path_nor.replace("..","."))  # Replace with your image file
+            image6_1 = pygame.image.load(path_nor.replace("..","."))  # Replace with your image file
+            image6_2 = pygame.image.load(path_nor.replace("..","."))  # Replace with your image file
+            image6_3 = pygame.image.load(path_nor.replace("..","."))  # Replace with your image file
 
 
         # Initial positions of images
-        image1_rect = image1.get_rect(topleft=(50, 25))
-        image1_1_rect = image1.get_rect(topleft=(50, 25))
-        image1_2_rect = image1.get_rect(topleft=(50, 25))
-        image1_3_rect = image1.get_rect(topleft=(50, 25))
+        image1_rect = image1.get_rect(topleft=(30, 10))
+        image1_1_rect = image1.get_rect(topleft=(30, 10))
+        image1_2_rect = image1.get_rect(topleft=(30, 10))
+        image1_3_rect = image1.get_rect(topleft=(30, 10))
 
-        image2_rect = image2.get_rect(topleft=(140, 25))
-        image2_1_rect = image2.get_rect(topleft=(140, 25))
-        image2_2_rect = image2.get_rect(topleft=(140, 25))
-        image2_3_rect = image2.get_rect(topleft=(140, 25))
+        image2_rect = image2.get_rect(topleft=(145, 10))
+        image2_1_rect = image2.get_rect(topleft=(145, 10))
+        image2_2_rect = image2.get_rect(topleft=(145, 10))
+        image2_3_rect = image2.get_rect(topleft=(145, 10))
 
-        image3_rect = image3.get_rect(topleft=(230, 25))
-        image3_1_rect = image3.get_rect(topleft=(230, 25))
-        image3_2_rect = image3.get_rect(topleft=(230, 25))
-        image3_3_rect = image3.get_rect(topleft=(230, 25))
+        image3_rect = image3.get_rect(topleft=(260, 10))
+        image3_1_rect = image3.get_rect(topleft=(260, 10))
+        image3_2_rect = image3.get_rect(topleft=(260, 10))
+        image3_3_rect = image3.get_rect(topleft=(260, 10))
 
-        image4_rect = image4.get_rect(topleft=(350, 25))
-        image4_1_rect = image4.get_rect(topleft=(350, 25))
-        image4_2_rect = image4.get_rect(topleft=(350, 25))
-        image4_3_rect = image4.get_rect(topleft=(350, 25))
+        image4_rect = image4.get_rect(topleft=(380, 10))
+        image4_1_rect = image4.get_rect(topleft=(380, 10))
+        image4_2_rect = image4.get_rect(topleft=(380, 10))
+        image4_3_rect = image4.get_rect(topleft=(380, 10))
 
-        image5_rect = image5.get_rect(topleft=(460, 25))
-        image5_1_rect = image5.get_rect(topleft=(460, 25))
-        image5_2_rect = image5.get_rect(topleft=(460, 25))
-        image5_3_rect = image5.get_rect(topleft=(460, 25))
+        image5_rect = image5.get_rect(topleft=(500, 10))
+        image5_1_rect = image5.get_rect(topleft=(500, 10))
+        image5_2_rect = image5.get_rect(topleft=(500, 10))
+        image5_3_rect = image5.get_rect(topleft=(500, 10))
 
-        image6_rect = image6.get_rect(topleft=(590, 25))
-        image6_1_rect = image6.get_rect(topleft=(590, 25))
-        image6_2_rect = image6.get_rect(topleft=(590, 25))
-        image6_3_rect = image6.get_rect(topleft=(590, 25))
+        image6_rect = image6.get_rect(topleft=(620, 10))
+        image6_1_rect = image6.get_rect(topleft=(620, 10))
+        image6_2_rect = image6.get_rect(topleft=(620, 10))
+        image6_3_rect = image6.get_rect(topleft=(620, 10))
 
 
 
@@ -547,12 +547,14 @@ class level_3:
                   (image1_2, image1_2_rect, False,"or",'1'),(image1_3, image1_3_rect, False,"or",'1'),
                 (image2, image2_rect, False,"and",'2'),(image2_1, image2_1_rect, False,"and",'2'),
                   (image2_2, image2_2_rect, False, "and",'2'),(image2_3, image2_3_rect, False,"and",'2'),
-                (image3, image3_rect, False,"nor",'3'),(image3_1, image3_1_rect, False,"nor",'3'),
-                  (image3_2, image3_2_rect, False, "nor",'3'),(image3_3, image3_3_rect, False,"nor",'3'),
-                (image4, image4_rect, False, "xor",'4'),(image4_1, image4_1_rect, False, "xor",'4'),
-                  (image4_2, image4_2_rect, False, "xor",'4'),(image4_3, image4_3_rect, False, "xor",'4'),
-                (image5, image5_rect, False,"nor",'5'),
-                (image6, image6_rect, False,"nor",'6')]
+                (image3, image3_rect, False,"not",'3'),(image3_1, image3_1_rect, False,"not",'3'),
+                  (image3_2, image3_2_rect, False, "not",'3'),(image3_3, image3_3_rect, False,"not",'3'),
+                (image4, image4_rect, False, "nand",'4'),(image4_1, image4_1_rect, False, "nand",'4'),
+                  (image4_2, image4_2_rect, False, "nand",'4'),(image4_3, image4_3_rect, False, "nand",'4'),
+                (image5, image5_rect, False,"xor",'5'),(image5_1, image5_1_rect, False,"xor",'5'),
+                  (image5_2, image5_2_rect, False,"xor",'5'),(image5_3, image5_3_rect, False,"xor",'5'),
+                (image6, image6_rect, False,"nor",'6'),(image6_1, image6_1_rect, False,"nor",'6'),
+                  (image6_2, image6_2_rect, False,"nor",'6'),(image6_3, image6_3_rect, False,"nor",'6')]
 
         # Dictionary to keep track of which image is in which drop zone
         dropzone_contents = {tuple(dropzone_rect1.topleft): None,
