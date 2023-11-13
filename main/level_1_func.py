@@ -187,7 +187,7 @@ class level_1:
         xor_gate=None
         xnor_gate=None
 
-        output=[]
+        inputs=[]
         
         for a,b in states:
             out_and=None
@@ -198,12 +198,9 @@ class level_1:
             out_xor=None
             out_xnor=None
 
-            inputs=[]
-
             for zone in sorted(gates,reverse=True):
-                if zone in seq:
                     x,y=self.var(a,b,seq[zone])
-                    if zone in [2,3,4]:
+                    if zone==1:
                         if gates[zone]=='and':
                             and_gate=ANDGate(x,y)
                             out_and=and_gate.set_input()
@@ -233,55 +230,7 @@ class level_1:
                             out_xnor=xnor_gate.set_input()
                             inputs.append(out_xnor)
 
-                    #print(inputs)
-                    if zone==1:
-                        if len(inputs)==3:
-                            if gates[zone]=='and':
-                                and_gate=ANDGate(inputs[0],inputs[1],inputs[2])
-                                output.append(and_gate.set_input())
-                            elif gates[zone]=='or':
-                                or_gate=ORGate(inputs[0],inputs[1],inputs[2])
-                                output.append(or_gate.set_input())
-                            elif gates[zone]=='not':
-                                not_gate=NOTGate(inputs[0],inputs[1],inputs[2])
-                                output.append(not_gate.set_input(inputs))
-                            elif gates[zone]=='nand':
-                                nand_gate=NANDGate(inputs[0],inputs[1],inputs[2])
-                                output.append(nand_gate.set_input())
-                            elif gates[zone]=='nor':
-                                nor_gate=NORGate(inputs[0],inputs[1],inputs[2])
-                                output.append(nor_gate.set_input())
-                            elif gates[zone]=='xor':
-                                xor_gate=XORGate(inputs[0],inputs[1],inputs[2])
-                                output.append(xor_gate.set_input())
-                            elif gates[zone]=='xnor':
-                                xnor_gate=XNORGate(inputs[0],inputs[1],inputs[2])
-                                output.append(xnor_gate.set_input())
-
-                        elif len(inputs)==2:
-                            if gates[zone]=='and':
-                                and_gate=ANDGate(inputs[0],inputs[1])
-                                output.append(and_gate.set_input())
-                            elif gates[zone]=='or':
-                                or_gate=ORGate(inputs[0],inputs[1])
-                                output.append(or_gate.set_input())
-                            elif gates[zone]=='not':
-                                not_gate=NOTGate(inputs[0],inputs[1])
-                                output.append(not_gate.set_input(inputs))
-                            elif gates[zone]=='nand':
-                                nand_gate=NANDGate(inputs[0],inputs[1])
-                                output.append(nand_gate.set_input())
-                            elif gates[zone]=='nor':
-                                nor_gate=NORGate(inputs[0],inputs[1])
-                                output.append(nor_gate.set_input())
-                            elif gates[zone]=='xor':
-                                xor_gate=XORGate(inputs[0],inputs[1])
-                                output.append(xor_gate.set_input())
-                            elif gates[zone]=='xnor':
-                                xnor_gate=XNORGate(inputs[0],inputs[1])
-                                output.append(xnor_gate.set_input())
-
-        return output
+        return inputs
     
     def canonical_function_generation(self,dict_gates,gates):
         func1=''
@@ -536,12 +485,12 @@ class level_1:
                         if counter==5:
                             return False
                         
-                    if check_button.rect.collidepoint(event.pos):
-                        dynamic_output=[int(i) for i in check_button.click(zones_op)]
-                        print(dynamic_output)
-                        for i,state in enumerate(dynamic_output):
-                            CIRCLE_COLOR=USER_CIRCLE_COLOR_ON if state else USER_CIRCLE_COLOR_OFF
-                            pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[i] , USER_CIRCLE_RADIUS,0)
+                    # if check_button.rect.collidepoint(event.pos):
+                    #     dynamic_output=[int(i) for i in check_button.click(zones_op)]
+                    #     print(dynamic_output)
+                    #     for i,state in enumerate(dynamic_output):
+                    #         CIRCLE_COLOR=USER_CIRCLE_COLOR_ON if state else USER_CIRCLE_COLOR_OFF
+                    #         pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[i] , USER_CIRCLE_RADIUS,0)
                             
                     if event.button == 1:
                         for img, img_rect, in_dropzone, img_id, img_code in images:
@@ -714,8 +663,8 @@ class level_1:
 
             submit_button.update(pygame.mouse.get_pos())
             submit_button.draw(self.screen)
-            check_button.update(pygame.mouse.get_pos())
-            check_button.draw((self.screen))
+            # check_button.update(pygame.mouse.get_pos())
+            # check_button.draw((self.screen))
             clock.tick(60)
             # Update the display
             pygame.display.flip()

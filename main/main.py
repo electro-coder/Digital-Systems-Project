@@ -72,7 +72,7 @@ class Manager:
                     level_result = self.level1.run_level()
 
                     if level_result == True:
-                        self.current_state = "level_2"
+                        self.current_state = "level_3"
                     elif level_result == False:
                         self.current_state = "game_over"
 
@@ -86,7 +86,7 @@ class Manager:
 
                 elif self.current_state=="level_3":
                     self.level3=level_3(self.screen)
-                    level_result=self.level3.run_level(self.screen)
+                    level_result=self.level3.run_level()
                     if level_result:
                         self.current_state=True
                     else:
@@ -126,6 +126,7 @@ class Manager:
             error_text = font.render(f"An Unexpected error: {e} has occured. Please restart the game!", True, (255, 0, 0))
             error_rect = error_text.get_rect(center=(400,300))
             self.screen.blit(error_text, error_rect)
+            print(e)
             pygame.display.flip()
             waiting = True
             while waiting:
