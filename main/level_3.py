@@ -5,14 +5,14 @@ import random
 from logic_gates import ANDGate, ORGate, NOTGate, NANDGate, NORGate, XORGate, XNORGate
 
 class Button:
-    def __init__(self, x, y, width, height, text, color, hover_color, text_color, font,level_1_inst, action=None):
+    def __init__(self, x, y, width, height, text, color, hover_color, text_color, font,level_3_inst, action=None):
         self.rect = pygame.Rect(x, y, width, height)
         self.color = color
         self.hover_color = hover_color
         self.text = text
         self.text_color = text_color
         self.font = font
-        self.level_1_inst=level_1_inst
+        self.level_3_inst=level_3_inst
         self.action = action
         self.hovered = False
 
@@ -32,12 +32,12 @@ class Button:
         else:
             self.hovered = False
 
-    def click(self,gates):
+    def click(self,gates,seq):
         if self.action:
             self.action()
 
-        if self.level_1_inst:
-            return self.level_1_inst.functional_output(gates)
+        if self.level_3_inst:
+            return self.level_3_inst.functional_output(gates,seq)
 
 class level_3:
     def __init__(self,screen):
@@ -601,7 +601,7 @@ class level_3:
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if submit_button.rect.collidepoint(event.pos):
-                        final_output=[int(i) for i in submit_button.click(zones_op)]
+                        final_output=[int(i) for i in submit_button.click(zones_op,seq)]
                         print(final_output)
                         if(final_output==led_states):
                             return True

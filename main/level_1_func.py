@@ -166,8 +166,13 @@ class level_1:
         output=[out_and,out_or,out_not,out_nand,out_nor,out_xor,out_xnor]
         print(output)
 
+    def var(self,x,y,order):
+        if order[0]=="x\'" or order[1]=="x\'": x=not x
+        if order[1]=="y\'" or order[1]=="y\'": y=not y
+        return (x,y)
+
     #overloaded function for testing purposes of output
-    def functional_output(self,gates):
+    def functional_output(self,gates,seq):
 
         states=[[False,False],
                 [False,True],
@@ -184,7 +189,7 @@ class level_1:
 
         output=[]
         
-        for x,y in states:
+        for a,b in states:
             out_and=None
             out_or=None
             out_not=None
@@ -196,83 +201,209 @@ class level_1:
             inputs=[]
 
             for zone in sorted(gates,reverse=True):
-                if zone in [2,3]:
-                    if gates[zone]=='and':
-                        and_gate=ANDGate(x,y)
-                        out_and=and_gate.set_input()
-                        inputs.append(out_and)
-                    elif gates[zone]=='or':
-                        or_gate=ORGate(x,y)
-                        out_or=or_gate.set_input()
-                        inputs.append(out_or)
-                    elif gates[zone]=='not':
-                        if zone==2:
+                if zone in seq:
+                    x,y=self.var(a,b,seq[zone])
+                    if zone in [2,3,4]:
+                        if gates[zone]=='and':
+                            and_gate=ANDGate(x,y)
+                            out_and=and_gate.set_input()
+                            inputs.append(out_and)
+                        elif gates[zone]=='or':
+                            or_gate=ORGate(x,y)
+                            out_or=or_gate.set_input()
+                            inputs.append(out_or)
+                        elif gates[zone]=='not':
                             not_gate=NOTGate(x)
                             out_not=not_gate.set_input()
-                        else:
-                            not_gate=NOTGate(y)
-                            out_not=not_gate.set_input()
-                        inputs.append(out_not)
-                    elif gates[zone]=='nand':
-                        nand_gate=NANDGate(x,y)
-                        out_nand=nand_gate.set_input()
-                        inputs.append(out_nand)
-                    elif gates[zone]=='nor':
-                        nor_gate=NORGate(x,y)
-                        out_nor=nor_gate.set_input()
-                        inputs.append(out_nor)
-                    elif gates[zone]=='xor':
-                        xor_gate=XORGate(x,y)
-                        out_xor=xor_gate.set_input()
-                        inputs.append(out_xor)
-                    elif gates[zone]=='xnor':
-                        xnor_gate=XNORGate(x,y)
-                        out_xnor=xnor_gate.set_input()
-                        inputs.append(out_xnor)
-
-                #print(inputs)
-                if zone==1:
-                    if len(inputs)==3:
-                        if gates[zone]=='and':
-                            and_gate=ANDGate(inputs[0],inputs[1],inputs[2])
-                            output.append(and_gate.set_input())
-                        elif gates[zone]=='or':
-                            or_gate=ORGate(inputs[0],inputs[1],inputs[2])
-                            output.append(or_gate.set_input())
+                            inputs.append(out_not)
                         elif gates[zone]=='nand':
-                            nand_gate=NANDGate(inputs[0],inputs[1],inputs[2])
-                            output.append(nand_gate.set_input())
+                            nand_gate=NANDGate(x,y)
+                            out_nand=nand_gate.set_input()
+                            inputs.append(out_nand)
                         elif gates[zone]=='nor':
-                            nor_gate=NORGate(inputs[0],inputs[1],inputs[2])
-                            output.append(nor_gate.set_input())
+                            nor_gate=NORGate(x,y)
+                            out_nor=nor_gate.set_input()
+                            inputs.append(out_nor)
                         elif gates[zone]=='xor':
-                            xor_gate=XORGate(inputs[0],inputs[1],inputs[2])
-                            output.append(xor_gate.set_input())
+                            xor_gate=XORGate(x,y)
+                            out_xor=xor_gate.set_input()
+                            inputs.append(out_xor)
                         elif gates[zone]=='xnor':
-                            xnor_gate=XNORGate(inputs[0],inputs[1],inputs[2])
-                            output.append(xnor_gate.set_input())
+                            xnor_gate=XNORGate(x,y)
+                            out_xnor=xnor_gate.set_input()
+                            inputs.append(out_xnor)
 
-                    elif len(inputs)==2:
-                        if gates[zone]=='and':
-                            and_gate=ANDGate(inputs[0],inputs[1])
-                            output.append(and_gate.set_input())
-                        elif gates[zone]=='or':
-                            or_gate=ORGate(inputs[0],inputs[1])
-                            output.append(or_gate.set_input())
-                        elif gates[zone]=='nand':
-                            nand_gate=NANDGate(inputs[0],inputs[1])
-                            output.append(nand_gate.set_input())
-                        elif gates[zone]=='nor':
-                            nor_gate=NORGate(inputs[0],inputs[1])
-                            output.append(nor_gate.set_input())
-                        elif gates[zone]=='xor':
-                            xor_gate=XORGate(inputs[0],inputs[1])
-                            output.append(xor_gate.set_input())
-                        elif gates[zone]=='xnor':
-                            xnor_gate=XNORGate(inputs[0],inputs[1])
-                            output.append(xnor_gate.set_input())
+                    #print(inputs)
+                    if zone==1:
+                        if len(inputs)==3:
+                            if gates[zone]=='and':
+                                and_gate=ANDGate(inputs[0],inputs[1],inputs[2])
+                                output.append(and_gate.set_input())
+                            elif gates[zone]=='or':
+                                or_gate=ORGate(inputs[0],inputs[1],inputs[2])
+                                output.append(or_gate.set_input())
+                            elif gates[zone]=='not':
+                                not_gate=NOTGate(inputs[0],inputs[1],inputs[2])
+                                output.append(not_gate.set_input(inputs))
+                            elif gates[zone]=='nand':
+                                nand_gate=NANDGate(inputs[0],inputs[1],inputs[2])
+                                output.append(nand_gate.set_input())
+                            elif gates[zone]=='nor':
+                                nor_gate=NORGate(inputs[0],inputs[1],inputs[2])
+                                output.append(nor_gate.set_input())
+                            elif gates[zone]=='xor':
+                                xor_gate=XORGate(inputs[0],inputs[1],inputs[2])
+                                output.append(xor_gate.set_input())
+                            elif gates[zone]=='xnor':
+                                xnor_gate=XNORGate(inputs[0],inputs[1],inputs[2])
+                                output.append(xnor_gate.set_input())
+
+                        elif len(inputs)==2:
+                            if gates[zone]=='and':
+                                and_gate=ANDGate(inputs[0],inputs[1])
+                                output.append(and_gate.set_input())
+                            elif gates[zone]=='or':
+                                or_gate=ORGate(inputs[0],inputs[1])
+                                output.append(or_gate.set_input())
+                            elif gates[zone]=='not':
+                                not_gate=NOTGate(inputs[0],inputs[1])
+                                output.append(not_gate.set_input(inputs))
+                            elif gates[zone]=='nand':
+                                nand_gate=NANDGate(inputs[0],inputs[1])
+                                output.append(nand_gate.set_input())
+                            elif gates[zone]=='nor':
+                                nor_gate=NORGate(inputs[0],inputs[1])
+                                output.append(nor_gate.set_input())
+                            elif gates[zone]=='xor':
+                                xor_gate=XORGate(inputs[0],inputs[1])
+                                output.append(xor_gate.set_input())
+                            elif gates[zone]=='xnor':
+                                xnor_gate=XNORGate(inputs[0],inputs[1])
+                                output.append(xnor_gate.set_input())
 
         return output
+    
+    def canonical_function_generation(self,dict_gates,gates):
+        func1=''
+        func2=''
+        func3=''
+        function=''
+        flag1=False
+        flag2=False
+        flag3=False
+        flag=False
+        for zone,variables in dict_gates.items():
+            if zone == 2:
+                flag1=True
+                if gates[zone]=='and':
+                    func1+=variables[0]+'.'+variables[1]
+                elif gates[zone]=='or':
+                    func1+=variables[0]+'+'+variables[1]
+                elif gates[zone]=='nand':
+                    func1+='('+variables[0]+'.'+variables[1]+')\''
+                elif gates[zone]=='nor':
+                    func1+='('+variables[0]+'+'+variables[1]+')\''
+                elif gates[zone]=='xor':
+                    func1+=variables[0]+'⊕'+variables[1]
+                elif gates[zone]=='xnor':
+                    func1+='('+variables[0]+'⊕'+variables[1]+')\''
+            elif zone == 3:
+                flag2=True
+                if gates[zone]=='and':
+                    func2+=variables[0]+'.'+variables[1]
+                elif gates[zone]=='or':
+                    func2+=variables[0]+'+'+variables[1]
+                elif gates[zone]=='nand':
+                    func2+='('+variables[0]+'.'+variables[1]+')\''
+                elif gates[zone]=='nor':
+                    func2+='('+variables[0]+'+'+variables[1]+')\''
+                elif gates[zone]=='xor':
+                    func2+=variables[0]+'⊕'+variables[1]
+                elif gates[zone]=='xnor':
+                    func2+='('+variables[0]+'⊕'+variables[1]+')\''
+            elif zone == 4:
+                flag=True
+                if gates[zone]=='and':
+                    func3+=variables[0]+'.'+variables[1]
+                elif gates[zone]=='or':
+                    func3+=variables[0]+'+'+variables[1]
+                elif gates[zone]=='nand':
+                    func3+='('+variables[0]+'.'+variables[1]+')\''
+                elif gates[zone]=='nor':
+                    func3+='('+variables[0]+'+'+variables[1]+')\''
+                elif gates[zone]=='xor':
+                    func3+=variables[0]+'⊕'+variables[1]
+                elif gates[zone]=='xnor':
+                    func3+='('+variables[0]+'⊕'+variables[1]+')\''
+
+        for zone,variables in dict_gates.items():
+            if zone==1:
+                if (len(variables[0])==6):
+                    if func1!='' and func2!='' and func3!='':
+                        flag=True
+                        if gates[zone]=='and':
+                            function+='('+func1+').('+func2+').('+func3+')'
+                        if gates[zone]=='or':
+                            function+='('+func1+')+('+func2+')+('+func3+')'
+                        if gates[zone]=='nand':
+                            function+='(('+func1+').('+func2+').('+func3+'))\''
+                        if gates[zone]=='nor':
+                            function+='(('+func1+')+('+func2+')+('+func3+'))\''
+                        if gates[zone]=='xor':
+                            function+='('+func1+')⊕('+func2+')⊕('+func3+')'
+                        if gates[zone]=='xnor':
+                            function+='(('+func1+')⊕('+func2+')⊕('+func3+'))\''
+
+                elif (len(variables[0])==4):
+                    if (func1!='' and func2!=''):
+                        flag=True
+                        if gates[zone]=='and':
+                            function+='('+func1+').('+func2+')'
+                        if gates[zone]=='or':
+                            function+='('+func1+')+('+func2+')'
+                        if gates[zone]=='nand':
+                            function+='(('+func1+').('+func2+'))\''
+                        if gates[zone]=='nor':
+                            function+='(('+func1+')+('+func2+'))\''
+                        if gates[zone]=='xor':
+                            function+='('+func1+')⊕('+func2+')'
+                        if gates[zone]=='xnor':
+                            function+='(('+func1+')⊕('+func2+'))\''
+
+                    elif (func1!='' and func3!=''):
+                        flag=True
+                        if gates[zone]=='and':
+                            function+='('+func1+').('+func3+')'
+                        if gates[zone]=='or':
+                            function+='('+func1+')+('+func3+')'
+                        if gates[zone]=='nand':
+                            function+='(('+func1+').('+func3+'))\''
+                        if gates[zone]=='nor':
+                            function+='(('+func1+')+('+func3+'))\''
+                        if gates[zone]=='xor':
+                            function+='('+func1+')⊕('+func3+')'
+                        if gates[zone]=='xnor':
+                            function+='(('+func1+')⊕('+func3+'))\''
+
+                    elif (func2!='' and func3!=''):
+                        flag=True
+                        if gates[zone]=='and':
+                            function+='('+func3+').('+func2+')'
+                        if gates[zone]=='or':
+                            function+='('+func3+')+('+func2+')'
+                        if gates[zone]=='nand':
+                            function+='(('+func3+').('+func2+'))\''
+                        if gates[zone]=='nor':
+                            function+='(('+func3+')+('+func2+'))\''
+                        if gates[zone]=='xor':
+                            function+='('+func3+')⊕('+func2+')'
+                        if gates[zone]=='xnor':
+                            function+='(('+func3+')⊕('+func2+'))\''
+                
+        if (not flag):
+            return func1+'      '+func2+'       '+func3
+        else:
+            return function
 
     def run_level(self):
 
@@ -294,7 +425,10 @@ class level_1:
         LINE_WIDTH=2
         lines=[]
         selected_dot=None
-        dots_coord=[(220,135),(220,235),(220,335),(220,435),(450,295)]
+        dots_coord=[(220,135),(220,235),(220,335),(220,435),(450,280),(450,310)]
+        dynamic_connections=[]
+        dynamic_verification={41:(300,173),42:(300,197),21:(300,273),22:(300,297),31:(300,373),32:(300,397),43:(370,185),23:(370,285),33:(370,385),11:(500,267),12:(500,285),13:(500,303)}
+        variables={'x':(220,135),'x\'':(220,235),'y':(220,335),'y\'':(220,435),'11':(450,280),'12':(450,310)}
     
         path_or="../Resources/or.png"
         path_and="../Resources/and.png"
@@ -454,6 +588,8 @@ class level_1:
         led_states=[]
         user_led_states=[0,0,0,0]
         zones_op = {}
+        seq={}
+        i_out=''
 
         #Main game loop
         running = True
@@ -526,6 +662,24 @@ class level_1:
                                             path2=((x1,y2),dot)
                                         lines.extend(path1)
                                         lines.extend(path2)
+
+                                        if selected_dot in dynamic_verification.values():
+                                            z=selected_dot
+                                            zb=dot
+                                        else:
+                                            z=dot
+                                            zb=selected_dot
+
+                                        for var in variables:
+                                            if zb==variables[var]:
+                                                variable=var
+
+                                        # if (z in [43,33,23] and zb in [11,12,13]) or (z in [11,12,13] and zb in [43,33,23]):
+                                        #     i_out+=1
+                                        #     dynamic_connections.extend((i_out,0))
+                                        for gate_input in dynamic_verification:
+                                            if(z==dynamic_verification[gate_input]):
+                                                dynamic_connections.extend((gate_input,variable))
                                     selected_dot=None
 
                 if event.type == pygame.MOUSEMOTION:
@@ -566,7 +720,30 @@ class level_1:
             #self.screen.fill((155, 0, 255))
             self.screen.blit(self.background, (0, 0))
 
-            dynamic_output=self.functional_output(zones_op)
+            #print(dynamic_connections)
+            present_gates=[i for i in zones_op.keys()]
+            #print(present_gates)
+            i=j=k=0
+            for i in present_gates:
+                i_out=''
+                for j in dynamic_connections:
+                    if i==1:
+                        if(j==23 or j==33 or j==43):
+                            i_out+=dynamic_connections[dynamic_connections.index(j)+1]
+                        seq[i]=(i_out,0)
+                    
+                    else:
+                        if(j==(i*10+1)):
+                            flag_check=False
+                            for k in dynamic_connections:
+                                if(k==(i*10+2)):
+                                    flag_check=True
+                                    break
+                            if flag_check:
+                                seq[i]=(dynamic_connections[dynamic_connections.index(i*10+1)+1],dynamic_connections[dynamic_connections.index(i*10+2)+1])
+
+            generated_function=self.canonical_function_generation(seq,zones_op)
+            dynamic_output=self.functional_output(zones_op,seq)
             j=0
             for i in dynamic_output:
                 if i:
@@ -613,10 +790,13 @@ class level_1:
             except(FileNotFoundError):
                 font=pygame.font.Font(font_.replace("..","."),40)
 
+            font_small=pygame.font.Font('freesansbold.ttf',15)
             self.screen.blit(font.render("X",True,(0,0,0)),(170,110))
             self.screen.blit(font.render("Y",True,(0,0,0)),(170,310))
             self.screen.blit(font.render("X'",True,(0,0,0)),(170,210))
             self.screen.blit(font.render("Y'",True,(0,0,0)),(170,410))
+            self.screen.blit(font_small.render("Function Generated:",True,(0,0,0)),(470,400))
+            self.screen.blit(font_small.render(generated_function,True,(0,0,0)),(470,420))
 
 
             for img, img_rect, in_dropzone, img_id, img_code in images:
