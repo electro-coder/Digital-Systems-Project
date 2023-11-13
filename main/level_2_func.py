@@ -280,8 +280,8 @@ class level_2_up:
         LINE_WIDTH=2
         lines=[]
         selected_dot=None
-        dots_coord=[(220,135),(220,235),(220,335),(220,435),(450,280),(450,310),(300,170),(300,220),(300,370),(300,420),(400,195),
-                    (400,395),(370,185),(370,385)]
+        dots_coord=[(200,155),(200,255),(200,355),(200,455),(450,290),(450,340),(300,190),(300,240),(300,390),(300,440),(400,215),
+                    (400,415),(370,185),(370,385)]
         dynamic_connections=[]
         # dynamic_verification={41:(300,173),42:(300,197),21:(300,273),22:(300,297),31:(300,373),32:(300,397),43:(370,185),23:(370,285),33:(370,385),11:(500,267),12:(500,285),13:(500,303)}
         dynamic_verification={11:(450,280),12:(450,310)}
@@ -404,13 +404,13 @@ class level_2_up:
         image_original_rect = [image1_rect.copy(), image2_rect.copy(), image3_rect.copy(), image4_rect.copy(),
                                image5_rect.copy(), image6_rect.copy()]
         # Create drop zones
-        dropzone_rect2 = pygame.Rect(300, 150, 100, 90)
-        dropzone_rect3 = pygame.Rect(300, 350, 100, 90)
-        dropzone_rect1 = pygame.Rect(450, 250, 100, 90)
-        dropzone_rect4 = pygame.Rect(150, 100, 70, 70)
-        zone_rect5 = pygame.Rect(150, 200, 70, 70)
-        zone_rect6 = pygame.Rect(150, 300, 70, 70)
-        dropzone_rect7 = pygame.Rect(150, 400, 70, 70)
+        dropzone_rect2 = pygame.Rect(300, 170, 100, 90)
+        dropzone_rect3 = pygame.Rect(300, 370, 100, 90)
+        dropzone_rect1 = pygame.Rect(450, 270, 100, 90)
+        dropzone_rect4 = pygame.Rect(130, 120, 70, 70)
+        zone_rect5 = pygame.Rect(130, 220, 70, 70)
+        zone_rect6 = pygame.Rect(130, 320, 70, 70)
+        dropzone_rect7 = pygame.Rect(130, 420, 70, 70)
 
         dropzone = [pygame.Rect(500, 250, 70, 70), pygame.Rect(300, 250, 70, 70), pygame.Rect(300, 400, 70, 70),
                     pygame.Rect(300, 100, 70, 70)]
@@ -457,7 +457,7 @@ class level_2_up:
         flag=True
         dropzone_rect=[False,False,False,False]
         font1 = pygame.font.Font('freesansbold.ttf', 20)
-        submit_button = Button(400, 500, 100, 50, "SUBMIT", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
+        submit_button = Button(300, 500, 100, 50, "SUBMIT", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
         check_button = Button(250, 500, 100, 50, "CHECK", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
         counter=0 #Level_1 will have a limit of 5 submits
 
@@ -587,7 +587,7 @@ class level_2_up:
             
             #timer text
             timer_text = TIMER_FONT.render(f"Remaining Time : {seconds_remaining} seconds", True, (0,0,0))
-            self.screen.blit(timer_text, (250, 550))
+            self.screen.blit(timer_text, (200, 570))
             current_time = pygame.time.get_ticks()
 
             if seconds_remaining <= 0:
@@ -665,10 +665,10 @@ class level_2_up:
                 font=pygame.font.Font(font_.replace("..","."),40)
 
             font_small=pygame.font.Font('freesansbold.ttf',15)
-            self.screen.blit(font.render("X",True,(0,0,0)),(170,110))
-            self.screen.blit(font.render("Y",True,(0,0,0)),(170,310))
-            self.screen.blit(font.render("X'",True,(0,0,0)),(170,210))
-            self.screen.blit(font.render("Y'",True,(0,0,0)),(170,410))
+            self.screen.blit(font.render("X",True,(0,0,0)),(152,130))
+            self.screen.blit(font.render("Y",True,(0,0,0)),(152,330))
+            self.screen.blit(font.render("X'",True,(0,0,0)),(152,230))
+            self.screen.blit(font.render("Y'",True,(0,0,0)),(152,430))
             self.screen.blit(font_small.render("Function Generated:",True,(0,0,0)),(470,400))
             self.screen.blit(font_small.render(generated_function,True,(0,0,0)),(470,420))
 
