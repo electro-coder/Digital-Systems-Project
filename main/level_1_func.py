@@ -510,14 +510,18 @@ class level_1:
                                         x1,y1=selected_dot
                                         x2,y2=dot
                                         path_choice=random.choice([True,False])
+                                        e=random.randint(100,200)
                                         if path_choice:
-                                            path1=(selected_dot,(x2,y1))
-                                            path2=((x2,y1),dot)
+                                            path1=(selected_dot,(x2-e,y1))
+                                            path2=((x2-e,y1),(x2,y1))
+                                            path3=((x2,y1),dot)
                                         else:
-                                            path1=(selected_dot,(x1,y2))
-                                            path2=((x1,y2),dot)
+                                            path1=(selected_dot,(x1,y2-e))
+                                            path2=((x1,y2-e),(x1,y2))
+                                            path3=((x1,y2),dot)
                                         lines.extend(path1)
                                         lines.extend(path2)
+                                        lines.extend(path3)
 
                                         if selected_dot in dynamic_verification.values():
                                             z=selected_dot
