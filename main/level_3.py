@@ -39,6 +39,7 @@ class Button:
         if self.level_3_inst:
             return self.level_3_inst.functional_output(gates,seq)
 
+
 class level_3:
     def __init__(self,screen):
 
@@ -48,7 +49,17 @@ class level_3:
         # Display Surface
         self.screen=screen
         pygame.display.set_caption("CodeDiffuse Level 3")
-        
+
+    # def restart_game():
+    #     for i, (_, img_rect, _) in enumerate(images):
+    #         # Reset the image positions to their original positions
+    #         img_rect.topleft = images_original_positions[i]
+    #     #
+    #     # # Clear the drop zone contents
+    #     for dropzone_rect in dropzone_contents:
+    #         dropzone_contents[dropzone_rect] = None
+
+        # Reset the Level3 instance (replace with the actual initialization logic if needed)
 
     def functional_output(self,gates,led_states,dropzone_rect):
         and_gate=None
@@ -582,8 +593,10 @@ class level_3:
         flag=True
         dropzone_rect=[False,False,False,False]
         font1 = pygame.font.Font('freesansbold.ttf', 20)
+        font1_1 = pygame.font.Font('freesansbold.ttf', 15)
         submit_button = Button(350, 500, 100, 50, "SUBMIT", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
         check_button = Button(250, 500, 100, 50, "CHECK", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
+        restart_button = Button(30, 520, 80, 40, "RESTART", (200, 10, 20), (0, 200, 255), (255, 255, 255), font1_1, self)
         counter=0 #Level_3 will have a limit of 5 submits
         i_out=''
 
@@ -612,7 +625,10 @@ class level_3:
 
                         if counter==5:
                             return False
-                        
+                    if restart_button.rect.collidepoint(event.pos):
+                        # screen.blit("Restart", 400,500)
+                        self.current_state =  level_3(self)
+
                     # if check_button.rect.collidepoint(event.pos):
                     #     user_led_states=[int(i) for i in check_button.click(zones_op)]
                     #     print(user_led_states)
@@ -819,6 +835,7 @@ class level_3:
 
             submit_button.update(pygame.mouse.get_pos())
             submit_button.draw(self.screen)
+            restart_button.draw(self.screen)
             clock.tick(60)
             # Update the display
             pygame.display.flip()
