@@ -398,7 +398,7 @@ class level_2:
         path_xor="../Resources/xor.png"
         path_nand="../Resources/nand.png"
         path_xnor="../Resources/xnor.png"
-        path_not="../Resources/not.png"
+        # path_not="../Resources/not.png"
     
         try:
             image1 = pygame.image.load(path_or)  # Replace with your image file
@@ -425,10 +425,10 @@ class level_2:
             image6_1 = pygame.image.load(path_xnor)  # Replace with your image file
             image6_2 = pygame.image.load(path_xnor)  # Replace with your image file
             image6_3 = pygame.image.load(path_xnor)  # Replace with your image file
-            image7 = pygame.image.load(path_not)
-            image7_1 = pygame.image.load(path_not)
-            image7_2 = pygame.image.load(path_not)
-            image7_3 = pygame.image.load(path_not)
+            # image7 = pygame.image.load(path_not)
+            # image7_1 = pygame.image.load(path_not)
+            # image7_2 = pygame.image.load(path_not)
+            # image7_3 = pygame.image.load(path_not)
 
         except(FileNotFoundError):
             image1 = pygame.image.load(path_or.replace("..", "."))  # Replace with your image file
@@ -455,10 +455,10 @@ class level_2:
             image6_1 = pygame.image.load(path_xnor.replace("..", "."))  # Replace with your image file
             image6_2 = pygame.image.load(path_xnor.replace("..", "."))  # Replace with your image file
             image6_3 = pygame.image.load(path_xnor.replace("..", "."))  # Replace with your image file
-            image7 = pygame.image.load(path_not.replace("..", "."))
-            image7_1 = pygame.image.load(path_not.replace("..", "."))
-            image7_2 = pygame.image.load(path_not.replace("..", "."))
-            image7_3 = pygame.image.load(path_not.replace("..", "."))
+            # image7 = pygame.image.load(path_not.replace("..", "."))
+            # image7_1 = pygame.image.load(path_not.replace("..", "."))
+            # image7_2 = pygame.image.load(path_not.replace("..", "."))
+            # image7_3 = pygame.image.load(path_not.replace("..", "."))
 
         # Initial positions of images
         image1_rect = image1.get_rect(topleft=(20, 20))
@@ -490,11 +490,11 @@ class level_2:
         image6_1_rect = image6.get_rect(topleft=(570, 20))
         image6_2_rect = image6.get_rect(topleft=(570, 20))
         image6_3_rect = image6.get_rect(topleft=(570, 20))
-
-        image7_rect = image7.get_rect(topleft=(680, 20))
-        image7_1_rect = image7.get_rect(topleft=(680, 20))
-        image7_2_rect = image7.get_rect(topleft=(680, 20))
-        image7_3_rect = image7.get_rect(topleft=(680, 20))
+        #
+        # image7_rect = image7.get_rect(topleft=(680, 20))
+        # image7_1_rect = image7.get_rect(topleft=(680, 20))
+        # image7_2_rect = image7.get_rect(topleft=(680, 20))
+        # image7_3_rect = image7.get_rect(topleft=(680, 20))
 
         # Original positions of images
         # image1_original_rect = image1_rect.copy()
@@ -522,8 +522,9 @@ class level_2:
                   (image5_2, image5_2_rect, False, "nor", '5'),(image5_3, image5_3_rect, False,"nor",'5'),
                 (image6, image6_rect, False,"nor",'6'),(image6_1, image6_1_rect, False,"nor",'6'),
                   (image6_2, image6_2_rect, False, "nor", '6'),(image6_3, image6_3_rect, False,"nor",'6'),
-                (image7, image7_rect, False,"not",'7'),(image7_1, image7_1_rect, False,"not",'7'),
-                  (image7_2, image7_2_rect, False,"not",'7'),(image7_3, image7_3_rect, False,"not",'7')]
+                # (image7, image7_rect, False,"not",'7'),(image7_1, image7_1_rect, False,"not",'7'),
+                #   (image7_2, image7_2_rect, False,"not",'7'),(image7_3, image7_3_rect, False,"not",'7')
+                  ]
         
         # Dictionary to keep track of which image is in which drop zone
         dropzone_contents = {tuple(dropzone_rect1.topleft): None,
