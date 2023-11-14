@@ -709,7 +709,7 @@ class level_2:
                             if flag_check:
                                 seq[i]=(dynamic_connections[dynamic_connections.index(i*10+1)+1],dynamic_connections[dynamic_connections.index(i*10+2)+1])
 
-            print(seq)
+            #print(seq)
             generated_function=self.canonical_function_generation(seq,zones_op)
             dynamic_output=self.functional_output(zones_op,seq)
             j=0
