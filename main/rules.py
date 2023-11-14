@@ -20,7 +20,7 @@ class rules:
         self.screen=screen
         pygame.display.set_caption("RULES")
 
-        path_background="../Resources/background1.png"
+        path_background="../Resources/background3.png"
 
         try:
             self.background=pygame.image.load(path_background)
@@ -30,8 +30,8 @@ class rules:
         self.background = pygame.transform.scale(self.background, (800, 600))
 
     def display_rules(self):
-        self.screen.fill((255,255,0))
-        y=100
+        self.screen.blit(self.background, (0, 0))
+        y=120
         rules=[
             "CODEDIFFUSE",
             "RULES",
@@ -46,12 +46,18 @@ class rules:
             "6. Make Sure to have fun and contact developers if you face any issue",
             '7. Press W to start the game'
         ]
-        font = pygame.font.Font("Resources/text/Chakra_Petch/ChakraPetch-SemiBold.ttf", 20)
+
+        try:
+            font = pygame.font.Font("Resources/text/Chakra_Petch/ChakraPetch-SemiBold.ttf", 20)
+        except(FileNotFoundError):
+            font=pygame.font.Font("Resources/text/Chakra_Petch/ChakraPetch-SemiBold.ttf".replace("..","."),20)
+
+        #font = pygame.font.Font("Resources/text/Chakra_Petch/ChakraPetch-SemiBold.ttf", 20)
         for rule in rules:
-            text=font.render(rule, True, (0,0,0))
+            text=font.render(rule, True, (255,165,0))
             text_rect=text.get_rect(center=(WINDOW_WIDTH//2,y))
             self.screen.blit(text,text_rect)
-            y+=40
+            y+=30
         pygame.display.flip()
 
     def run_level(self):
