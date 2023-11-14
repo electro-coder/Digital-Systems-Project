@@ -31,7 +31,7 @@ class rules:
 
     def display_rules(self):
         self.screen.blit(self.background, (0, 0))
-        y=120
+        y=115
         rules=[
             "CODEDIFFUSE",
             "RULES",
@@ -57,7 +57,7 @@ class rules:
             text=font.render(rule, True, (255,165,0))
             text_rect=text.get_rect(center=(WINDOW_WIDTH//2,y))
             self.screen.blit(text,text_rect)
-            y+=30
+            y+=34
         pygame.display.flip()
 
     def run_level(self):
