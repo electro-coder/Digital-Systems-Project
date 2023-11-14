@@ -530,7 +530,8 @@ class level_3:
         image6_2_rect = image6.get_rect(topleft=(620, 10))
         image6_3_rect = image6.get_rect(topleft=(620, 10))
 
-
+        image_original_rect = [image1_rect.copy(), image2_rect.copy(), image4_rect.copy(), image5_rect.copy(),
+                               image6_rect.copy()]
 
         # Original positions of images
         # image1_original_rect = image1_rect.copy()
@@ -540,7 +541,6 @@ class level_3:
         # image5_original_rect = image5_rect.copy()
         # image6_original_rect = image6_rect.copy()
 
-        image_original_rect = [image1_rect.copy(),image2_rect.copy(),image4_rect.copy(),image5_rect.copy(),image6_rect.copy()]
 
         # Create drop zones
         dropzone_rect1 = pygame.Rect(500, 250, 70, 70)
@@ -555,18 +555,18 @@ class level_3:
         dropzone = [pygame.Rect(500, 250, 70, 70), pygame.Rect(300, 250, 70, 70), pygame.Rect(300, 400, 70, 70), pygame.Rect(300, 100, 70, 70)]
 
         # List of images, their original positions, and flags for indicating if they are in a drop zone
-        images = [(image1, image1_rect, False,"or","1"),(image1_1, image1_1_rect, False,"or",'1'),
-                  (image1_2, image1_2_rect, False,"or",'1'),(image1_3, image1_3_rect, False,"or",'1'),
-                (image2, image2_rect, False,"and",'2'),(image2_1, image2_1_rect, False,"and",'2'),
-                  (image2_2, image2_2_rect, False, "and",'2'),(image2_3, image2_3_rect, False,"and",'2'),
-                # (image3, image3_rect, False,"not",'3'),(image3_1, image3_1_rect, False,"not",'3'),
-                #   (image3_2, image3_2_rect, False, "not",'3'),(image3_3, image3_3_rect, False,"not",'3'),
-                (image4, image4_rect, False, "nand",'4'),(image4_1, image4_1_rect, False, "nand",'4'),
-                  (image4_2, image4_2_rect, False, "nand",'4'),(image4_3, image4_3_rect, False, "nand",'4'),
-                (image5, image5_rect, False,"xor",'5'),(image5_1, image5_1_rect, False,"xor",'5'),
-                  (image5_2, image5_2_rect, False,"xor",'5'),(image5_3, image5_3_rect, False,"xor",'5'),
-                (image6, image6_rect, False,"nor",'6'),(image6_1, image6_1_rect, False,"nor",'6'),
-                  (image6_2, image6_2_rect, False,"nor",'6'),(image6_3, image6_3_rect, False,"nor",'6')]
+        images = [(image1, image1_rect, False, "or", "1"), (image1_1, image1_1_rect, False, "or", '1'),
+                  (image1_2, image1_2_rect, False, "or", '1'), (image1_3, image1_3_rect, False, "or", '1'),
+                  (image2, image2_rect, False, "and", '2'), (image2_1, image2_1_rect, False, "and", '2'),
+                  (image2_2, image2_2_rect, False, "and", '2'), (image2_3, image2_3_rect, False, "and", '2'),
+                  # (image3, image3_rect, False,"not",'3'),(image3_1, image3_1_rect, False,"not",'3'),
+                  #   (image3_2, image3_2_rect, False, "not",'3'),(image3_3, image3_3_rect, False,"not",'3'),
+                  (image4, image4_rect, False, "nand", '3'), (image4_1, image4_1_rect, False, "nand", '3'),
+                  (image4_2, image4_2_rect, False, "nand", '3'), (image4_3, image4_3_rect, False, "nand", '3'),
+                  (image5, image5_rect, False, "xor", '4'), (image5_1, image5_1_rect, False, "xor", '4'),
+                  (image5_2, image5_2_rect, False, "xor", '4'), (image5_3, image5_3_rect, False, "xor", '4'),
+                  (image6, image6_rect, False, "nor", '5'), (image6_1, image6_1_rect, False, "nor", '5'),
+                  (image6_2, image6_2_rect, False, "nor", '5'), (image6_3, image6_3_rect, False, "nor", '5')]
 
         # Dictionary to keep track of which image is in which drop zone
         dropzone_contents = {tuple(dropzone_rect1.topleft): None,
@@ -628,7 +628,7 @@ class level_3:
                             return False
                     if restart_button.rect.collidepoint(event.pos):
                         # screen.blit("Restart", 400,500)
-                        self.current_state =  level_3(self)
+                        instance = level_3()
 
                     # if check_button.rect.collidepoint(event.pos):
                     #     user_led_states=[int(i) for i in check_button.click(zones_op)]
