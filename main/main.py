@@ -107,7 +107,7 @@ class Manager:
 
         except Exception as e:
             font = pygame.font.Font('freesansbold.ttf', 20)
-            error_text = font.render(f"An Unexpected error: {e} has occured. Please restart the game!", True, (255, 0, 0))
+            error_text = font.render(f"An Unexpected error has occured. Please restart the game!", True, (255, 0, 0))
             error_rect = error_text.get_rect(center=(400,300))
             self.screen.blit(error_text, error_rect)
             print(e)

@@ -504,13 +504,18 @@ class level_1:
                                         x2,y2=dot
                                         path_choice=random.choice([True,False])
                                         if path_choice:
-                                            path1=(selected_dot,(x2,y1))
-                                            path2=((x2,y1),dot)
+                                            e = random.uniform(5, 15)
+                                            path1=(selected_dot,(x2-e,y1))
+                                            path2=((x2-e,y1),(x2-e,y2))
+                                            path3=((x2-e,y2),dot)
                                         else:
-                                            path1=(selected_dot,(x1,y2))
-                                            path2=((x1,y2),dot)
+                                            e = random.uniform(5, 15)
+                                            path1=(selected_dot,(x1,y2-e))
+                                            path2=((x1,y2-e),(x2,y2-e))
+                                            path3=((x2,y2-e),dot)
                                         lines.extend(path1)
                                         lines.extend(path2)
+                                        lines.extend(path3)
                                     selected_dot=None
 
                 if event.type == pygame.MOUSEMOTION:

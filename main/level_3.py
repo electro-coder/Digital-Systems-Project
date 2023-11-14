@@ -352,7 +352,7 @@ class level_3:
                     func3+='('+variables[0]+'⊕'+variables[1]+')\''
 
         for zone,variables in dict_gates.items():
-            if zone==1 and zone in gates:
+            if zone==1 and zone in dict_gates:
                 if (len(variables[0])==6):
                     if func1!='' and func2!='' and func3!='':
                         flag=True
