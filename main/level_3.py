@@ -856,7 +856,7 @@ class level_3:
 
             submit_button.update(pygame.mouse.get_pos())
             submit_button.draw(self.screen)
-            restart_button.draw(self.screen)
+            # restart_button.draw(self.screen)
             clock.tick(60)
             # Update the display
             pygame.display.flip()

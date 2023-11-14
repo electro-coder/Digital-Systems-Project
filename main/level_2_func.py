@@ -369,7 +369,7 @@ class level_2:
         DOT_COLOR=(255,0,0)
         SELECTED_DOT_COLOR=(255,255,0)
         LINE_COLOR=(0,0,255)
-        total_time = 1000000
+        total_time = 120
         LINE_WIDTH=2
         lines=[]
         selected_dot=None
@@ -461,35 +461,35 @@ class level_2:
             # image7_3 = pygame.image.load(path_not.replace("..", "."))
 
         # Initial positions of images
-        image1_rect = image1.get_rect(topleft=(20, 20))
-        image1_1_rect = image1.get_rect(topleft=(20, 20))
-        image1_2_rect = image1.get_rect(topleft=(20, 20))
-        image1_3_rect = image1.get_rect(topleft=(20, 20))
+        image1_rect = image1.get_rect(topleft=(80, 20))
+        image1_1_rect = image1.get_rect(topleft=(80, 20))
+        image1_2_rect = image1.get_rect(topleft=(80, 20))
+        image1_3_rect = image1.get_rect(topleft=(80, 20))
 
-        image2_rect = image2.get_rect(topleft=(125, 20))
-        image2_1_rect = image2.get_rect(topleft=(125, 20))
-        image2_2_rect = image2.get_rect(topleft=(125, 20))
-        image2_3_rect = image2.get_rect(topleft=(125, 20))
+        image2_rect = image2.get_rect(topleft=(185, 20))
+        image2_1_rect = image2.get_rect(topleft=(185, 20))
+        image2_2_rect = image2.get_rect(topleft=(185, 20))
+        image2_3_rect = image2.get_rect(topleft=(185, 20))
 
-        image3_rect = image3.get_rect(topleft=(220, 20))
-        image3_1_rect = image3.get_rect(topleft=(220, 20))
-        image3_2_rect = image3.get_rect(topleft=(220, 20))
-        image3_3_rect = image3.get_rect(topleft=(220, 20))
+        image3_rect = image3.get_rect(topleft=(280, 20))
+        image3_1_rect = image3.get_rect(topleft=(280, 20))
+        image3_2_rect = image3.get_rect(topleft=(280, 20))
+        image3_3_rect = image3.get_rect(topleft=(280, 20))
 
-        image4_rect = image4.get_rect(topleft=(330, 20))
-        image4_1_rect = image4.get_rect(topleft=(330, 20))
-        image4_2_rect = image4.get_rect(topleft=(330, 20))
-        image4_3_rect = image4.get_rect(topleft=(330, 20))
+        image4_rect = image4.get_rect(topleft=(390, 20))
+        image4_1_rect = image4.get_rect(topleft=(390, 20))
+        image4_2_rect = image4.get_rect(topleft=(390, 20))
+        image4_3_rect = image4.get_rect(topleft=(390, 20))
 
-        image5_rect = image5.get_rect(topleft=(450, 20))
-        image5_1_rect = image5.get_rect(topleft=(450, 20))
-        image5_2_rect = image5.get_rect(topleft=(450, 20))
-        image5_3_rect = image5.get_rect(topleft=(450, 20))
+        image5_rect = image5.get_rect(topleft=(510, 20))
+        image5_1_rect = image5.get_rect(topleft=(510, 20))
+        image5_2_rect = image5.get_rect(topleft=(510, 20))
+        image5_3_rect = image5.get_rect(topleft=(510, 20))
 
-        image6_rect = image6.get_rect(topleft=(570, 20))
-        image6_1_rect = image6.get_rect(topleft=(570, 20))
-        image6_2_rect = image6.get_rect(topleft=(570, 20))
-        image6_3_rect = image6.get_rect(topleft=(570, 20))
+        image6_rect = image6.get_rect(topleft=(630, 20))
+        image6_1_rect = image6.get_rect(topleft=(630, 20))
+        image6_2_rect = image6.get_rect(topleft=(630, 20))
+        image6_3_rect = image6.get_rect(topleft=(630, 20))
         #
         # image7_rect = image7.get_rect(topleft=(680, 20))
         # image7_1_rect = image7.get_rect(topleft=(680, 20))
