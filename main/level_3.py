@@ -605,8 +605,8 @@ class level_3:
         update_interval=1000
         flag=True
         dropzone_rect=[False,False,False,False]
-        font1 = pygame.font.Font('freesansbold.ttf', 20)
-        font1_1 = pygame.font.Font('freesansbold.ttf', 15)
+        font1 = pygame.font.Font('Resources/text/Chakra_Petch/ChakraPetch-Light.ttf', 20)
+        font1_1 = pygame.font.Font('Resources/text/Chakra_Petch/ChakraPetch-Light.ttf', 15)
         submit_button = Button(350, 500, 100, 50, "SUBMIT", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
         check_button = Button(250, 500, 100, 50, "CHECK", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
         restart_button = Button(30, 520, 80, 40, "RESTART", (200, 10, 20), (0, 200, 255), (255, 255, 255), font1_1, self)
@@ -840,7 +840,7 @@ class level_3:
 
             #text of X and Y
             #font=pygame.font.Font('font',40)
-            font_small=pygame.font.Font('freesansbold.ttf',15)
+            font_small=pygame.font.Font('Resources/text/Chakra_Petch/ChakraPetch-SemiBold.ttf',15)
             self.screen.blit(font.render("X",True,(0,0,0)),(170,110))
             self.screen.blit(font.render("Y",True,(0,0,0)),(170,310))
             self.screen.blit(font.render("X'",True,(0,0,0)),(170,210))

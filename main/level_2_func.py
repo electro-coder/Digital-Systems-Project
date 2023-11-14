@@ -551,7 +551,7 @@ class level_2:
         update_interval=1000
         flag=True
         dropzone_rect=[False,False,False,False]
-        font1 = pygame.font.Font('freesansbold.ttf', 20)
+        font1 = pygame.font.Font('Resources/text/Chakra_Petch/ChakraPetch-Light.ttf', 20)
         submit_button = Button(300, 500, 100, 50, "SUBMIT", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
         check_button = Button(250, 500, 100, 50, "CHECK", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
         counter=0 #Level_1 will have a limit of 5 submits
@@ -759,7 +759,7 @@ class level_2:
             except(FileNotFoundError):
                 font=pygame.font.Font(font_.replace("..","."),40)
 
-            font_small=pygame.font.Font('freesansbold.ttf',15)
+            font_small=pygame.font.Font('Resources/text/Chakra_Petch/ChakraPetch-SemiBold.ttf',15)
             self.screen.blit(font.render("X",True,(0,0,0)),(152,130))
             self.screen.blit(font.render("Y",True,(0,0,0)),(152,330))
             self.screen.blit(font.render("X'",True,(0,0,0)),(152,230))
