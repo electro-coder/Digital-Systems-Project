@@ -373,12 +373,24 @@ class level_2:
         LINE_WIDTH=2
         lines=[]
         selected_dot=None
-        dots_coord=[(200,155),(200,255),(200,355),(200,455),(450,290),(450,340),(300,190),(300,240),(300,390),(300,440),(400,215),
-                    (400,415)]
+        dots_coord=[(200,155),(200,255),(200,355),(200,455),(450,285),(450,325),(300,185),(300,225),(300,385),(300,425),(380,205),
+                    (380,405)]
         dynamic_connections=[]
-        dynamic_verification={21:(300,190),22:(300,240),31:(300,390),32:(300,440),23:(400,215),33:(400,415),11:(450,290),12:(450,340)}
+        dynamic_verification={21:(300,185),22:(300,225),31:(300,385),32:(300,425),23:(380,205),33:(380,405),11:(450,285),12:(450,325)}
 
-        variables={'x':(200,155),'x\'':(200,255),'y':(200,355),'y\'':(200,455),'11':(450,290),'12':(450,340)}
+        variables={'x':(200,155),'x\'':(200,255),'y':(200,355),'y\'':(200,455),'11':(450,285),'12':(450,325)}
+
+        # Create drop zones
+        dropzone_rect2 = pygame.Rect(300, 170, 80, 70)
+        dropzone_rect3 = pygame.Rect(300, 370, 80, 70)
+        dropzone_rect1 = pygame.Rect(450, 270, 80, 70)
+        dropzone_rect4 = pygame.Rect(130, 120, 70, 70)
+        zone_rect5 = pygame.Rect(130, 220, 70, 70)
+        zone_rect6 = pygame.Rect(130, 320, 70, 70)
+        dropzone_rect7 = pygame.Rect(130, 420, 70, 70)
+
+        dropzone = [pygame.Rect(500, 250, 70, 70), pygame.Rect(300, 250, 70, 70), pygame.Rect(300, 400, 70, 70),
+                    pygame.Rect(300, 100, 70, 70)]
     
         path_or="../Resources/or.png"
         path_and="../Resources/and.png"
@@ -495,17 +507,7 @@ class level_2:
 
         image_original_rect = [image1_rect.copy(), image2_rect.copy(), image3_rect.copy(), image4_rect.copy(),
                                image5_rect.copy(), image6_rect.copy()]
-        # Create drop zones
-        dropzone_rect2 = pygame.Rect(300, 170, 100, 90)
-        dropzone_rect3 = pygame.Rect(300, 370, 100, 90)
-        dropzone_rect1 = pygame.Rect(450, 270, 100, 90)
-        dropzone_rect4 = pygame.Rect(130, 120, 70, 70)
-        zone_rect5 = pygame.Rect(130, 220, 70, 70)
-        zone_rect6 = pygame.Rect(130, 320, 70, 70)
-        dropzone_rect7 = pygame.Rect(130, 420, 70, 70)
-
-        dropzone = [pygame.Rect(500, 250, 70, 70), pygame.Rect(300, 250, 70, 70), pygame.Rect(300, 400, 70, 70),
-                    pygame.Rect(300, 100, 70, 70)]
+        
 
         # List of images, their original positions, and flags for indicating if they are in a drop zone
         images = [(image1, image1_rect, False,"or","1"),(image1_1, image1_1_rect, False,"or",'1'),
@@ -748,7 +750,7 @@ class level_2:
             pygame.draw.rect(self.screen, ZONE_COLOR, dropzone_rect7)
 
 
-            font_="../Resources/text/Chakra_Petch/ChakraPetch-Medium.ttf"
+            font_="../Resources/text/Chakra_Petch/ChakraPetch-SemiBold.ttf"
 
             try:
             #text of X, X' and Y, Y'
