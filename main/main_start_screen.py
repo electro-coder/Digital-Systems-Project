@@ -11,7 +11,7 @@ class StartScreen:
         self.screen = pygame.display.set_mode((width, height))
         pygame.display.set_caption(title)
 
-        font_path = "../Resources/text/Black_Ops_One/BlackOpsOne-Regular.ttf"
+        font_path = "Resources/text/Black_Ops_One/BlackOpsOne-Regular.ttf"
 
         try:
             self.font = pygame.font.Font(font_path, font_size)
@@ -19,7 +19,7 @@ class StartScreen:
             self.font = pygame.font.Font(font_path.replace("..","."), font_size)
 
         #Background Image
-        path_background="../Resources/background2.gif"
+        path_background="Resources/background2.gif"
 
         try:
             self.background=pygame.image.load(path_background)

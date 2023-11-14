@@ -48,7 +48,7 @@ class level_2:
         self.screen=screen
         pygame.display.set_caption("CodeDiffuse Level 2")
 
-        path_background="../Resources/background1.png"
+        path_background="Resources/background1.png"
 
         try:
             self.background=pygame.image.load(path_background)
@@ -392,12 +392,12 @@ class level_2:
         dropzone = [pygame.Rect(500, 250, 70, 70), pygame.Rect(300, 250, 70, 70), pygame.Rect(300, 400, 70, 70),
                     pygame.Rect(300, 100, 70, 70)]
     
-        path_or="../Resources/or.png"
-        path_and="../Resources/and.png"
-        path_nor="../Resources/nor.png"
-        path_xor="../Resources/xor.png"
-        path_nand="../Resources/nand.png"
-        path_xnor="../Resources/xnor.png"
+        path_or="Resources/or.png"
+        path_and="Resources/and.png"
+        path_nor="Resources/nor.png"
+        path_xor="Resources/xor.png"
+        path_nand="Resources/nand.png"
+        path_xnor="Resources/xnor.png"
         # path_not="../Resources/not.png"
     
         try:
@@ -751,7 +751,7 @@ class level_2:
             pygame.draw.rect(self.screen, ZONE_COLOR, dropzone_rect7)
 
 
-            font_="../Resources/text/Chakra_Petch/ChakraPetch-SemiBold.ttf"
+            font_="Resources/text/Chakra_Petch/ChakraPetch-SemiBold.ttf"
 
             try:
             #text of X, X' and Y, Y'

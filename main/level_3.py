@@ -50,7 +50,7 @@ class level_3:
         self.screen=screen
         pygame.display.set_caption("CodeDiffuse Level 3")
 
-        path_background="../Resources/background1.png"
+        path_background="Resources/background1.png"
 
         try:
             self.background=pygame.image.load(path_background)
@@ -463,12 +463,12 @@ class level_3:
 
 
         #paths for image files
-        path_or="../Resources/or.png"
-        path_and="../Resources/and.png"
+        path_or="Resources/or.png"
+        path_and="Resources/and.png"
         # path_not="../Resources/not.png"
-        path_nand="../Resources/nand.png"
-        path_xor="../Resources/xor.png"
-        path_nor="../Resources/nor.png"
+        path_nand="Resources/nand.png"
+        path_xor="Resources/xor.png"
+        path_nor="Resources/nor.png"
 
         try:
             image1 = pygame.image.load(path_or)  # Replace with your image file
@@ -830,7 +830,7 @@ class level_3:
             pygame.draw.rect(self.screen, DROPZONE_COLOR, zone_rect7)
             pygame.draw.rect(self.screen, DROPZONE_COLOR, zone_rect8)
 
-            font_="../Resources/text/Chakra_Petch/ChakraPetch-SemiBold.ttf"
+            font_="Resources/text/Chakra_Petch/ChakraPetch-SemiBold.ttf"
 
             try:
             #text of X, X' and Y, Y'

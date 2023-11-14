@@ -20,7 +20,7 @@ class rules:
         self.screen=screen
         pygame.display.set_caption("RULES")
 
-        path_background="../Resources/background3.png"
+        path_background="Resources/background3.png"
 
         try:
             self.background=pygame.image.load(path_background)
