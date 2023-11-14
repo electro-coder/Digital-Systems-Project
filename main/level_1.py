@@ -362,35 +362,35 @@ class level_1:
 
 
         # Initial positions of images
-        image1_rect = image1.get_rect(topleft=(50, 25))
-        image1_1_rect = image1.get_rect(topleft=(50, 25))
-        image1_2_rect = image1.get_rect(topleft=(50, 25))
-        image1_3_rect = image1.get_rect(topleft=(50, 25))
+        image1_rect = image1.get_rect(topleft=(120, 10))
+        image1_1_rect = image1.get_rect(topleft=(120, 10))
+        image1_2_rect = image1.get_rect(topleft=(120, 10))
+        image1_3_rect = image1.get_rect(topleft=(120, 10))
 
-        image2_rect = image2.get_rect(topleft=(140, 25))
-        image2_1_rect = image2.get_rect(topleft=(140, 25))
-        image2_2_rect = image2.get_rect(topleft=(140, 25))
-        image2_3_rect = image2.get_rect(topleft=(140, 25))
+        image2_rect = image2.get_rect(topleft=(235, 10))
+        image2_1_rect = image2.get_rect(topleft=(235, 10))
+        image2_2_rect = image2.get_rect(topleft=(235, 10))
+        image2_3_rect = image2.get_rect(topleft=(235, 10))
 
-        image3_rect = image3.get_rect(topleft=(230, 25))
-        image3_1_rect = image3.get_rect(topleft=(230, 25))
-        image3_2_rect = image3.get_rect(topleft=(230, 25))
-        image3_3_rect = image3.get_rect(topleft=(230, 25))
+        # image3_rect = image3.get_rect(topleft=(260, 10))
+        # image3_1_rect = image3.get_rect(topleft=(260, 10))
+        # image3_2_rect = image3.get_rect(topleft=(260, 10))
+        # image3_3_rect = image3.get_rect(topleft=(260, 10))
 
-        image4_rect = image4.get_rect(topleft=(350, 25))
-        image4_1_rect = image4.get_rect(topleft=(350, 25))
-        image4_2_rect = image4.get_rect(topleft=(350, 25))
-        image4_3_rect = image4.get_rect(topleft=(350, 25))
+        image4_rect = image4.get_rect(topleft=(350, 10))
+        image4_1_rect = image4.get_rect(topleft=(350, 10))
+        image4_2_rect = image4.get_rect(topleft=(350, 10))
+        image4_3_rect = image4.get_rect(topleft=(350, 10))
 
-        image5_rect = image5.get_rect(topleft=(460, 25))
-        image5_1_rect = image5.get_rect(topleft=(460, 25))
-        image5_2_rect = image5.get_rect(topleft=(460, 25))
-        image5_3_rect = image5.get_rect(topleft=(460, 25))
+        image5_rect = image5.get_rect(topleft=(480, 10))
+        image5_1_rect = image5.get_rect(topleft=(480, 10))
+        image5_2_rect = image5.get_rect(topleft=(480, 10))
+        image5_3_rect = image5.get_rect(topleft=(480, 10))
 
-        image6_rect = image6.get_rect(topleft=(590, 25))
-        image6_1_rect = image6.get_rect(topleft=(590, 25))
-        image6_2_rect = image6.get_rect(topleft=(590, 25))
-        image6_3_rect = image6.get_rect(topleft=(590, 25))
+        image6_rect = image6.get_rect(topleft=(620, 10))
+        image6_1_rect = image6.get_rect(topleft=(620, 10))
+        image6_2_rect = image6.get_rect(topleft=(620, 10))
+        image6_3_rect = image6.get_rect(topleft=(620, 10))
 
 
 
@@ -402,7 +402,7 @@ class level_1:
         # image5_original_rect = image5_rect.copy()
         # image6_original_rect = image6_rect.copy()
 
-        image_original_rect = [image1_rect.copy(),image2_rect.copy(),image3_rect.copy(),image4_rect.copy(),image5_rect.copy(),image6_rect.copy()]
+        image_original_rect = [image1_rect.copy(),image2_rect.copy(),image4_rect.copy(),image5_rect.copy(),image6_rect.copy()]
 
         # Create drop zones
         dropzone_rect1 = pygame.Rect(500, 250, 70, 70)
@@ -421,8 +421,8 @@ class level_1:
                   (image1_2, image1_2_rect, False,"or",'1'),(image1_3, image1_3_rect, False,"or",'1'),
                 (image2, image2_rect, False,"and",'2'),(image2_1, image2_1_rect, False,"and",'2'),
                   (image2_2, image2_2_rect, False, "and",'2'),(image2_3, image2_3_rect, False,"and",'2'),
-                (image3, image3_rect, False,"nor",'3'),(image3_1, image3_1_rect, False,"nor",'3'),
-                  (image3_2, image3_2_rect, False, "nor",'3'),(image3_3, image3_3_rect, False,"nor",'3'),
+                # (image3, image3_rect, False,"nor",'3'),(image3_1, image3_1_rect, False,"nor",'3'),
+                #   (image3_2, image3_2_rect, False, "nor",'3'),(image3_3, image3_3_rect, False,"nor",'3'),
                 (image4, image4_rect, False, "xor",'4'),(image4_1, image4_1_rect, False, "xor",'4'),
                   (image4_2, image4_2_rect, False, "xor",'4'),(image4_3, image4_3_rect, False, "xor",'4'),
                 (image5, image5_rect, False,"nor",'5'),
