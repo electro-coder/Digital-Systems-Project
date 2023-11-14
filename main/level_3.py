@@ -352,7 +352,7 @@ class level_3:
                     func3+='('+variables[0]+'⊕'+variables[1]+')\''
 
         for zone,variables in dict_gates.items():
-            if zone==1:
+            if zone==1 and zone in gates:
                 if (len(variables[0])==6):
                     if func1!='' and func2!='' and func3!='':
                         flag=True
@@ -751,7 +751,7 @@ class level_3:
                             if flag_check:
                                 seq[i]=(dynamic_connections[dynamic_connections.index(i*10+1)+1],dynamic_connections[dynamic_connections.index(i*10+2)+1])    
 
-            print(seq)
+            #print(seq)
             #print(dynamic_connections)
             generated_function=self.canonical_function_generation(seq,zones_op)
             dynamic_output=self.functional_output(zones_op,seq)
