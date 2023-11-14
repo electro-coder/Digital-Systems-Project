@@ -75,12 +75,14 @@ class Manager:
                         self.current_state="game_over"
 
                 elif self.current_state == True:
+                    font = pygame.font.Font('freesansbold.ttf', 36)
                     screen.fill(LEVEL_WIN_COLOR)
                     win_text = font.render("You Won!", True, START_SCREEN_COLOR)
                     text_rect = win_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
                     screen.blit(win_text, text_rect)
 
                 elif self.current_state == "game_over":
+                    font = pygame.font.Font('freesansbold.ttf', 36)
                     screen.fill(LEVEL_WIN_COLOR)
                     game_over_text = font.render("Game Over", True, START_SCREEN_COLOR)
                     text_rect = game_over_text.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
