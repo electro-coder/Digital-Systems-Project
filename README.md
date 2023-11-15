@@ -1,67 +1,99 @@
 # Digital-Systems-Project
 
-Project made for the course **EE206L: Digital Systems** under supervisor [**Dr. Sarvendranath Rimalpudi**](https://sarvendranath.in/).
+CodeDiffuse, a collaborative project designed for the course **EE206L: Digital Systems** under the guidance of [**Dr. Sarvendranath Rimalpudi**](https://sarvendranath.in/).
 
-### Rules:
+## Table of Contents
 
-#### Game:
-1) A game should be designed with an objective to learn a digital systems concept taught  in the class.
-2) A person who is not familiar with the concept should be able play the game and get the intuition
-3) Rules of the game should be simple and clear.
-4) Simple example should be provided.
+- [Rules](#rules)
+  - [Game](#game)
+  - [Visual Demonstration](#visual-demonstration)
+  - [Competition](#competition)
+- [The Game (CodeDiffuse)](#the-game-codediffuse)
+  - [Rules](#rules-1)
+  - [Levels](#levels)
+- [Snapshots](#snapshots)
+  - [Start Page](#start-page)
+  - [Rules](#rules-2)
+  - [Level 1](#level-1)
+  - [Level 2](#level-2)
+  - [Level 3](#level-3)
+- [Contributors](#contributors)
 
-#### Visual demonstration:
-1) A visual demo or an interactive interface that helps to understand the digital systems concept should be developed
-2) It can be an animation (gif) or any other form
-3) Demo should be simple and clear for the audience to grasp the concept.
-4) Any concept discussed in the class can be illustrated 
+## Rules
 
-#### Competition:
-1)  Evaluation will be based on i) Clarity of demo/game ii) Creativity and novelty involved.
-2) Should not be copied from other sources. All the original source files used to create game/demo should be submitted. 
-3) If the idea is inspired from another source, it should be mentioned clearly and novelty compared to the existing should be justified.
+### Game
+
+1. Design a game with the objective to teach a digital systems concept from the class.
+2. Make the game accessible to those unfamiliar with the concept.
+3. Keep the rules simple and clear.
+4. Provide a simple example for better understanding.
+
+### Visual Demonstration
+
+1. Develop a visual demo or an interactive interface to explain digital systems concepts.
+2. Use animations (GIF) or any other form to create a clear and simple demo.
+3. Illustrate any concept discussed in the class.
+4. Ensure clarity, simplicity, and audience-friendly demonstrations.
+
+### Competition
+
+1. Evaluation based on clarity of the demo/game and the creativity involved.
+2. Originality is crucial; submitted original source files used to create the game/demo are required.
+3. If inspired by another source, provide clear attribution and justify the novelty compared to existing works.
 
 ## The Game (CodeDiffuse)
-### Rules:
-1. A sequence of leds would be given which are essentially the responses to x,y states of (0,0),(0,1),(1,0),(1,1).
-2. You have to understand and formulate the function in term of minterms only.
-3. Then, drag and drop gates at appropriate places and join the wires to produce the function on simulation.
-4. Red and white leds would simulate the output you are producing. Make sure to check your answer before submitting.
-5. You have a maximum of 5 tries to complete a level.
-6. Make Sure to have fun and contact developers if you face any issue
-7. Press W to start the game
-   
-#### Stage 1
-1) Random 4 LED sequence (with only one led glowing) will be provided 
-2) User will have to select any 2/3 input gate from AND.OR,NOT,XOR,XNOR and then select the inputs to these gates by toggling the switches for respective blocks.
 
-#### Stage 2
-1) Random 4 LED sequence (with two leds glowing) will be provided 
-2) User will have to select any 2/3 input gate from AND.OR,NOT,XOR,XNOR and then select the inputs to these gates by toggling the switches for respective blocks.
+### Rules
 
-#### Stage 3
-1) Random 4 LED sequence (with three leds glowing) will be provided 
-2) User will have to select any 2/3 input gate from AND.OR,NOT,XOR,XNOR and then select the inputs to these gates by toggling the switches for respective blocks.
+1. Given a sequence of LEDs representing responses to (0,0), (0,1), (1,0), and (1,1) states.
+2. Formulate the function in terms of minterms.
+3. Drag and drop gates, connect wires to produce the function in simulation.
+4. Red and white LEDs simulate the output; validate your answer before submitting.
+5. You have a maximum of 5 tries to complete each level.
+6. Have fun! Contact developers if you face any issues.
+7. Press W to start the game.
 
-### Snapshots
-#### Start Page
-![](image.png)
-#### Rules
-![](image-1.png)
-#### Level 1
-![](image-2.png)
+### Levels
 
-![](image-3.png)
-#### Level 2
-![](image-4.png)
+- **Level 1**
+  - Random 4 LED sequence (with only one LED glowing) provided.
+  - Select any 2/3 input gate (AND, OR, NOT, XOR, XNOR) and set inputs by toggling switches.
 
-![](image-5.png)
-#### Level 3
-![](image-6.png)
+- **Level 2**
+  - Random 4 LED sequence (with two LEDs glowing) provided.
+  - Select any 2/3 input gate (AND, OR, NOT, XOR, XNOR) and set inputs by toggling switches.
 
-![](image-7.png)
+- **Level 3**
+  - Random 4 LED sequence (with three LEDs glowing) provided.
+  - Select any 2/3 input gate (AND, OR, NOT, XOR, XNOR) and set inputs by toggling switches.
 
-## Authors
+## Snapshots
+
+### Start Page
+![Start Page](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image.png)
+
+### Rules
+![Rules](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-1.png)
+
+### Level 1
+![Level 1](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-2.png)
+![Level 1](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-3.png)
+
+### Level 2
+![Level 2](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-4.png)
+![Level 2](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-5.png)
+
+### Level 3
+![Level 3](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-6.png)
+![Level 3](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-7.png)
+
+## Contributors
+
+[![](https://contrib.rocks/image?repo=electro-coder/Digital-Systems-Project)](https://github.com/electro-coder/Digital-Systems-Project/graphs/contributors)
+
 1. [Sayan Kundu](https://github.com/electro-coder)
 2. [Prakhar Gupta](https://github.com/prax-1)
 3. [Ayush Gupta](https://github.com/ayushhwho)
+
+Feel free to contribute and enhance the learning experience!
+

@@ -1,18 +1,19 @@
 #Level 3
+
 import pygame
 import sys
 import random
 from logic_gates import ANDGate, ORGate, NOTGate, NANDGate, NORGate, XORGate, XNORGate
 
 class Button:
-    def __init__(self, x, y, width, height, text, color, hover_color, text_color, font,level_3_inst, action=None):
+    def __init__(self, x, y, width, height, text, color, hover_color, text_color, font, level_3_inst, action=None):
         self.rect = pygame.Rect(x, y, width, height)
         self.color = color
         self.hover_color = hover_color
         self.text = text
         self.text_color = text_color
         self.font = font
-        self.level_3_inst=level_3_inst
+        self.level_3_inst = level_3_inst
         self.action = action
         self.hovered = False
 
@@ -59,150 +60,21 @@ class level_3:
 
         self.background = pygame.transform.scale(self.background, (800, 600))
 
-    # def restart_game():
-    #     for i, (_, img_rect, _) in enumerate(images):
-    #         # Reset the image positions to their original positions
-    #         img_rect.topleft = images_original_positions[i]
-    #     #
-    #     # # Clear the drop zone contents
-    #     for dropzone_rect in dropzone_contents:
-    #         dropzone_contents[dropzone_rect] = None
-
-        # Reset the Level3 instance (replace with the actual initialization logic if needed)
-
-    def functional_output(self,gates,led_states,dropzone_rect):
-        and_gate=None
-        or_gate=None
-        not_gate=None
-        nand_gate=None
-        nor_gate=None
-        xor_gate=None
-        xnor_gate=None
-
-        for gate in gates:
-            if gate.rect.colliderect(dropzone_rect[0]):
-                if isinstance(gate, ANDGate):
-                    and_gate=gate
-                elif isinstance(gate,ORGate):
-                    or_gate=gate
-                elif isinstance(gate,ORGate):
-                    or_gate=gate
-                elif isinstance(gate,NOTGate):
-                    not_gate=gate
-                elif isinstance(gate,NANDGate):
-                    nand_gate=gate
-                elif isinstance(gate,NORGate):
-                    nor_gate=gate
-                elif isinstance(gate,XORGate):
-                    xor_gate=gate
-                elif isinstance(gate,XNORGate):
-                    xnor_gate=gate
-
-            if gate.rect.colliderect(dropzone_rect[1]):
-                if isinstance(gate, ANDGate):
-                    and_gate=gate
-                elif isinstance(gate,ORGate):
-                    or_gate=gate
-                elif isinstance(gate,ORGate):
-                    or_gate=gate
-                elif isinstance(gate,NOTGate):
-                    not_gate=gate
-                elif isinstance(gate,NANDGate):
-                    nand_gate=gate
-                elif isinstance(gate,NORGate):
-                    nor_gate=gate
-                elif isinstance(gate,XORGate):
-                    xor_gate=gate
-                elif isinstance(gate,XNORGate):
-                    xnor_gate=gate
-
-            if gate.rect.colliderect(dropzone_rect[2]):
-                if isinstance(gate, ANDGate):
-                    and_gate=gate
-                elif isinstance(gate,ORGate):
-                    or_gate=gate
-                elif isinstance(gate,ORGate):
-                    or_gate=gate
-                elif isinstance(gate,NOTGate):
-                    not_gate=gate
-                elif isinstance(gate,NANDGate):
-                    nand_gate=gate
-                elif isinstance(gate,NORGate):
-                    nor_gate=gate
-                elif isinstance(gate,XORGate):
-                    xor_gate=gate
-                elif isinstance(gate,XNORGate):
-                    xnor_gate=gate
-
-        if and_gate:
-            and_gate.set_input(led_states[0],led_states[1])
-        if or_gate:
-            or_gate.set_input(led_states[0],led_states[1])
-        if not_gate:
-            not_gate.set_input(led_states[0],led_states[1])
-        if nand_gate:
-            nand_gate.set_input(led_states[0],led_states[1])
-        if nor_gate:
-            nor_gate.set_input(led_states[0],led_states[1])
-        if xor_gate:
-            xor_gate.set_input(led_states[0],led_states[1])
-        if xnor_gate:
-            xnor_gate.set_input(led_states[0],led_states[1])
-
-
-    #overloaded function for testing purposes of output
-    def functional_output(self,led_states):
-        and_gate=ANDGate()
-        or_gate=ORGate()
-        not_gate=NOTGate()
-        nand_gate=NANDGate()
-        nor_gate=NORGate()
-        xor_gate=XORGate()
-        xnor_gate=XNORGate()
-
-        out_and=None
-        out_or=None
-        out_not=None
-        out_nand=None
-        out_nor=None
-        out_xor=None
-        out_xnor=None
-
-        
-        out_and=and_gate.set_input(led_states[0],led_states[1])
-        out_or=or_gate.set_input(led_states[0],led_states[1])
-        out_not=not_gate.set_input(led_states[0],led_states[1])
-        out_nand=nand_gate.set_input(led_states[0],led_states[1])
-        out_nor=nor_gate.set_input(led_states[0],led_states[1])
-        out_xor=xor_gate.set_input(led_states[0],led_states[1])
-        out_xnor=xnor_gate.set_input(led_states[0],led_states[1])
-       
-        output=[out_and,out_or,out_not,out_nand,out_nor,out_xor,out_xnor]
-        print(output)
-
     def var(self,x,y,order):
         if order[0]=="x\'" or order[1]=="x\'": x=not x
         if order[1]=="y\'" or order[1]=="y\'": y=not y
         return (x,y)
     
-    #overloaded function for testing purposes of output
+    #overloaded function
     def functional_output(self,gates,seq):
 
         states=[[False,False],
                 [False,True],
                 [True,False],
                 [True,True]]
-        
-        and_gate=None
-        or_gate=None
-        not_gate=None
-        nand_gate=None
-        nor_gate=None
-        xor_gate=None
-        xnor_gate=None
 
         output=[]
-        
+
         for a,b in states:
             out_and=None
             out_or=None
@@ -423,16 +295,13 @@ class level_3:
                 
     def run_level(self):
 
-        WHITE = (255, 255, 255)
         DROPZONE_COLOR = (0, 255, 0)
-        IMAGE_SIZE = (50, 50)
         CIRCLE_COLOR_ON = (255, 255, 0)
         CIRCLE_COLOR_OFF=(255,255,255)
         CIRCLE_RADIUS=30
         USER_CIRCLE_COLOR_ON = (255, 0, 0)
         USER_CIRCLE_COLOR_OFF=(255,255,255)
         USER_CIRCLE_RADIUS=20
-        num_leds=4
         DOT_RADIUS=7
         DOT_COLOR=(255,0,0)
         SELECTED_DOT_COLOR=(255,255,0)
@@ -557,14 +426,6 @@ class level_3:
         image_original_rect = [image1_rect.copy(), image2_rect.copy(), image4_rect.copy(), image5_rect.copy(),
                                image6_rect.copy()]
 
-        # Original positions of images
-        # image1_original_rect = image1_rect.copy()
-        # image2_original_rect = image2_rect.copy()
-        # image3_original_rect = image3_rect.copy()
-        # image4_original_rect = image4_rect.copy()
-        # image5_original_rect = image5_rect.copy()
-        # image6_original_rect = image6_rect.copy()
-
 
         # List of images, their original positions, and flags for indicating if they are in a drop zone
         images = [(image1, image1_rect, False, "or", "1"), (image1_1, image1_1_rect, False, "or", '1'),
@@ -587,19 +448,17 @@ class level_3:
                             tuple(dropzone_rect4.topleft): None}
 
         clock = pygame.time.Clock()
-        blink_interval = 0  # milliseconds
-        blink_timer = 0
         visible = True
         dragging = None
         led_coord=[(750,150),(750,250),(750,350),(750,450)]
         user_led_coord=[(650,215),(650,265),(650,315),(650,365)]
         led_states=[]
-        user_led_states=[0,0,0,0]
         zones_op = {}
         org_image_count = 0
         seq={}
 
         # Main game loop
+        # comment
         running = True
         last_update_time=pygame.time.get_ticks()
         update_interval=1000
@@ -618,9 +477,6 @@ class level_3:
             if visible:
                 random_number=random.randint(0,3)
                 led_states = [[1,1,1,0],[1,0,1,1],[1,1,0,1],[0,1,1,1]][random_number]
-                # for i in led_states:
-                #     print(int(i),end=' ')
-                # print()
                 visible=False
 
             for event in pygame.event.get():
@@ -638,19 +494,12 @@ class level_3:
 
                         if counter==5:
                             return False
-                    if restart_button.rect.collidepoint(event.pos):
-                        # screen.blit("Restart", 400,500)
-                        instance = level_3()
-
-                    # if check_button.rect.collidepoint(event.pos):
-                    #     user_led_states=[int(i) for i in check_button.click(zones_op)]
-                    #     print(user_led_states)
                         
                     if event.button == 1:
                         for img, img_rect, in_dropzone, img_id, img_code in images:
                             if img_rect.collidepoint(event.pos) and not in_dropzone:
                                 dragging = img, img_rect, in_dropzone, img_id, img_code
-                                #images.remove((img, img_rect, in_dropzone))
+
 
                     if event.button == 1:
                         x,y=event.pos
@@ -684,9 +533,6 @@ class level_3:
                                             if zb==variables[var]:
                                                 variable=var
 
-                                        # if (z in [43,33,23] and zb in [11,12,13]) or (z in [11,12,13] and zb in [43,33,23]):
-                                        #     i_out+=1
-                                        #     dynamic_connections.extend((i_out,0))
                                         for gate_input in dynamic_verification:
                                             if(z==dynamic_verification[gate_input]):
                                                 dynamic_connections.extend((gate_input,variable))
@@ -763,28 +609,9 @@ class level_3:
                     CIRCLE_COLOR=USER_CIRCLE_COLOR_OFF
                 pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[j] , USER_CIRCLE_RADIUS,0)
                 j+=1
-            # for i,state in enumerate(zones_op):
-            #         CIRCLE_COLOR=USER_CIRCLE_COLOR_ON if state else USER_CIRCLE_COLOR_OFF
-            #         pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[i] , USER_CIRCLE_RADIUS,0)
-
 
             current_time = pygame.time.get_ticks()
-            '''if current_time - blink_timer >= blink_interval:
-                visible = not visible
-                blink_timer = current_time'''
 
-            '''if current_time-last_update_time>=update_interval:
-                led_states = [random.choice([True, False]) for _ in range(num_leds)]
-                last_update_time=current_time'''
-            # if visible:
-            #     led_states = [random.choice([True, False]) for _ in range(num_leds)]
-            #     for i in led_states:
-            #         print(int(i),end=' ')
-            #     print()
-            #     visible=False
-            # for i,state in enumerate(user_led_states):
-            #         CIRCLE_COLOR=CIRCLE_COLOR_ON if state else CIRCLE_COLOR_OFF
-            #         pygame.draw.circle(self.screen, CIRCLE_COLOR, user_led_coord[i] , CIRCLE_RADIUS,0)
 
             for i,state in enumerate(led_states):
                     CIRCLE_COLOR=CIRCLE_COLOR_ON if state else CIRCLE_COLOR_OFF
@@ -797,28 +624,6 @@ class level_3:
                     pygame.draw.circle(self.screen,SELECTED_DOT_COLOR,dot,DOT_RADIUS)
                 else:
                     pygame.draw.circle(self.screen,DOT_COLOR,dot,DOT_RADIUS)
-
-            #drawing the wires connecting the gates
-
-            #pygame.draw.circle(screen, CIRCLE_COLOR, tuple(led_coord) , CIRCLE_RADIUS,0)
-            # for start, end in connections:
-            #     pygame.draw.line(screen, (255, 0, 0), start, end, 5)
-            # pygame.draw.line(self.screen, (254, 20, 50), (200,220), (250,220), 5)
-            # pygame.draw.line(self.screen, (254, 20, 50), (250, 420), (250, 120), 5)
-            # pygame.draw.line(self.screen, (254, 20, 50), (248, 120), (300, 120), 5)
-            # pygame.draw.line(self.screen, (254, 20, 50), (248, 270), (300, 270), 5)
-            # pygame.draw.line(self.screen, (254, 20, 50), (248, 420), (300, 420), 5)
-            # pygame.draw.line(self.screen, (0, 0, 0), (270, 450), (270, 150), 5)
-            # pygame.draw.line(self.screen, (0, 0, 0), (200,320), (270,320), 5)
-            # pygame.draw.line(self.screen, (0, 0, 0), (270, 300), (300, 300), 5)
-            # pygame.draw.line(self.screen, (0, 0, 0), (268, 150), (300, 150), 5)
-            # pygame.draw.line(self.screen, (0, 0, 0), (268, 450), (300, 450), 5)
-            # pygame.draw.line(self.screen, (0, 34, 45), (350, 285), (500, 285), 5)
-            # pygame.draw.line(self.screen, (0, 34, 45), (350, 130), (530, 130), 5) 
-            # pygame.draw.line(self.screen, (0, 34, 45), (350, 430), (530, 430), 5)
-            # pygame.draw.line(self.screen, (0, 34, 45), (530, 129), (530, 300), 5)
-            # pygame.draw.line(self.screen, (0, 34, 45), (530, 430), (530, 310), 5)
-            # pygame.draw.line(self.screen, (0, 34, 45), (560, 285), (620, 285), 5)
 
             # Draw drop zones/
             pygame.draw.rect(self.screen, DROPZONE_COLOR, dropzone_rect1)
