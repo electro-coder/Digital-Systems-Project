@@ -556,7 +556,8 @@ class level_2:
         submit_button = Button(300, 500, 100, 50, "SUBMIT", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
         check_button = Button(250, 500, 100, 50, "CHECK", (0, 150, 200), (0, 200, 255), (255, 255, 255), font1,self)
         counter=0 #Level_1 will have a limit of 5 submits
-
+        clk=0
+        elapsed_time=0
         while running:
             
             # Randomized LED states
@@ -677,9 +678,13 @@ class level_2:
 
             #timer (time remaining)/
 
-            elapsed_time = (pygame.time.get_ticks()- last_update_time_g)
+            elapsed_time +=clock.get_time()
+            clk+=1
             seconds = elapsed_time // 1000  # Convert milliseconds to seconds
-            seconds_remaining = total_time - (elapsed_time // 1000)
+            # if elapsed_time!=last_update_time_g and flag_clk: 
+            #     elapsed_time=0
+            #     flag_clk=False
+            seconds_remaining = total_time - (elapsed_time//1000)
             
             #timer text
             timer_text = TIMER_FONT.render(f"Remaining Time : {seconds_remaining} seconds", True, (0,0,0))
