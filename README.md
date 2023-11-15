@@ -75,3 +75,5 @@ Project made for the course **EE206L: Digital Systems** under supervisor [**Dr. 
 [Back to Top](#readme-top)
 
 </div>
+
+[back-to-top]: #readme-top
