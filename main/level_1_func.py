@@ -445,7 +445,7 @@ class level_1:
 
         #Main game loop
         running = True
-        last_update_time=pygame.time.get_ticks()
+        #last_update_time=pygame.time.get_ticks()
         update_interval=1000
         flag=True
         dropzone_rect=[False,False,False,False]
