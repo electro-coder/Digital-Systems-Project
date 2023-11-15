@@ -21,7 +21,7 @@ Project made for the course **EE206L: Digital Systems** under supervisor [**Dr. 
 2) Should not be copied from other sources. All the original source files used to create game/demo should be submitted. 
 3) If the idea is inspired from another source, it should be mentioned clearly and novelty compared to the existing should be justified.
 
-## The Game (CodeDiffuse)
+# The Game (CodeDiffuse)
 ### Rules:
 1. A sequence of leds would be given which are essentially the responses to x,y states of (0,0),(0,1),(1,0),(1,1).
 2. You have to understand and formulate the function in term of minterms only.
@@ -31,32 +31,32 @@ Project made for the course **EE206L: Digital Systems** under supervisor [**Dr. 
 6. Make Sure to have fun and contact developers if you face any issue
 7. Press W to start the game
    
-#### Stage 1
+#### Level 1
 1) Random 4 LED sequence (with only one led glowing) will be provided 
 2) User will have to select any 2/3 input gate from AND.OR,NOT,XOR,XNOR and then select the inputs to these gates by toggling the switches for respective blocks.
 
-#### Stage 2
+#### Level 2
 1) Random 4 LED sequence (with two leds glowing) will be provided 
 2) User will have to select any 2/3 input gate from AND.OR,NOT,XOR,XNOR and then select the inputs to these gates by toggling the switches for respective blocks.
 
-#### Stage 3
+#### Level 3
 1) Random 4 LED sequence (with three leds glowing) will be provided 
 2) User will have to select any 2/3 input gate from AND.OR,NOT,XOR,XNOR and then select the inputs to these gates by toggling the switches for respective blocks.
 
-### Snapshots
-#### Start Page
+## Snapshots
+### Start Page
 ![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image.png)
-#### Rules
+### Rules
 ![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-1.png)
-#### Level 1
+### Level 1
 ![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-2.png)
 
 ![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-3.png)
-#### Level 2
+### Level 2
 ![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-4.png)
 
 ![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-5.png)
-#### Level 3
+### Level 3
 ![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-6.png)
 
 ![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-7.png)
