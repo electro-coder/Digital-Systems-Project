@@ -43,4 +43,25 @@ Project made for the course **EE206L: Digital Systems** under supervisor [**Dr. 
 1) Random 4 LED sequence (with three leds glowing) will be provided 
 2) User will have to select any 2/3 input gate from AND.OR,NOT,XOR,XNOR and then select the inputs to these gates by toggling the switches for respective blocks.
 
- 
+### Snapshots
+#### Start Page
+![](image.png)
+#### Rules
+![](image-1.png)
+#### Level 1
+![](image-2.png)
+
+![](image-3.png)
+#### Level 2
+![](image-4.png)
+
+![](image-5.png)
+#### Level 3
+![](image-6.png)
+
+![](image-7.png)
+
+## Authors
+1. [Sayan Kundu](https://github.com/electro-coder)
+2. [Prakhar Gupta](https://github.com/prax-1)
+3. [Ayush Gupta](https://github.com/ayushhwho)
