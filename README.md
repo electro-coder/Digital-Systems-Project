@@ -61,7 +61,11 @@ Project made for the course **EE206L: Digital Systems** under supervisor [**Dr. 
 
 ![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-7.png)
 
-## Authors
+
+## Contributors
+
+[![](https://contrib.rocks/image?repo=electro-coder/Digital-Systems-Project)](https://github.com/electro-coder/Digital-Systems-Project/graphs/contributors)
+
 1. [Sayan Kundu](https://github.com/electro-coder)
 2. [Prakhar Gupta](https://github.com/prax-1)
 3. [Ayush Gupta](https://github.com/ayushhwho)
