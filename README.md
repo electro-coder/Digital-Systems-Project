@@ -45,21 +45,21 @@ Project made for the course **EE206L: Digital Systems** under supervisor [**Dr. 
 
 ### Snapshots
 #### Start Page
-![](image.png)
+![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image.png)
 #### Rules
-![](image-1.png)
+![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-1.png)
 #### Level 1
-![](image-2.png)
+![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-2.png)
 
-![](image-3.png)
+![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-3.png)
 #### Level 2
-![](image-4.png)
+![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-4.png)
 
-![](image-5.png)
+![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-5.png)
 #### Level 3
-![](image-6.png)
+![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-6.png)
 
-![](image-7.png)
+![](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-7.png)
 
 ## Authors
 1. [Sayan Kundu](https://github.com/electro-coder)
