@@ -430,7 +430,7 @@ class level_1:
                             tuple(dropzone_rect4.topleft): None,
                             tuple(dropzone_rect7.topleft): None}
         
-        clock = pygame.time.Clock()
+        # clock = pygame.time.Clock()
         blink_interval = 0  # milliseconds
         blink_timer = 0
         visible = True
@@ -661,7 +661,7 @@ class level_1:
             submit_button.draw(self.screen)
             # check_button.update(pygame.mouse.get_pos())
             # check_button.draw((self.screen))
-            clock.tick(60)
+            # clock.tick(60)
             # Update the display
             pygame.display.flip()
 

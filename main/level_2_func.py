@@ -2,7 +2,7 @@ import pygame
 import sys
 import random
 from logic_gates import ANDGate, ORGate, NOTGate, NANDGate, NORGate, XORGate, XNORGate
-
+last_update_time_g =pygame.time.get_ticks()
 class Button:
     def __init__(self, x, y, width, height, text, color, hover_color, text_color, font,level_1_inst, action=None):
         self.rect = pygame.Rect(x, y, width, height)
@@ -370,6 +370,7 @@ class level_2:
         SELECTED_DOT_COLOR=(255,255,0)
         LINE_COLOR=(0,0,255)
         total_time = 120
+
         LINE_WIDTH=2
         lines=[]
         selected_dot=None
@@ -547,7 +548,7 @@ class level_2:
         #Main game loop
         running = True
         TIMER_FONT = pygame.font.Font(None, 36)
-        last_update_time=pygame.time.get_ticks()
+        last_update_time=pygame.time.get_ticks() - last_update_time_g
         update_interval=1000
         flag=True
         dropzone_rect=[False,False,False,False]
@@ -676,7 +677,7 @@ class level_2:
 
             #timer (time remaining)/
 
-            elapsed_time = (pygame.time.get_ticks())
+            elapsed_time = (pygame.time.get_ticks()- last_update_time_g)
             seconds = elapsed_time // 1000  # Convert milliseconds to seconds
             seconds_remaining = total_time - (elapsed_time // 1000)
             
