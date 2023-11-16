@@ -87,6 +87,9 @@ CodeDiffuse, a collaborative project designed for the course **EE206L: Digital S
 ![Level 3](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-6.png)
 ![Level 3](https://github.com/electro-coder/Digital-Systems-Project/blob/main/Resources/image-7.png)
 
+## Downloads
+[Code_Diffuse.exe](https://github.com/electro-coder/Digital-Systems-Project/blob/main/main/Executables/Installer/Output/mysetup.exe)
+
 ## Contributors
 
 [![](https://contrib.rocks/image?repo=electro-coder/Digital-Systems-Project)](https://github.com/electro-coder/Digital-Systems-Project/graphs/contributors)
