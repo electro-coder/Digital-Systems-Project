@@ -269,7 +269,7 @@ class level_1:
         CIRCLE_COLOR_ON = (255, 255, 0)
         CIRCLE_COLOR_OFF=(255,255,255)
         CIRCLE_RADIUS=30
-        USER_CIRCLE_COLOR_ON = (255, 0, 0)
+        USER_CIRCLE_COLOR_ON = (255, 255, 0)
         USER_CIRCLE_COLOR_OFF=(255,255,255)
         USER_CIRCLE_RADIUS=20
         num_leds=4

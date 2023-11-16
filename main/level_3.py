@@ -299,7 +299,7 @@ class level_3:
         CIRCLE_COLOR_ON = (255, 255, 0)
         CIRCLE_COLOR_OFF=(255,255,255)
         CIRCLE_RADIUS=30
-        USER_CIRCLE_COLOR_ON = (255, 0, 0)
+        USER_CIRCLE_COLOR_ON = (255, 255, 0)
         USER_CIRCLE_COLOR_OFF=(255,255,255)
         USER_CIRCLE_RADIUS=20
         DOT_RADIUS=7
@@ -597,7 +597,7 @@ class level_3:
                             if flag_check:
                                 seq[i]=(dynamic_connections[dynamic_connections.index(i*10+1)+1],dynamic_connections[dynamic_connections.index(i*10+2)+1])    
 
-            print(seq)
+            #print(seq)
             #print(dynamic_connections)
             generated_function=self.canonical_function_generation(seq,zones_op)
             dynamic_output=self.functional_output(zones_op,seq)
